@@ -5,5 +5,5 @@
 @stop
 
 @section('content')
-    Hello World !
+    Hello World ! Branche devforum
 @stop
