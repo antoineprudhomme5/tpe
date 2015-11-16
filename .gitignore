@@ -12,5 +12,8 @@ vendor/
 .AppleDouble
 .LSOverride
 
+## Directory-based project format:
+.idea/
+
 ## stuff ##
 composer.lock
