@@ -1,2 +1,7 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "compass";
 
+#content{
+  margin-top: 30px;
+  @include border-radius(30px);
+}

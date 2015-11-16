@@ -1,5 +1,5 @@
 var elixir = require('laravel-elixir');
-
+require('laravel-elixir-sass-compass');
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -12,5 +12,8 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+    mix.compass('app.scss', 'public/css', {
+        style: "compressed",
+        sass: "./resources/assets/sass"
+    });
 });
