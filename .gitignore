@@ -15,5 +15,12 @@ vendor/
 ## Directory-based project format:
 .idea/
 
+### Sass ###
+.sass-cache
+*.css.map
+
+## Css files ##
+public/css/
+
 ## stuff ##
 composer.lock
