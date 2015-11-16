@@ -1,3 +1,11 @@
+### Prérequis
+
+- Installer [Sass](http://sass-lang.com/install).
+- Installer [Compass](http://compass-style.org/install/).
+- Avoir npm (Node.js)
+- Installer des modules de node présents dans *package.json* (gulp, laravel-elixir, bootstrap-sass): `npm install`
+- Rajouter sass-compass pour Laravel Elixir: `sudo npm install laravel-elixir-sass-compass`
+
 ## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
