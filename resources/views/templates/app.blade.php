@@ -6,6 +6,7 @@
 		<title>@yield('title')</title>
 		{!! HTML::style('bootstrap/css/bootstrap.css') !!}
 		{!! HTML::style('css/style.css') !!}
+		@yield('style')
 	</head>
 	<body>
 		<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -23,16 +24,18 @@
 		          	<ul class="nav navbar-nav navbar-right">
 			            <li><a href="{{ url('/auth/login') }}">Login</a></li>
 			            <li><a href="{{ url('/auth/register') }}">Register</a></li>
-			            <li><a href="#">Forum</a></li>
+			            <li><a href="{{ url('/forum') }}">Forum</a></li>
 		          	</ul>
 		        </div>
 		    </div>
 	    </nav>
 	    <div class="container" id="content">
+	    	<br>
 			@yield('content')
 		</div>
 	</body>
 	<!-- scripts -->
     {!! HTML::script('js/jquery.js') !!}
     {!! HTML::script('bootstrap/js/bootstrap.min.js') !!}
+    @yield('scripts')
 </html>

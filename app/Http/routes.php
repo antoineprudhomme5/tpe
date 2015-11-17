@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('index');
 });
+
+// routes forum
+Route::get('/forum', 'TopicController@index');
+Route::get('/forum/create', 'TopicController@create');
