@@ -22,8 +22,12 @@
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          	<ul class="nav navbar-nav navbar-right">
-			            <li><a href="{{ url('/auth/login') }}">Login</a></li>
-			            <li><a href="{{ url('/auth/register') }}">Register</a></li>
+		          		@if(auth()->guest())
+			            	<li><a href="{{ url('/auth/login') }}">Login</a></li>
+			            	<li><a href="{{ url('/auth/register') }}">Register</a></li>
+			            @else
+			            	<li><a href="{{ url('/auth/logout') }}">Deconnexion</a></li>
+			            @endif
 			            <li><a href="{{ url('/forum') }}">Forum</a></li>
 		          	</ul>
 		        </div>

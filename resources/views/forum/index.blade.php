@@ -22,27 +22,15 @@
                     </td>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>3</td>
-                        <td>My super cool Subject<br>Michel</td>
-                        <td>
-                            <button class="btn btn-primary">see</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Topic subject<br>Antoine p</td>
-                        <td>
-                            <button class="btn btn-primary">see</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>i speak for nothing<br>Jacques</td>
-                        <td>
-                            <button class="btn btn-primary">see</button>
-                        </td>
-                    </tr>
+                    @foreach ($topics as $topic)
+                        <tr>
+                            <td>{{ $topic->id }}</td>
+                            <td>{{ $topic->title }}<br>by {{ $topic->user_id }}</td>
+                            <td>
+                                <button class="btn btn-primary">see</button>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table> 
         </div> 

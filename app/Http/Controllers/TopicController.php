@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
-
+use App\Topic;
 use App\Http\Requests;
+use App\Http\Requests\TopicRequest;
 use App\Http\Controllers\Controller;
 
 class TopicController extends Controller
 {
+
+    protected $nbrPerPage = 4;
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +21,10 @@ class TopicController extends Controller
      */
     public function index()
     {
-        return view('forum/index');
+        //$topics = Topic::paginate($this->nbrPerPage);
+        $topics = DB::table('topics')->orderBy('id', 'desc')->get();
+
+        return view('forum.index', ['topics' => $topics]);
     }
 
     /**
@@ -35,9 +43,17 @@ class TopicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TopicRequest $request)
     {
-        //
+        $topic = new Topic;
+
+        $topic->title = $request->input('title');
+        $topic->content = $request->input('content');
+        $topic->user_id = $request->user()->id;
+
+        $topic->save();
+
+        return view('forum/index');
     }
 
     /**

@@ -16,5 +16,8 @@ Route::get('/', function () {
 });
 
 // routes forum
+
 Route::get('/forum', 'TopicController@index');
+
 Route::get('/forum/create', 'TopicController@create');
+Route::post('/forum/create', 'TopicController@store');
