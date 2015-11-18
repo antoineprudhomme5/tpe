@@ -64,7 +64,9 @@ class TopicController extends Controller
      */
     public function show($id)
     {
-        //
+        $topic = Topic::find($id);
+
+        return view('forum/show', compact('topic'));
     }
 
     /**

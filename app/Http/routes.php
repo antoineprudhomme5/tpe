@@ -16,8 +16,11 @@ Route::get('/', function () {
 });
 
 // routes forum
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('/forum', 'TopicController@index');
 
-Route::get('/forum', 'TopicController@index');
+	Route::get('/forum/create', 'TopicController@create');
+	Route::post('/forum/create', 'TopicController@store');
 
-Route::get('/forum/create', 'TopicController@create');
-Route::post('/forum/create', 'TopicController@store');
+	Route::get('/forum/show/{id}', ['uses' =>'TopicController@show']);
+});

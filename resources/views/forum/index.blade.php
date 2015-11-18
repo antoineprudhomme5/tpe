@@ -27,7 +27,7 @@
                             <td>{{ $topic->id }}</td>
                             <td>{{ $topic->title }}<br>by {{ $topic->user_id }}</td>
                             <td>
-                                <button class="btn btn-primary">see</button>
+                                <a href="{{ url('/forum/show', $topic->id) }}"><button class="btn btn-primary">see</button></a>
                             </td>
                         </tr>
                     @endforeach
