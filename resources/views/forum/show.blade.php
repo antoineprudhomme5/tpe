@@ -10,7 +10,8 @@
 
     <div class="jumbotron">
 
-        by {{ $topic->user_id }}
+        by {{ $topic->user->name }}
+        at {{ $topic->created_at }}
 
         <div class="container">
 
@@ -22,15 +23,31 @@
         </div>
     </div>
 
+    @foreach ($posts as $post)
+
+        <div class="row">
+            
+            by <b>{{ $post->user->name }}</b>
+            at <em>{{ $post->created_at }}</em>
+            <p>{{ $post->content }}</p>
+
+        </div>
+
+        <hr>
+
+    @endforeach
+
     <div class="row">
         <div class="col-md-12">
             <div class="well well-sm">
-                <form class="form-horizontal" id="create-post" action="{{ url('/post/create') }}" method="post">
+                <form class="form-horizontal" id="create-post" action="{{ Request::fullUrl() }}" method="post">
                     <fieldset>
 
                         <legend class="text-center">Add a comment !</legend>
 
                         {!! csrf_field() !!}
+
+                        <input type="text" value="{{ Request::segment(3) }}" name="topic_id" id="topic_id" style="display:none"/>
                 
                         <!-- Message body -->
                         <div class="form-group">

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Post;
 use App\Http\Requests;
+use App\Http\Requests\PostRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 
 class PostController extends Controller
 {
@@ -35,9 +37,18 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+        $post = new Post;
+        $topic_id = $request->input('topic_id');
+
+        $post->content = $request->input('content');
+        $post->user_id = $request->user()->id;
+        $post->topic_id = $topic_id;
+
+        $post->save();
+
+        return Redirect::action('TopicController@show', array('id' => $topic_id));
     }
 
     /**

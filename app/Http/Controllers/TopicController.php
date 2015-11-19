@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use DB;
 use Illuminate\Http\Request;
 use App\Topic;
+use App\Post;
 use App\Http\Requests;
 use App\Http\Requests\TopicRequest;
 use App\Http\Controllers\Controller;
@@ -22,7 +22,9 @@ class TopicController extends Controller
     public function index()
     {
         //$topics = Topic::paginate($this->nbrPerPage);
-        $topics = DB::table('topics')->orderBy('id', 'desc')->get();
+        $topics = Topic::with('user')
+                        ->orderBy('id', 'desc')
+                        ->get();
 
         return view('forum.index', ['topics' => $topics]);
     }
@@ -66,7 +68,12 @@ class TopicController extends Controller
     {
         $topic = Topic::find($id);
 
-        return view('forum/show', compact('topic'));
+        $posts = Post::with('user')
+                        ->orderBy('id')
+                        ->where('topic_id', $id)
+                        ->get();
+
+        return view('forum/show', compact('topic', 'posts'));
     }
 
     /**

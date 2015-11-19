@@ -25,7 +25,7 @@
                     @foreach ($topics as $topic)
                         <tr>
                             <td>{{ $topic->id }}</td>
-                            <td>{{ $topic->title }}<br>by {{ $topic->user_id }}</td>
+                            <td>{{ $topic->title }}<br>by {{ $topic->user->name }}</td>
                             <td>
                                 <a href="{{ url('/forum/show', $topic->id) }}"><button class="btn btn-primary">see</button></a>
                             </td>
