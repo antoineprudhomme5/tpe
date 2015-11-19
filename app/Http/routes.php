@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('index');
 });
+
+// routes forum
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('/forum', 'TopicController@index');
+
+	Route::get('/forum/create', 'TopicController@create');
+	Route::post('/forum/create', 'TopicController@store');
+
+	Route::get('/forum/show/{id}', ['uses' =>'TopicController@show']);
+	Route::post('/forum/show/{id}', ['uses' => 'PostController@store']);
+});
