@@ -2,7 +2,9 @@
 Homestead.yaml
 Homestead.json
 .env
+.env.example
 gulpfile.js
+config/
 
 ### Composer ###
 composer.phar
