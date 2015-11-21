@@ -8,6 +8,7 @@ use App\Post;
 use App\Http\Requests;
 use App\Http\Requests\TopicRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 
 class TopicController extends Controller
 {
@@ -55,7 +56,7 @@ class TopicController extends Controller
 
         $topic->save();
 
-        return view('forum/index');
+        return Redirect::action('TopicController@index');
     }
 
     /**
