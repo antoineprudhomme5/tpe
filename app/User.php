@@ -28,7 +28,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'firstname', 'avatar', 'points', 'email', 'password'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -51,5 +51,13 @@ class User extends Model implements AuthenticatableContract,
     public function posts() 
     {
         return $this->hasMany('App\Post');
+    }
+
+    /**
+     * Each User belongs to a category of users
+     */
+    public function category()
+    {
+        return $this->belongsTo('App\UsersCategory');
     }
 }
