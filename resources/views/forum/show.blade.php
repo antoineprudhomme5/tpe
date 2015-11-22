@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-
+    {{--return to the forum/index--}}
     <div>
         <br>
         <a href="{{ url('/forum') }}">
@@ -14,13 +14,16 @@
         <hr>
     </div>
 
+    {{--the topic--}}
     <div class="jumbotron">
         <div class="container">
-            <p class="pull-right">
-                <a href="{{ url('forum/delete', $topic->id) }}">
-                    <button class="btn btn-danger">Delete topic</button>
-                </a>
-            </p>
+            @if($topic->user->id == Auth::user()->id)
+                <p class="pull-right">
+                    <a href="{{ url('forum/delete', $topic->id) }}">
+                        <button class="btn btn-danger">Delete topic</button>
+                    </a>
+                </p>
+            @endif
             <h1>{{ $topic->title }}</h1>
             <p>
                 {{ $topic->content }}
@@ -32,8 +35,8 @@
         </div>
     </div>
 
+    {{--all the comments--}}
     @foreach ($posts as $post)
-
         <article class="row">
             <div class="col-md-12">
                 <div class="panel panel-default arrow left">
@@ -56,9 +59,9 @@
                 </div>
             </div>
         </article>
-
     @endforeach
 
+    {{--add a comment form--}}
     <div class="row">
         <div class="col-md-12">
             <div class="well well-sm">
