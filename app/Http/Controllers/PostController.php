@@ -93,6 +93,11 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $topic = $post->topic_id;
+
+        $post->delete();
+
+        return Redirect::action('TopicController@show', array('id' => $topic));
     }
 }

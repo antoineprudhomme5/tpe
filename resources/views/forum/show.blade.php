@@ -72,6 +72,11 @@
             <div class="col-md-12">
                 <div class="panel panel-default arrow left">
                     <div class="panel-body">
+                        @if($post->user->id == Auth::user()->id)
+                            <a href="{{ url('post/delete', $post->id) }}" class="pull-right">
+                                <button class="btn btn-danger">remove</button>
+                            </a>
+                        @endif
                         <div>
                             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                             {{ $post->user->firstname }} {{ $post->user->name }}

@@ -27,5 +27,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/forum/delete/{id}', ['uses' => 'TopicController@destroy']);
 
-	Route::post('forum/update/{id}', ['uses' => 'TopicController@update']);
+	Route::post('/forum/update/{id}', ['uses' => 'TopicController@update']);
+
+	Route::get('/post/delete/{id}', ['uses' => 'PostController@destroy']);
 });
