@@ -108,6 +108,9 @@ class TopicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::where('topic_id', '=', $id)->delete();
+        Topic::destroy($id);
+
+        return Redirect::action('TopicController@index');
     }
 }

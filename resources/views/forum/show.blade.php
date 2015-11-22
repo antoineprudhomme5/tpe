@@ -16,6 +16,11 @@
 
     <div class="jumbotron">
         <div class="container">
+            <p class="pull-right">
+                <a href="{{ url('forum/delete', $topic->id) }}">
+                    <button class="btn btn-danger">Delete topic</button>
+                </a>
+            </p>
             <h1>{{ $topic->title }}</h1>
             <p>
                 {{ $topic->content }}
