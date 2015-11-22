@@ -51,7 +51,13 @@
                 </form>
 
             @else
-
+                @if(Auth::user()->category_id == 1)
+                    <p class="pull-right">
+                        <a href="{{ url('forum/delete', $topic->id) }}">
+                            <button class="btn btn-danger">Delete topic</button>
+                        </a>
+                    </p>
+                @endif
                 <h1>{{ $topic->title }}</h1>
                 <p>
                     {{ $topic->content }}
@@ -72,7 +78,7 @@
             <div class="col-md-12">
                 <div class="panel panel-default arrow left">
                     <div class="panel-body">
-                        @if($post->user->id == Auth::user()->id)
+                        @if($post->user->id == Auth::user()->id || Auth::user()->category_id == 1)
                             <a href="{{ url('post/delete', $post->id) }}" class="pull-right">
                                 <button class="btn btn-danger">remove</button>
                             </a>
