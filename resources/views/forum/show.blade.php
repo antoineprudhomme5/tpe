@@ -17,21 +17,52 @@
     {{--the topic--}}
     <div class="jumbotron">
         <div class="container">
+
             @if($topic->user->id == Auth::user()->id)
+
                 <p class="pull-right">
                     <a href="{{ url('forum/delete', $topic->id) }}">
                         <button class="btn btn-danger">Delete topic</button>
                     </a>
                 </p>
+                <h1>My topic</h1>
+                <p>You can delete your topic by clicking on the red button or change
+                    the title or content with the form and apply your changes by clicking on the green button.
+                </p>
+                <hr>
+                <form method="post" action="{{ url('forum/update', $topic->id) }}">
+                    {!! csrf_field() !!}
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="title">The title</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="title" name="title" value="{{ $topic->title }}"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="content">Content</label>
+                        <div class="col-md-9">
+                            <textarea class="form-control" name="content" rows="5">{{ $topic->content }}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group pull-right">
+                        <hr>
+                        <button type="submit" class="btn btn-success">Edit</button>
+                    </div>
+                </form>
+
+            @else
+
+                <h1>{{ $topic->title }}</h1>
+                <p>
+                    {{ $topic->content }}
+                </p>
+                <p class="pull-right">
+                    by <strong>{{ $topic->user->firstname }} {{ $topic->user->name }}</strong><br>
+                    at <strong>{{ $topic->created_at->format('d M Y - H:i:s') }}</strong>
+                </p>
+
             @endif
-            <h1>{{ $topic->title }}</h1>
-            <p>
-                {{ $topic->content }}
-            </p>
-            <p class="pull-right">
-                by <strong>{{ $topic->user->firstname }} {{ $topic->user->name }}</strong><br>
-                at <strong>{{ $topic->created_at->format('d M Y - H:i:s') }}</strong>
-            </p>
+
         </div>
     </div>
 

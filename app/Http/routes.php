@@ -26,4 +26,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/forum/show/{id}', ['uses' => 'PostController@store']);
 
 	Route::get('/forum/delete/{id}', ['uses' => 'TopicController@destroy']);
+
+	Route::post('forum/update/{id}', ['uses' => 'TopicController@update']);
 });

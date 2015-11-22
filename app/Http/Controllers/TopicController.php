@@ -97,7 +97,14 @@ class TopicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $topic = Topic::find($id);
+
+        $topic->content = $request->content;
+        $topic->title = $request->title;
+
+        $topic->save();
+
+        return Redirect::action('TopicController@show', ['id' => $id]);
     }
 
     /**
