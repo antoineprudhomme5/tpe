@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Game;
+use App\GameSynonym;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -91,6 +92,8 @@ class GameController extends Controller
      */
     public function synonyms()
     {
-        return view('games/synonyms');
+        $synonyms = GameSynonym::orderByRaw('RAND()')->take(3)->get();
+
+        return view('games/synonyms', ['synonyms' => $synonyms]);
     }
 }
