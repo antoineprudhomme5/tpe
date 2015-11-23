@@ -2,7 +2,6 @@
 Homestead.yaml
 Homestead.json
 .env
-.env.example
 gulpfile.js
 config/
 
@@ -22,8 +21,6 @@ vendor/
 .sass-cache
 *.css.map
 
-## Css files ##
-public/css/
 
 ## stuff ##
 composer.lock
