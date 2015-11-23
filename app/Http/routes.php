@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-// routes forum
+// routes securisée
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/forum', 'TopicController@index');
 
@@ -30,4 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/forum/update/{id}', ['uses' => 'TopicController@update']);
 
 	Route::get('/post/delete/{id}', ['uses' => 'PostController@destroy']);
+
+	Route::get('/games', 'GameController@index');
+	Route::get('games/synonyms', 'GameController@synonyms');
 });

@@ -28,6 +28,7 @@
 			            @else
 			            	<li><a href="{{ url('/auth/logout') }}">Deconnexion</a></li>
 			            @endif
+						<li><a href="{{ url('/games') }}">Games</a></li>
 			            <li><a href="{{ url('/forum') }}">Forum</a></li>
 		          	</ul>
 		        </div>
