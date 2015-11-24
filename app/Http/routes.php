@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/post/delete/{id}', ['uses' => 'PostController@destroy']);
 
-	Route::get('/games', 'GameController@index');
+	Route::get('games', 'GameController@index');
 	Route::get('games/synonyms', 'GameController@synonyms');
+	Route::post('games/synonyms/submit', 'GameController@post_synonyms');
 });

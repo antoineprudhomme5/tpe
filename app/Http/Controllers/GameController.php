@@ -88,12 +88,20 @@ class GameController extends Controller
     }
 
     /**
-     * Synonyms game
+     * Synonyms game get
      */
     public function synonyms()
     {
         $synonyms = GameSynonym::orderByRaw('RAND()')->take(3)->get();
 
         return view('games/synonyms', ['synonyms' => $synonyms]);
+    }
+
+    /**
+     * Synonyms game post
+     */
+    public function post_synonyms()
+    {
+        echo 'ok';
     }
 }
