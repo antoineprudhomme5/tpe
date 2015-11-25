@@ -20,6 +20,10 @@ vendor/
 ### Sass ###
 .sass-cache
 *.css.map
+/public/compass/javascripts
+/public/compass/sass
+/public/compass/fonts
+.config.rb
 
 
 ## stuff ##
