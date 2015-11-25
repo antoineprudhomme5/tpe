@@ -1,0 +1,67 @@
+.pricing-table .plan {
+    margin-left:0px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #fff;
+    -moz-box-shadow: 0 0 6px 2px #b0b2ab;
+    -webkit-box-shadow: 0 0 6px 2px #b0b2ab;
+    box-shadow: 0 0 6px 2px #b0b2ab;
+}
+
+.plan {
+    padding: 20px;
+    margin-left:0px;
+    color: #000;
+    background-color: #5e5f59;
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+
+.plan-name-gold {
+    padding: 20px;
+    color: #fff;
+    background-color: #FFD700;
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+
+.pricing-table .plan .plan-name span {
+    font-size: 20px;
+}
+
+.pricing-table .plan ul {
+    list-style: none;
+    margin: 0;
+    -moz-border-radius: 0 0 5px 5px;
+    -webkit-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+}
+
+.pricing-table .plan ul li.plan-feature {
+    padding: 15px 10px;
+    border-top: 1px solid #c5c8c0;
+    margin-right: 35px;
+}
+
+.pricing-three-column {
+    margin: 0 auto;
+    width: 80%;
+}
+
+.plan-mouseover .plan-name {
+    background-color: #4e9a06 !important;
+}
+
+.valid {
+    color: #5cb85c;
+}
+
+.invalid {
+    color: #d9534f;
+}
+
+.gi-2x {
+    font-size: 2em;
+}

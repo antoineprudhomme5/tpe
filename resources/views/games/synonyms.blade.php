@@ -58,16 +58,16 @@
                                 <p>Choose the good response</p>
                                 <div class="funkyradio">
                                     <div class="funkyradio-primary">
-                                        <input type="radio" name="radio" id="radio4" />
-                                        <label for="radio4">{{ $synonyms[0]->p1 }}</label>
+                                        <input type="radio" name="radio1" id="radio1" value="{{ $synonyms[0]->p1 }}-{{ $synonyms[0]->id }}"/>
+                                        <label for="radio1">{{ $synonyms[0]->p1 }}</label>
                                     </div>
                                     <div class="funkyradio-primary">
-                                        <input type="radio" name="radio" id="radio5" />
-                                        <label for="radio5">{{ $synonyms[0]->p2 }}</label>
+                                        <input type="radio" name="radio1" id="radio2" value="{{ $synonyms[0]->p2 }}-{{ $synonyms[0]->id }}"/>
+                                        <label for="radio2">{{ $synonyms[0]->p2 }}</label>
                                     </div>
                                     <div class="funkyradio-primary">
-                                        <input type="radio" name="radio" id="radio6" />
-                                        <label for="radio6">{{ $synonyms[0]->p3 }}</label>
+                                        <input type="radio" name="radio1" id="radio3" value="{{ $synonyms[0]->p3}}-{{ $synonyms[0]->id }}"/>
+                                        <label for="radio3">{{ $synonyms[0]->p3 }}</label>
                                     </div>
                                 </div>
                                 <ul class="list-inline pull-right">
@@ -79,15 +79,15 @@
                                 <p>Choose the good response</p>
                                 <div class="funkyradio">
                                     <div class="funkyradio-primary">
-                                        <input type="radio" name="radio" id="radio4" />
+                                        <input type="radio" name="radio2" id="radio4" value="{{ $synonyms[1]->p1 }}-{{ $synonyms[1]->id }}"/>
                                         <label for="radio4">{{ $synonyms[1]->p1 }}</label>
                                     </div>
                                     <div class="funkyradio-primary">
-                                        <input type="radio" name="radio" id="radio5" />
+                                        <input type="radio" name="radio2" id="radio5" value="{{ $synonyms[1]->p2 }}-{{ $synonyms[1]->id }}"/>
                                         <label for="radio5">{{ $synonyms[1]->p2 }}</label>
                                     </div>
                                     <div class="funkyradio-primary">
-                                        <input type="radio" name="radio" id="radio6" />
+                                        <input type="radio" name="radio2" id="radio6" value="{{ $synonyms[1]->p3 }}-{{ $synonyms[1]->id }}"/>
                                         <label for="radio6">{{ $synonyms[1]->p3 }}</label>
                                     </div>
                                 </div>
@@ -101,16 +101,16 @@
                                 <p>Choose the good response</p>
                                 <div class="funkyradio">
                                     <div class="funkyradio-primary">
-                                        <input type="radio" name="radio" id="radio4" />
-                                        <label for="radio4">{{ $synonyms[2]->p1 }}</label>
+                                        <input type="radio" name="radio3" id="radio7" value="{{ $synonyms[2]->p1 }}-{{ $synonyms[2]->id }}"/>
+                                        <label for="radio7">{{ $synonyms[2]->p1 }}</label>
                                     </div>
                                     <div class="funkyradio-primary">
-                                        <input type="radio" name="radio" id="radio5" />
-                                        <label for="radio5">{{ $synonyms[2]->p2 }}</label>
+                                        <input type="radio" name="radio3" id="radio8" value="{{ $synonyms[2]->p2 }}-{{ $synonyms[2]->id }}"/>
+                                        <label for="radio8">{{ $synonyms[2]->p2 }}</label>
                                     </div>
                                     <div class="funkyradio-primary">
-                                        <input type="radio" name="radio" id="radio6" />
-                                        <label for="radio6">{{ $synonyms[2]->p3 }}</label>
+                                        <input type="radio" name="radio3" id="radio9" value="{{ $synonyms[2]->p3 }}-{{ $synonyms[2]->id }}"/>
+                                        <label for="radio9">{{ $synonyms[2]->p3 }}</label>
                                     </div>
                                 </div>
                                 <ul class="list-inline pull-right">
