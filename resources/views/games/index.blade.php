@@ -8,36 +8,32 @@
         </div>
     </div>
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">List of games</h3>
-        </div>
-        <ul class="list-group">
-            @foreach($games as $game)
-            <li class="list-group-item">
-                <div class="row toggle" id="dropdown-detail-1" data-toggle="detail-1">
-                    <div class="col-xs-10">
-                        {{ $game->title }}
-                    </div>
-                    <div class="col-xs-2"><span class="glyphicon glyphicon-menu-down pull-right" aria-hidden="true"></span></div>
+    <div class="panel-group" id="accordion">
+        @foreach($games as $game)
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-target="#{{ $game->alias }}"
+                           href="#collapseTwo" class="collapsed">
+                            {{ $game->title }}
+                        </a>
+                    </h4>
+
                 </div>
-                <div id="detail-1">
-                    <hr></hr>
-                    <div class="container">
-                        <div class="fluid-row">
-                            {{ $game->description }}
-                            <a href="{{ url('games', $game->alias) }}">
-                                <button class="btn btn-success">Play</button>
-                            </a>
+                <div id="{{ $game->alias }}" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="container">
+                            <div class="fluid-row">
+                                {{ $game->description }}
+                                <a href="{{ url('games', $game->alias) }}">
+                                    <button class="btn btn-success">Play</button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </li>
-            @endforeach
-        </ul>
+            </div>
+        @endforeach
     </div>
 @stop
 
-@section('scripts')
-    {!! HTML::script('js/games_list.js') !!}
-@stop
