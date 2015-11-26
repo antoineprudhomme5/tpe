@@ -91,9 +91,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $post = Post::find($id);
+        $post = Post::find($request->post_id);
         $topic = $post->topic_id;
 
         $post->delete();

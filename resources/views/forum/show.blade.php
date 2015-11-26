@@ -79,9 +79,11 @@
                 <div class="panel panel-default arrow left">
                     <div class="panel-body">
                         @if($post->user->id == Auth::user()->id || Auth::user()->category_id == 1)
-                            <a href="{{ url('post/delete', $post->id) }}" class="pull-right">
-                                <button class="btn btn-danger">remove</button>
-                            </a>
+                            <form method="post" action="{{ url('post/delete') }}">
+                                {!! csrf_field() !!}
+                                <input type="hidden" name="post_id" value="{{ $post->id }}"/>
+                                <input type="submit" class="btn btn-danger pull-right" name="remove" value="remove"/>
+                            </form>
                         @endif
                         <div>
                             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
