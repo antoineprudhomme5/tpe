@@ -113,10 +113,10 @@ class TopicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        Post::where('topic_id', '=', $id)->delete();
-        Topic::destroy($id);
+        Post::where('topic_id', '=', $request->topic_id)->delete();
+        Topic::destroy($request->topic_id);
 
         return Redirect::action('TopicController@index');
     }

@@ -23,7 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/forum/show/{id}', ['uses' =>'TopicController@show']);
 	Route::post('/forum/show/{id}', ['uses' => 'PostController@store']);
 
-	Route::get('/forum/delete/{id}', ['uses' => 'TopicController@destroy']);
+	Route::post('/forum/delete', ['uses' => 'TopicController@destroy']);
 
 	Route::post('/forum/update/{id}', ['uses' => 'TopicController@update']);
 

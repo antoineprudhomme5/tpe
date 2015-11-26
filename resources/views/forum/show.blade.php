@@ -21,9 +21,11 @@
             @if($topic->user->id == Auth::user()->id)
 
                 <p class="pull-right">
-                    <a href="{{ url('forum/delete', $topic->id) }}">
-                        <button class="btn btn-danger">Delete topic</button>
-                    </a>
+                    <form method="post" action="{{ url('forum/delete') }}">
+                        {!! csrf_field() !!}
+                        <input type="hidden" name="topic_id" value="{{ $topic->id }}"/>
+                        <input type="submit" class="btn btn-danger pull-right" name="remove" value="remove"/>
+                    </form>
                 </p>
                 <h1>My topic</h1>
                 <p>You can delete your topic by clicking on the red button or change
