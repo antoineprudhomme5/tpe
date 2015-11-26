@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'IndexController@index');
 
 // routes securisée
 Route::group(['middleware' => 'auth'], function () {

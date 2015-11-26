@@ -97,26 +97,12 @@
                     <div class="block block-sm scheme-blue">
                         <h3 class="block-heading">Latest forum activity</h3>
                         <ul class="list-group">
+                            @foreach($topics as $topic)
                             <li class="list-group-item">
-                                <span class="badge" style="background-color:#bababa">16 posts</span>
-                                <a class="topic-recently-updated" href="">No man's land</a>
+                                <span class="badge" style="background-color:#bababa">3 posts</span>
+                                <a class="topic-recently-updated" href="{{ url('forum/show', $topic->id) }}">{{ $topic->title }}</a>
                             </li>
-                            <li class="list-group-item">
-                                <span class="badge" style="background-color:#bababa">1 posts</span>
-                                <a class="topic-recently-updated" href="">No man's land</a>
-                            </li>
-                            <li class="list-group-item">
-                                <span class="badge" style="background-color:#bababa">5 posts</span>
-                                <a class="topic-recently-updated" href="">No man's land</a>
-                            </li>
-                            <li class="list-group-item">
-                                <span class="badge" style="background-color:#bababa">34 posts</span>
-                                <a class="topic-recently-updated" href="">No man's land</a>
-                            </li>
-                            <li class="list-group-item">
-                                <span class="badge" style="background-color:#bababa">10 posts</span>
-                                <a class="topic-recently-updated" href="">No man's land</a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

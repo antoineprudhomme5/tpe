@@ -16,12 +16,11 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UserCategoryTableSeeder::class);
         $this->call(UserTableSeeder::class);
-<<<<<<< HEAD
         $this->call(GamesTableSeeder::class);
         $this->call(SynonymsTableSeeder::class);
-=======
         $this->call(ActusTableSeeder::class);
->>>>>>> 8ca813cedcd087da423b76ad17b7926157fe520a
+        $this->call(TopicTableSeeder::class);
+        $this->call(PostTableSeeder::class);
 
         Model::reguard();
     }
