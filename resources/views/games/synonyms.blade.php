@@ -92,7 +92,6 @@
                                     </div>
                                 </div>
                                 <ul class="list-inline pull-right">
-                                    <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
                                     <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
                                 </ul>
                             </div>
@@ -114,8 +113,6 @@
                                     </div>
                                 </div>
                                 <ul class="list-inline pull-right">
-                                    <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                                    <li><button type="button" class="btn btn-default next-step">Skip</button></li>
                                     <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
                                 </ul>
                             </div>
@@ -134,6 +131,14 @@
                 </div>
             </section>
         </div>
+
+        <div class="progress">
+            <div id="timebar" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+            </div>
+        </div>
+        <p>
+            <span id="time"></span> secondes left !
+        </p>
     </div>
 @stop
 

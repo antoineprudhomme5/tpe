@@ -1,4 +1,9 @@
+var startValue = 10000; // in ms
+var time = new Date(startValue);
+var interv;
+
 $(document).ready(function () {
+
     //Initialize tooltips
     $('.nav-tabs > li a[title]').tooltip();
 
@@ -18,18 +23,34 @@ $(document).ready(function () {
         $active.next().removeClass('disabled');
         nextTab($active);
 
-    });
-    $(".prev-step").click(function (e) {
-
-        var $active = $('.wizard .nav-tabs li.active');
-        prevTab($active);
+        clearInterval(interv);
+        time = new Date(startValue);
+        chrono();
 
     });
+
+    chrono();
 });
 
 function nextTab(elem) {
     $(elem).next().find('a[data-toggle="tab"]').click();
 }
-function prevTab(elem) {
-    $(elem).prev().find('a[data-toggle="tab"]').click();
+
+function chrono() {
+
+    displayTime();
+
+    interv = setInterval(function(){
+        time = new Date(time - 1000);
+        if(time<=0){
+            // done
+            clearInterval(interv);
+        }
+        displayTime(time);
+    }, 1000);
+}
+
+function displayTime() {
+    $('#time').text(time.getSeconds());
+    $('#timebar').css('width', (time.getSeconds()*10) + "%");
 }
