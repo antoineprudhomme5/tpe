@@ -17,22 +17,15 @@ $(document).ready(function () {
         }
     });
 
-    $(".next-step").click(function (e) {
-
-        var $active = $('.wizard .nav-tabs li.active');
-        $active.next().removeClass('disabled');
-        nextTab($active);
-
-        clearInterval(interv);
-        time = new Date(startValue);
-        chrono();
-
+    $(".next-step").click(function () {
+        moveNext();
     });
 
     chrono();
 });
 
 function nextTab(elem) {
+
     $(elem).next().find('a[data-toggle="tab"]').click();
 }
 
@@ -43,14 +36,27 @@ function chrono() {
     interv = setInterval(function(){
         time = new Date(time - 1000);
         if(time<=0){
-            // done
-            clearInterval(interv);
+            moveNext();
         }
         displayTime(time);
     }, 1000);
 }
 
 function displayTime() {
+
     $('#time').text(time.getSeconds());
     $('#timebar').css('width', (time.getSeconds()*10) + "%");
+}
+
+function moveNext() {
+
+    // move to the next word
+    var $active = $('.wizard .nav-tabs li.active');
+    $active.next().removeClass('disabled');
+    nextTab($active);
+
+    // reset chrono
+    clearInterval(interv);
+    time = new Date(startValue);
+    chrono();
 }
