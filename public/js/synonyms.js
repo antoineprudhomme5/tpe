@@ -59,6 +59,8 @@ function moveNext() {
 
     // move to the next word
     var $active = $('.wizard .nav-tabs li.active');
+    $active.removeClass('active');
+    $active.addClass('disabled');
     $active.next().removeClass('disabled');
     nextTab($active);
     clearInterval(interv);
