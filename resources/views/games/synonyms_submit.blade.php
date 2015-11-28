@@ -18,7 +18,7 @@
 
     <div class="pricing-table pricing-three-column row">
         @foreach($results as $result)
-            <div class="plan col-sm-4 col-lg-4">
+            <div class="plan col-sm-3 col-lg-3">
                 <div class="plan-name-gold">
                     <h2>{{ $result['word'] }}</h2>
                 </div>
