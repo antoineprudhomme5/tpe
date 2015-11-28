@@ -19,38 +19,37 @@
 
                             <li role="presentation" class="active">
                                 <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="{{ $synonyms[0]->word }}">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-tasks"></i>
-                            </span>
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-tasks"></i>
+                                    </span>
                                 </a>
                             </li>
 
                             <li role="presentation" class="disabled">
                                 <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="{{ $synonyms[1]->word }}">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-tasks"></i>
-                            </span>
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-tasks"></i>
+                                    </span>
                                 </a>
                             </li>
                             <li role="presentation" class="disabled">
                                 <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="{{ $synonyms[2]->word }}">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-tasks"></i>
-                            </span>
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-tasks"></i>
+                                    </span>
                                 </a>
                             </li>
-
-                            <li role="presentation" class="disabled">
-                                <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-ok"></i>
-                            </span>
+                            <li role="presentation" class="disabled" id="end">
+                                <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="{{ $synonyms[3]->word }}">
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-tasks"></i>
+                                    </span>
                                 </a>
                             </li>
                         </ul>
                     </div>
 
-                    <form role="form" action="{{ url('games/synonyms/submit') }}" method="post">
+                    <form role="form" action="{{ url('games/synonyms/submit') }}" method="post" id="form_synonyms">
                         {!! csrf_field() !!}
                         <div class="tab-content">
                             <div class="tab-pane active" role="tabpanel" id="step1">
@@ -116,14 +115,26 @@
                                     <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
                                 </ul>
                             </div>
-                            <div class="tab-pane" role="tabpanel" id="complete">
-                                <h3>Complete</h3>
-                                <p>You have successfully completed all steps.</p>
-                                <div class="form-group">
-                                    <div class="col-md-12 text-right">
-                                        <button type="submit" class="btn btn-success btn-lg">Submit</button>
+                            <div class="tab-pane" role="tabpanel" id="step4">
+                                <h3>{{ $synonyms[3]->word }}</h3>
+                                <p>Choose the good response</p>
+                                <div class="funkyradio">
+                                    <div class="funkyradio-primary">
+                                        <input type="radio" name="radio4" id="radio10" value="{{ $synonyms[3]->p1 }}-{{ $synonyms[3]->id }}"/>
+                                        <label for="radio10">{{ $synonyms[3]->p1 }}</label>
+                                    </div>
+                                    <div class="funkyradio-primary">
+                                        <input type="radio" name="radio4" id="radio11" value="{{ $synonyms[3]->p2 }}-{{ $synonyms[3]->id }}"/>
+                                        <label for="radio11">{{ $synonyms[3]->p2 }}</label>
+                                    </div>
+                                    <div class="funkyradio-primary">
+                                        <input type="radio" name="radio4" id="radio12" value="{{ $synonyms[3]->p3 }}-{{ $synonyms[3]->id }}"/>
+                                        <label for="radio12">{{ $synonyms[3]->p3 }}</label>
                                     </div>
                                 </div>
+                                <ul class="list-inline pull-right">
+                                    <li><button type="submit" class="btn btn-success btn-info-full next-step">Submit</button></li>
+                                </ul>
                             </div>
                             <div class="clearfix"></div>
                         </div>

@@ -36,7 +36,14 @@ function chrono() {
     interv = setInterval(function(){
         time = new Date(time - 1000);
         if(time<=0){
-            moveNext();
+            if($('li#end').hasClass('active'))
+            {
+                $('#form_synonyms').submit();
+            }
+            else
+            {
+                moveNext();
+            }
         }
         displayTime(time);
     }, 1000);
@@ -54,9 +61,17 @@ function moveNext() {
     var $active = $('.wizard .nav-tabs li.active');
     $active.next().removeClass('disabled');
     nextTab($active);
-
-    // reset chrono
     clearInterval(interv);
-    time = new Date(startValue);
-    chrono();
+
+    if(!$active.is('li#end'))
+    {
+        // reset chrono
+        time = new Date(startValue);
+        chrono();
+    }
+    else
+    {
+        $('#time').css('display', 'none');
+        $('#timebar').css('display', 'none');
+    }
 }

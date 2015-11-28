@@ -93,7 +93,7 @@ class GameController extends Controller
      */
     public function synonyms()
     {
-        $synonyms = GameSynonym::orderByRaw('RAND()')->take(3)->get();
+        $synonyms = GameSynonym::orderByRaw('RAND()')->take(4)->get();
 
         return view('games/synonyms', ['synonyms' => $synonyms]);
     }
@@ -110,12 +110,14 @@ class GameController extends Controller
         $rep1 = explode('-', $request->radio1); // 0 = the choice, 1 = the id
         $rep2 = explode('-', $request->radio2);
         $rep3 = explode('-', $request->radio3);
+        $rep4 = explode('-', $request->radio4);
 
         $word1 = GameSynonym::find($rep1[1]);
         $word2 = GameSynonym::find($rep2[1]);
         $word3 = GameSynonym::find($rep3[1]);
+        $word4 = GameSynonym::find($rep4[1]);
 
-        $valid1 = false; $valid2 = false; $valid3 = false;
+        $valid1 = false; $valid2 = false; $valid3 = false; $valid4 = false;
 
         if($rep1[0] == $word1->response) // check if response 1 is good
         {
@@ -132,6 +134,12 @@ class GameController extends Controller
         if($rep3[0] == $word3->response) // check if response 3 is good
         {
             $valid3 = true;
+            $points += 10;
+        }
+
+        if($rep4[0] == $word4->response) // check if response 3 is good
+        {
+            $valid4 = true;
             $points += 10;
         }
 
@@ -153,6 +161,12 @@ class GameController extends Controller
                 'choice' => $rep3[0],
                 'response' => $word3->response,
                 'valid' => $valid3
+            ),
+            array(
+                'word' => $word4->word,
+                'choice' => $rep4[0],
+                'response' => $word4->response,
+                'valid' => $valid4
             )
         );
 
