@@ -24,7 +24,7 @@ class CreateGameSpeakaboutRecordsTable extends Migration
                 ->onUpdate('restrict');
             $table->integer('speakabout_id')->unsigned();
             $table->foreign('speakabout_id')
-                ->references('id')->on('speakabouts')
+                ->references('id')->on('game_speakabouts')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
             $table->timestamps();

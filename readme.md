@@ -10,6 +10,15 @@
 ### Installer le projet
 
 - Après avoir cloner le projet, se rendre (en ligne de commande) à la racine du projet.
+- Avant toute chose, verifier si le fichier config/app.php est présent.
+    Si ce n'est pas le cas
+    - recuperez celui ci dans un nouveau projet laravel.
+    - Ajouter dans les providers ces deux lignes :
+          Bestmomo\Scafold\ScafoldServiceProvider::class,
+          Illuminate\Html\HtmlServiceProvider::class,
+    - Ajouter dans les alias ces deux lignes :
+          'Form'      => Illuminate\Html\FormFacade::class,
+          'HTML'      => Illuminate\Html\HtmlFacade::class,
 - Faire un 'composer install' pour installer toutes les dépendances du projet, car le dossier vendor n'est pas push sur le git.
 - Créer un fichier .env à la racine du projet (se baser sur le .env.example déjà présent).
 - Configurer dans le .env la connexion à la base de données.
