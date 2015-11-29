@@ -55,6 +55,7 @@
                             <div class="tab-pane active" role="tabpanel" id="step1">
                                 <h3>{{ $synonyms[0]->word }}</h3>
                                 <p>Choose the good response</p>
+                                <input type="radio" name="radio1" id ="d1" value="NULL-{{ $synonyms[0]->id }}" style="display:none" checked="checked"/>
                                 <div class="funkyradio">
                                     <div class="funkyradio-primary">
                                         <input type="radio" name="radio1" id="radio1" value="{{ $synonyms[0]->p1 }}-{{ $synonyms[0]->id }}"/>
@@ -76,6 +77,7 @@
                             <div class="tab-pane" role="tabpanel" id="step2">
                                 <h3>{{ $synonyms[1]->word }}</h3>
                                 <p>Choose the good response</p>
+                                <input type="radio" name="radio2" id ="d2" value="NULL-{{ $synonyms[1]->id }}" style="display:none" checked="checked"/>
                                 <div class="funkyradio">
                                     <div class="funkyradio-primary">
                                         <input type="radio" name="radio2" id="radio4" value="{{ $synonyms[1]->p1 }}-{{ $synonyms[1]->id }}"/>
@@ -97,6 +99,7 @@
                             <div class="tab-pane" role="tabpanel" id="step3">
                                 <h3>{{ $synonyms[2]->word }}</h3>
                                 <p>Choose the good response</p>
+                                <input type="radio" name="radio3" id ="d3" value="NULL-{{ $synonyms[2]->id }}" style="display:none" checked="checked"/>
                                 <div class="funkyradio">
                                     <div class="funkyradio-primary">
                                         <input type="radio" name="radio3" id="radio7" value="{{ $synonyms[2]->p1 }}-{{ $synonyms[2]->id }}"/>
@@ -118,6 +121,7 @@
                             <div class="tab-pane" role="tabpanel" id="step4">
                                 <h3>{{ $synonyms[3]->word }}</h3>
                                 <p>Choose the good response</p>
+                                <input type="radio" name="radio4" id ="d4" value="NULL-{{ $synonyms[3]->id }}" style="display:none" checked="checked"/>
                                 <div class="funkyradio">
                                     <div class="funkyradio-primary">
                                         <input type="radio" name="radio4" id="radio10" value="{{ $synonyms[3]->p1 }}-{{ $synonyms[3]->id }}"/>
