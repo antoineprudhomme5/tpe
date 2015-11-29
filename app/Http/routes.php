@@ -30,6 +30,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/post/delete', ['uses' => 'PostController@destroy']);
 
 	Route::get('/games', 'GameController@index');
+
 	Route::get('games/synonyms', 'GameController@synonyms');
 	Route::post('games/synonyms/submit', 'GameController@post_synonyms');
+
+	Route::get('games/speak_about', 'GameController@speakAbout');
+	Route::post('games/speak_about/submit', 'GameController@speakAbout_submit');
 });

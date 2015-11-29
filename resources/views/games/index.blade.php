@@ -24,7 +24,7 @@
                     <div class="panel-body">
                         <div class="container">
                             <div class="fluid-row">
-                                {{ $game->description }}
+                                {!! $game->description !!}
                                 <a href="{{ url('games', $game->alias) }}">
                                     <button class="btn btn-success">Play</button>
                                 </a>
