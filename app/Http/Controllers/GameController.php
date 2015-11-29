@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Game;
 use Auth;
 use App\GameSynonym;
+use App\GameSpeakAbout;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -112,7 +113,9 @@ class GameController extends Controller
 
     public function speakAbout()
     {
-        return view('games/speak_about');
+        $resource = GameSpeakAbout::orderByRaw('RAND()')->take(1)->get();
+
+        return view('games/speak_about', ['resource' => $resource]);
     }
 
     public function speakAbout_submit(Request $request)
