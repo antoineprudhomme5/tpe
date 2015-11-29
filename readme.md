@@ -1,10 +1,26 @@
 ### Prérequis
 
+- Installer [Composer] (https://getcomposer.org/).
 - Installer [Sass](http://sass-lang.com/install).
 - Installer [Compass](http://compass-style.org/install/).
 - Avoir npm (Node.js)
 - Installer des modules de node présents dans *package.json* (gulp, laravel-elixir, bootstrap-sass): `npm install`
 - Rajouter sass-compass pour Laravel Elixir: `sudo npm install laravel-elixir-sass-compass`
+
+### Installer le projet
+
+- Après avoir cloner le projet, se rendre (en ligne de commande) à la racine du projet.
+- Faire un 'composer install' pour installer toutes les dépendances du projet, car le dossier vendor n'est pas push sur le git.
+- Créer un fichier .env à la racine du projet (se baser sur le .env.example déjà présent).
+- Configurer dans le .env la connexion à la base de données.
+- Générer une nouvelle clé pour le projet en fesant un 'php artisan key:generate'
+- Copier la clé et remplacer l'actuelle dans config/app.php ('key' => env('APP_KEY', 'maNouvelleCle')
+- Pour finir, il faut construire la base de données. Pour cela :
+    - préparer les migrations : 'php artisan migrate:install'
+    - effectuer les migrations : 'php artisan migrate'
+    - remplir la base de données avec les données de base : 'php artisan db:seed'
+
+Le projet est maintenant pret.
 
 ## Laravel PHP Framework
 
