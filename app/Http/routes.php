@@ -36,4 +36,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('games/speak_about', 'GameController@speakAbout');
 	Route::post('games/speak_about/submit', 'GameController@speakAbout_submit');
+
+	Route::post('games/upload_audio', 'GameController@upload');
 });

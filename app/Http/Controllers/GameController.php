@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use App\Game;
 use Auth;
 use App\GameSynonym;
@@ -12,6 +13,11 @@ use App\Http\Controllers\Controller;
 
 class GameController extends Controller
 {
+    public function upload()
+    {
+        return Response::json(array('status' => 'OK'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -120,6 +126,7 @@ class GameController extends Controller
 
     public function speakAbout_submit(Request $request)
     {
-        return view('games/speak_about_submit');
+        echo $request;
+        //return view('games/speak_about_submit');
     }
 }

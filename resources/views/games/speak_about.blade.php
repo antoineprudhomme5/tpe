@@ -5,6 +5,7 @@
 @stop
 
 @section('content')
+    <meta name="csrf-token" content="{{ csrf_token() }}" /> <!-- token ajax request -->
     {{ $resource }}
     @if($resource[0]->type === 'img')
         image
@@ -13,26 +14,17 @@
     @endif
 
     <div class="container">
-        <div class="panel panel-default">
-            <div class="panel-heading"><strong>Upload Files</strong> <small>Bootstrap files upload</small></div>
-            <div class="panel-body">
 
-                <!-- Standar Form -->
-                <h4>Select files from your computer</h4>
-                <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
-                    <div class="form-inline">
-                        <div class="form-group">
-                            <input type="file" name="files[]" id="js-upload-files" multiple>
-                        </div>
-                        <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+                <form action="{{ url('games/speak_about/submit') }}" method="post" enctype="multipart/form-data" id="js-upload-form">
+                    {!! csrf_field() !!}
+                    <input type="text" name="time" id="time" value="1.30 minute" />
+                    <!-- Drop Zone -->
+                    <h4>Drag your audio file below</h4>
+                    <div class="upload-drop-zone" id="drop-zone">
+                        Just drag and drop your record here
                     </div>
+                    <button type="button" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
                 </form>
-
-                <!-- Drop Zone -->
-                <h4>Or drag and drop files below</h4>
-                <div class="upload-drop-zone" id="drop-zone">
-                    Just drag and drop files here
-                </div>
 
                 <!-- Progress Bar -->
                 <div class="progress">
@@ -42,15 +34,10 @@
                 </div>
 
                 <!-- Upload Finished -->
-                <div class="js-upload-finished">
-                    <h3>Processed files</h3>
-                    <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-01.jpg</a>
-                        <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-02.jpg</a>
-                    </div>
+                <div class="alert alert-success" role="alert" id="upload_success">
+                    <strong>Success</strong>
+                    <span id="filename"> myrecord.mp3</span>
                 </div>
-            </div>
-        </div>
     </div> <!-- /container -->
 @stop
 
