@@ -15,6 +15,16 @@
 
     <div class="container">
 
+                <!-- success/error messages -->
+                <div class="alert alert-danger" role="alert" id="upload_error">
+                    <strong>Error</strong>
+                    <span id="error_message"></span>
+                </div>
+                <div class="alert alert-success" role="alert" id="upload_success">
+                    <strong>Success</strong>
+                    <span id="filename"></span>
+                </div>
+
                 <form action=" " method="post" enctype="multipart/form-data" id="js-upload-form">
                     <input type="text" name="time" id="time" value="1.30 minute" />
                     <!-- Drop Zone -->
@@ -32,11 +42,6 @@
                     </div>
                 </div>
 
-                <!-- Upload Finished -->
-                <div class="alert alert-success" role="alert" id="upload_success">
-                    <strong>Success</strong>
-                    <span id="filename"> myrecord.mp3</span>
-                </div>
     </div> <!-- /container -->
 @stop
 

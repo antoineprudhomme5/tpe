@@ -12,25 +12,8 @@ $(document).ready(function() {
     var startUpload = function(file) {
         $('#upload_success').show();
         $('#filename').text(file.name);
+
         formData.append('audio', file);
-        console.log(file.name);
-    };
-
-    dropZone.ondrop = function(e) {
-        e.preventDefault();
-        this.className = 'upload-drop-zone';
-
-        startUpload(e.dataTransfer.files[0]); //uniquement le 1er fichier upload
-    };
-
-    dropZone.ondragover = function() {
-        this.className = 'upload-drop-zone drop';
-        return false;
-    };
-
-    dropZone.ondragleave = function() {
-        this.className = 'upload-drop-zone';
-        return false;
     };
 
     $('#js-upload-submit').on('click', function(e){
@@ -61,6 +44,33 @@ $(document).ready(function() {
             }
         });
     });
+
+    dropZone.ondrop = function(e) {
+        e.preventDefault();
+        this.className = 'upload-drop-zone';
+
+        var file = e.dataTransfer.files[0];
+
+        if(file['type'] === 'audio/mp3')
+        {
+            startUpload(file);
+        }
+        else
+        {
+            $('#upload_error').show();
+            $('#error_message').text('your file must be a .mp3');
+        }
+    };
+
+    dropZone.ondragover = function() {
+        this.className = 'upload-drop-zone drop';
+        return false;
+    };
+
+    dropZone.ondragleave = function() {
+        this.className = 'upload-drop-zone';
+        return false;
+    };
 
 });
 

@@ -18,10 +18,10 @@
     border-color: #222;
 }
 
-#js-upload-file {
+#upload_success {
     display: none;
 }
 
-#upload_success {
+#upload_error {
     display: none;
 }
