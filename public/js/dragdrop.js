@@ -10,10 +10,10 @@ $(document).ready(function() {
     var formData = new FormData(uploadForm);
 
     var startUpload = function(file) {
-        console.log(file);
         $('#upload_success').show();
         $('#filename').text(file.name);
-        formData.append('file', file, file.name);
+        formData.append('audio', file);
+        console.log(file.name);
     };
 
     dropZone.ondrop = function(e) {

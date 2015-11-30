@@ -15,6 +15,19 @@ class GameController extends Controller
 {
     public function upload(Request $request)
     {
+        $file = $request->file('audio');
+
+        if ($file)
+        {
+            $destinationPath = 'audio';
+            $extension = $file->getClientOriginalExtension();
+            $fileName = 'record'.'.'.$extension;
+
+            $file->move($destinationPath, $fileName);
+
+            return Response::json($file->getClientOriginalName());
+        }
+
         $response = $request->time;
 
         return Response::json($response);
