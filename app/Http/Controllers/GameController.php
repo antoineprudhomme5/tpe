@@ -13,9 +13,11 @@ use App\Http\Controllers\Controller;
 
 class GameController extends Controller
 {
-    public function upload()
+    public function upload(Request $request)
     {
-        return Response::json(array('status' => 'OK'));
+        $response = $request->time;
+
+        return Response::json($response);
     }
 
     /**

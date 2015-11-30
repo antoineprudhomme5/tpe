@@ -6,7 +6,8 @@ $(document).ready(function() {
     // ======================
 
     var dropZone = document.getElementById('drop-zone');
-    var formData = new FormData();
+    var uploadForm = document.getElementById('js-upload-form');
+    var formData = new FormData(uploadForm);
 
     var startUpload = function(file) {
         console.log(file);
@@ -50,7 +51,7 @@ $(document).ready(function() {
             contentType: false,
             success: function(response)
             {
-                alert('fichier upload');
+                console.log(response);
                 document.getElementById("js-upload-submit").disabled = false;
             },
             error: function(request, status, error)

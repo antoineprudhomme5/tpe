@@ -15,8 +15,7 @@
 
     <div class="container">
 
-                <form action="{{ url('games/speak_about/submit') }}" method="post" enctype="multipart/form-data" id="js-upload-form">
-                    {!! csrf_field() !!}
+                <form action=" " method="post" enctype="multipart/form-data" id="js-upload-form">
                     <input type="text" name="time" id="time" value="1.30 minute" />
                     <!-- Drop Zone -->
                     <h4>Drag your audio file below</h4>
