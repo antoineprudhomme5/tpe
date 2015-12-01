@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use App\Game;
 use Auth;
+use App\GameSpeakAboutRecord;
 use App\GameSynonym;
 use App\GameSpeakAbout;
 use App\Http\Requests;
@@ -16,14 +17,26 @@ class GameController extends Controller
     public function upload(Request $request)
     {
         $file = $request->file('audio');
+        $resource = GameSpeakAbout::find($request->resource);
+        $resource_name = explode('/', $resource->link);
+        $resource_name = explode('.', $resource_name[3]);
+        $resource_name = $resource_name[0];
+        $user = Auth::user();
 
         if ($file)
         {
             $destinationPath = 'audio';
             $extension = $file->getClientOriginalExtension();
-            $fileName = 'record'.'.'.$extension;
+            $fileName = $resource_name.'_'.$user->id.'_'.date('Y-m-d_H-i-s').'.'.$extension;
 
             $file->move($destinationPath, $fileName);
+
+            $record = new GameSpeakAboutRecord();
+            $record->time = $request->time;
+            $record->link = $destinationPath.'/'.$fileName;
+            $record->user_id = $user->id;
+            $record->speakabout_id = $resource->id;
+            $record->save();
 
             return Response::json($file->getClientOriginalName());
         }

@@ -27,6 +27,7 @@
 
                 <form action=" " method="post" enctype="multipart/form-data" id="js-upload-form">
                     <input type="text" name="time" id="time" value="1.30 minute" />
+                    <input type="text" name="resource" id="resource" value="{{ $resource[0]->id }}" />
                     <!-- Drop Zone -->
                     <h4>Drag your audio file below</h4>
                     <div class="upload-drop-zone" id="drop-zone">
