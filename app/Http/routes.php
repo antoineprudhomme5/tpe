@@ -15,6 +15,8 @@ Route::get('/', 'IndexController@index');
 
 // routes securisée
 Route::group(['middleware' => 'auth'], function () {
+
+	/* -- Forum */
 	Route::get('/forum', 'TopicController@index');
 
 	Route::get('/forum/create', 'TopicController@create');
@@ -29,7 +31,15 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/post/delete/{id}', ['uses' => 'PostController@destroy']);
 
+	/* -- Games */
 	Route::get('/games', 'GameController@index');
 	Route::get('games/synonyms', 'GameController@synonyms');
 	Route::post('games/synonyms/submit', 'GameController@post_synonyms');
+
+	/* -- Administration Prof */
+	Route::get('/administration', 'AdminController@index');
+	Route::get('/administration/news', 'AdminController@displayNews')->name('AdDisplayNews');
+	Route::get('/administration/news/add', 'AdminController@addNews')->name('AdAddNews');
+	Route::post('/administration/news/add', 'AdminController@storeNews');
+	Route::post('/administration/news/delete/{id}', 'AdminController@destroyNews');
 });
