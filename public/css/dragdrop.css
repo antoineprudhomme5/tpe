@@ -25,3 +25,18 @@
 #upload_error {
     display: none;
 }
+
+.game-resource {
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 5px;
+    padding: 10px;
+    -moz-box-shadow: 1px 1px 5px 0px #656565;
+    -webkit-box-shadow: 1px 1px 5px 0px #656565;
+    -o-box-shadow: 1px 1px 5px 0px #656565;
+    box-shadow: 1px 1px 5px 0px #656565;
+}
+
+.img-responsive {
+    margin-left: auto;
+    margin-right: auto;
+}
