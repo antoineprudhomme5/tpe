@@ -29,9 +29,9 @@
                     <h3>Speak About...<span id='chrono' class="pull-right">0:35</span></h3>
                     <hr/>
                     <h4>This recording</h4>
-                    <p>When your second listening will be ended ,the chronometer will starts. During this time, analyse the photo below. After that, record yourself with Audacity or another software by speaking 1 or 2 minutes.</p>
+                    <p>When your listening will be ended ,the chronometer will starts. During this time, analyse the photo below. After that, record yourself with Audacity or another software by speaking 1 or 2 minutes.</p>
                     <div class="text-center">
-                        <audio controls>
+                        <audio controls id="audio">
                             <source id="resource_audio" src="../../{{ $resource[0]->link }}" type="audio/mpeg">
                         </audio>
                     </div>
