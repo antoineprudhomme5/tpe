@@ -32,13 +32,14 @@ class GameController extends Controller
             $file->move($destinationPath, $fileName);
 
             $record = new GameSpeakAboutRecord();
-            $record->time = $request->time;
+            $record->time = 1.20;//$request->time;
             $record->link = $destinationPath.'/'.$fileName;
             $record->user_id = $user->id;
             $record->speakabout_id = $resource->id;
             $record->save();
 
-            return Response::json($file->getClientOriginalName());
+
+            return Response::json($request->all());
         }
 
         $response = $request->time;

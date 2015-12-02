@@ -53,6 +53,7 @@ $(document).ready(function() {
 
         if(file['type'] === 'audio/mp3')
         {
+            formData.append('time', '2.16');
             startUpload(file);
         }
         else

@@ -6,11 +6,21 @@
 
 @section('content')
     <meta name="csrf-token" content="{{ csrf_token() }}" /> <!-- token ajax request -->
-    {{ $resource }}
+
     @if($resource[0]->type === 'img')
-        image
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8 nopadding">
+                <img src="../../{{ $resource[0]->link }}" class="img-responsive" alt="Responsive image" height="220">
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
     @elseif($resource[0]->type === 'audio')
-        audio
+        <div class="text-center">
+            <audio controls>
+                <source src="../../{{ $resource[0]->link }}" type="audio/mpeg">
+            </audio>
+        </div>
     @endif
 
     <div class="container">
@@ -26,8 +36,7 @@
                 </div>
 
                 <form action=" " method="post" enctype="multipart/form-data" id="js-upload-form">
-                    <input type="text" name="time" id="time" value="1.30 minute" />
-                    <input type="text" name="resource" id="resource" value="{{ $resource[0]->id }}" />
+                    <input type="hidden" name="resource" id="resource" value="{{ $resource[0]->id }}" />
                     <!-- Drop Zone -->
                     <h4>Drag your audio file below</h4>
                     <div class="upload-drop-zone" id="drop-zone">
