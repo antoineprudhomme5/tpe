@@ -16,7 +16,7 @@ $(document).ready(function() {
         // only on the first listening
         $('#audio').one('play', function() {
 
-            var analyzeTime = audio.duration;
+            var analyzeTime = Math.floor(audio.duration);
             displayTime(0,analyzeTime);
             chrono(analyzeTime); // chrono start after the listening
         });
