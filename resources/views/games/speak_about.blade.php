@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="game-resource">
-                    <h3>Speak About...<span id='chrono' class="pull-right">0:35</span></h3>
+                    <h3>Speak About...<span id='chrono' class="pull-right"></span></h3>
                     <hr/>
                     <h4>This picture</h4>
                     <p>You have 15 secondes before the chronometer starts. During this time, analyse the photo below. After that, record yourself with Audacity or another software by speaking 1 or 2 minutes on the picture.</p>
@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="game-resource">
-                    <h3>Speak About...<span id='chrono' class="pull-right">0:35</span></h3>
+                    <h3>Speak About...<span id='chrono' class="pull-right"><span></h3>
                     <hr/>
                     <h4>This recording</h4>
                     <p>When your listening will be ended ,the chronometer will starts. During this time, analyse the photo below. After that, record yourself with Audacity or another software by speaking 1 or 2 minutes.</p>

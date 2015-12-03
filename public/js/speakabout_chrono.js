@@ -2,47 +2,88 @@ $(document).ready(function() {
 
     var interv;
 
+    // check the type of resource
     if( $('#resource_image').length )
     {
-        var startImage = 5000; // in ms
-        var time = new Date(startImage);
-        displayTime(time);
-
-        analyzeTime(time);
+        var analyzeTime = 5;
+        displayTime(0,analyzeTime);
+        chrono(analyzeTime); // 5 secondes to analyze the image
     }
     else if( $('#resource_audio').length )
     {
         var audio = document.getElementById("audio");
-        var startAudio = audio.duration*1000; // in ms
-        var time = new Date(startAudio);
-        displayTime(time);
 
-        analyzeTime(time);
+        // only on the first listening
+        $('#audio').one('play', function() {
+
+            var analyzeTime = audio.duration;
+            displayTime(0,analyzeTime);
+            chrono(analyzeTime); // chrono start after the listening
+        });
     }
 
-    function displayTime(time)
+    /**
+     * Caculate the chronometer time
+     * @param analyzeTime the time before start the chronometer (time to analyse the resource before start recording)
+     */
+    function chrono(analyzeTime)
     {
-        $('#chrono').text(time.getSeconds());
-    }
+        var i = analyzeTime;
+        var m = 0;
+        var s = 0;
 
-    function analyzeTime(time)
-    {
-        interv = setInterval(function(){
-            time = new Date(time - 1000);
-            if(time<=0){
-                clearInterval(interv);
-                startChrono();
-            }
-            else
+        interv = setInterval(function() {
+            if(i == 0)
             {
-                displayTime(time);
+                $('#chrono').css('color', 'black');
+            }
+            if(i > 0)
+            {
+                i--;
+                displayTime(0,i);
+            }
+            else if(i <= 0)
+            {
+                i--;
+                s++;
+                if(s > 59)
+                {
+                    m++;
+                    s = 0;
+                }
+                displayTime(m,s);
             }
         }, 1000);
     }
 
-    function startChrono()
+    /**
+     * Display the chronometer time 'mm:ss'
+     * @param m the minutes
+     * @param s the secondes
+     */
+    function displayTime(m, s)
     {
-        $('#chrono').text('start chrono');
+        var time = '';
+
+        if(m < 10)
+        {
+            time += '0' + m + ':';
+        }
+        else
+        {
+            time += m + ':';
+        }
+
+        if(s < 10)
+        {
+            time += '0' + s;
+        }
+        else
+        {
+            time += s;
+        }
+
+        $('#chrono').text(time);
     }
 
 });
