@@ -16,12 +16,19 @@ class GameController extends Controller
 {
     public function upload(Request $request)
     {
-        $file = $request->file('audio');
-        $resource = GameSpeakAbout::find($request->resource);
-        $resource_name = explode('/', $resource->link);
-        $resource_name = explode('.', $resource_name[3]);
-        $resource_name = $resource_name[0];
-        $user = Auth::user();
+        try
+        {
+            $file = $request->file('audio');
+            $resource = GameSpeakAbout::find($request->resource);
+            $resource_name = explode('/', $resource->link);
+            $resource_name = explode('.', $resource_name[3]);
+            $resource_name = $resource_name[0];
+            $user = Auth::user();
+        }
+        catch(Exception $e)
+        {
+            die($e);
+        }
 
         if ($file)
         {
@@ -32,19 +39,19 @@ class GameController extends Controller
             $file->move($destinationPath, $fileName);
 
             $record = new GameSpeakAboutRecord();
-            $record->time = 1.20;//$request->time;
+            $record->time = $request->time;
             $record->link = $destinationPath.'/'.$fileName;
             $record->user_id = $user->id;
             $record->speakabout_id = $resource->id;
             $record->save();
 
 
-            return Response::json($request->all());
+            return Response::json('success');
         }
-
-        $response = $request->time;
-
-        return Response::json($response);
+        else
+        {
+            return Response::json('error file');
+        }
     }
 
     /**
