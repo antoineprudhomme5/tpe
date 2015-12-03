@@ -2,6 +2,10 @@ $(document).ready(function() {
 
     'use strict';
 
+    // CHRONO VARIABLES
+
+    var interv;
+
     // DRAG AND DROP VARIABLES
 
     var dropZone = document.getElementById('drop-zone'); // the drag and drop zone
@@ -14,10 +18,6 @@ $(document).ready(function() {
 
         formData.append('audio', file);
     };
-
-    // CHRONO VARIABLES
-
-    var interv;
 
     // -----
 
@@ -152,7 +152,8 @@ $(document).ready(function() {
 
         if(file['type'] === 'audio/mp3')
         {
-            formData.append('time', '2.16');
+            clearInterval(interv);
+            formData.append('time', $('#chrono').text());
             startUpload(file);
         }
         else
