@@ -75,6 +75,5 @@
 @stop
 
 @section('scripts')
-    {!! HTML::script('js/dragdrop.js') !!}
-    {!! HTML::script('js/speakabout_chrono.js') !!}
+    {!! HTML::script('js/speakabout.js') !!}
 @stop
