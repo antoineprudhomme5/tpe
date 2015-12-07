@@ -45,7 +45,6 @@ class GameController extends Controller
             $record->speakabout_id = $resource->id;
             $record->save();
 
-
             return Response::json('success');
         }
         else

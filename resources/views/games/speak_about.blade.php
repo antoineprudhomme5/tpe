@@ -42,7 +42,7 @@
         </div>
     @endif
 
-    <div>
+    <div id="game_form">
 
         <!-- success/error messages -->
         <div class="alert alert-danger" role="alert" id="upload_error">
@@ -61,15 +61,8 @@
             <div class="upload-drop-zone" id="drop-zone">
                 Just drag and drop your record here
             </div>
-            <button type="button" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+            <button type="button" class="btn btn-primary" id="js-upload-submit">Upload files</button>
         </form>
-
-        <!-- Progress Bar -->
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                <span class="sr-only">60% Complete</span>
-            </div>
-        </div>
 
     </div>
 @stop

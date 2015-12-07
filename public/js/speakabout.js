@@ -19,6 +19,13 @@ $(document).ready(function() {
         formData.append('audio', file);
     };
 
+    //var display_success = "success !!";
+    var display_success = "<div class='alert alert-success' role='alert'>";
+        display_success += "<strong>Success</strong>";
+        display_success += "<span id='display_success'> File uploaded</span>";
+        display_success += "<button class='btn btn-success pull-right'><a href='" + '{{ url("../games") }}' + "'>return</a></button>";
+        display_success += "</div>";
+
     // -----
 
     /**
@@ -115,7 +122,6 @@ $(document).ready(function() {
      */
     $('#js-upload-submit').on('click', function(){
 
-        document.getElementById("js-upload-submit").disabled = true;
         // ajax request to upload the file, on success => send the form
         // add a token to the ajax request
         $.ajaxSetup({
@@ -133,8 +139,17 @@ $(document).ready(function() {
             contentType: false,
             success: function(response)
             {
-                console.log(response);
-                document.getElementById("js-upload-submit").disabled = false;
+                if(response === 'success')
+                {
+                    $('#game_form').html(display_success);
+                    // window.location.replace("http://localhost/tpe/public/games");
+                }
+                else
+                {
+                    $('#upload_error').css('display', true);
+                    $('#error_message').text('Error during the upload');
+                    document.getElementById("js-upload-submit").disabled = false;
+                }
             },
             error: function(request, status, error)
             {
