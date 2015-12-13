@@ -60,4 +60,12 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->belongsTo('App\UsersCategory');
     }
+
+    /**
+     * One user have many speak about records
+     */
+    public function records()
+    {
+        return $this->hasMany('App\GameSpeakAboutRecord');
+    }
 }

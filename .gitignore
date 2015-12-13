@@ -29,5 +29,6 @@ vendor/
 ## stuff ##
 composer.lock
 
-## audio ##
+## audio recordings ##
+
 /public/audio

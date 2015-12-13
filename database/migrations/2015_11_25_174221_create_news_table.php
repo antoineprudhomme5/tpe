@@ -34,7 +34,7 @@ class CreateNewsTable extends Migration
     public function down()
     {
         Schema::table('news', function(Blueprint $table) {
-            $table->dropForeign('user_id');
+            $table->dropForeign('news_user_id_foreign');
         });
         Schema::drop('news');
     }

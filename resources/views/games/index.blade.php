@@ -15,9 +15,11 @@
         <div class="jumbotron">
             <div class="container">
                 <h1>The games list</h1>
+
                 <p>Here, you can find all the games. By playing games, you can practise english and win points.</p>
             </div>
         </div>
+
 
         <div class="container">
             <div class="row form-group product-chooser">
