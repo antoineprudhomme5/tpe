@@ -23,20 +23,17 @@
             <div class="row form-group product-chooser">
                 @foreach($games as $game)
                     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                        <div class="product-chooser-item">
-                            <div class="game-title col-sm-4 col-md-12 col-lg-12">
-                                <h1>{{ $game->title }}</h1>
+                        <a href="{{ url('/games', $game->alias) }}">
+                            <div class="product-chooser-item">
+                                <div class="game-title col-sm-4 col-md-12 col-lg-12">
+                                    <h1>{{ $game->title }}</h1>
+                                </div>
+                                <div class="col-xs-8 col-sm-8 col-md-12 col-lg-12 game-description">
+                                    <span class="description">{!! $game->description  !!}</span>
+                                </div>
+                                <div class="clear"></div>
                             </div>
-                            <div class="col-xs-8 col-sm-8 col-md-12 col-lg-12 game-description">
-                                <span class="description">{!! $game->description  !!}</span>
-                            </div>
-                            <div class="play">
-                                <a href="{{ url('/games/' + $game->alias) }}">
-                                    <button class="btn btn-success">play</button>
-                                </a>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
             </div>
