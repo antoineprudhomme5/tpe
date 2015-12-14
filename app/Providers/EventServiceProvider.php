@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use DateTime;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,10 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot($events);
 
-        //
+        // Fired on logouts...
+        $events->listen('auth.logout', function ($user) {
+            $user->last_login = new DateTime();
+            $user->save();
+        });
     }
 }
