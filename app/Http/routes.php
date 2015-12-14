@@ -41,30 +41,22 @@ Route::group(['middleware' => 'auth'], function () {
 	|--------------------------------------------------------------------------
 	*/
 	Route::get('/games', 'GameController@index');
+
 	Route::get('games/synonyms', 'GameController@synonyms');
 	Route::post('games/synonyms/submit', 'GameController@post_synonyms');
 
+	Route::get('games/speak_about', 'GameController@speakAbout');
+	Route::post('games/speak_about/submit', 'GameController@speakAbout_submit');
 
+	Route::post('games/upload_audio', 'GameController@upload');
+
+
+	/*
+	|--------------------------------------------------------------------------
+	| Administration
+	|--------------------------------------------------------------------------
+	*/
 	Route::get('/administration', 'AdminController@index')->name('administration');
 	/* --> Actualités */
 	Route::resource('/administration/news', 'NewsController');
 });
-
-/*
-|--------------------------------------------------------------------------
-| Administration
-|--------------------------------------------------------------------------
-*/
-//Route::group(['middleware' => 'auth'], function () {
-//
-//	Route::get('/administration', 'AdminController@index')->name('administration');
-//	/* --> Actualités */
-//	Route::resource('news', 'NewsController');
-//
-////	Route::get('/administration/news', 'AdminController@displayNews')->name('AdminDisplayNews');
-////	Route::get('/administration/news/create', 'AdminController@createNews')->name('AdminCreateNews');
-////	Route::post('/administration/news/create', 'AdminController@storeNews');
-////	Route::get('/administration/news/update/{id}', 'AdminController@editNews');
-////	Route::post('/administration/news/update/{id}', 'AdminController@updateNews');
-////	Route::post('/administration/news/delete', 'AdminController@destroyNews');
-//});

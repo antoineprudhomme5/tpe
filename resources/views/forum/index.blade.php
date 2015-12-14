@@ -1,7 +1,7 @@
 @extends('templates/app')
 
 @section('style')
-	{!! HTML::style('css/forum_index.css') !!}
+    {!! HTML::style('css/style.css') !!}
 @stop
 
 @section('title')
@@ -9,7 +9,7 @@
 @stop
 
 @section('content')
-	<div class="container">
+	<div class="container app-content">
 
         <div>
             <br>
@@ -48,8 +48,4 @@
         @endforeach
         <table>
     </div>
-@stop
-
-@section('scripts')
-	{!! HTML::script('js/forum_index.js') !!}
 @stop

@@ -35,7 +35,7 @@ class CreateActualitesTable extends Migration
     public function down()
     {
         Schema::table('actualites', function(Blueprint $table) {
-            $table->dropForeign('user_id');
+            $table->dropForeign('actualites_user_id_foreign');
         });
         Schema::drop('actualites');
     }

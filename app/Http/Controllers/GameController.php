@@ -3,14 +3,56 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use App\Game;
 use Auth;
+use App\GameSpeakAboutRecord;
 use App\GameSynonym;
+use App\GameSpeakAbout;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class GameController extends Controller
 {
+    public function upload(Request $request)
+    {
+        try
+        {
+            $file = $request->file('audio');
+            $resource = GameSpeakAbout::find($request->resource);
+            $resource_name = explode('/', $resource->link);
+            $resource_name = explode('.', $resource_name[3]);
+            $resource_name = $resource_name[0];
+            $user = Auth::user();
+        }
+        catch(Exception $e)
+        {
+            die($e);
+        }
+
+        if ($file)
+        {
+            $destinationPath = 'audio';
+            $extension = $file->getClientOriginalExtension();
+            $fileName = $resource_name.'_'.$user->id.'_'.date('Y-m-d_H-i-s').'.'.$extension;
+
+            $file->move($destinationPath, $fileName);
+
+            $record = new GameSpeakAboutRecord();
+            $record->time = $request->time;
+            $record->link = $destinationPath.'/'.$fileName;
+            $record->user_id = $user->id;
+            $record->speakabout_id = $resource->id;
+            $record->save();
+
+            return Response::json('success');
+        }
+        else
+        {
+            return Response::json('error file');
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,72 +62,6 @@ class GameController extends Controller
     {
         $games = Game::get();
         return view('games/index', ['games' => $games]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     /**
@@ -174,5 +150,18 @@ class GameController extends Controller
         $user->save();
 
         return view('games/synonyms_submit', ['results' => $results, 'points' => $points]);
+    }
+
+    public function speakAbout()
+    {
+        $resource = GameSpeakAbout::orderByRaw('RAND()')->take(1)->get();
+
+        return view('games/speak_about', ['resource' => $resource]);
+    }
+
+    public function speakAbout_submit(Request $request)
+    {
+        echo $request;
+        //return view('games/speak_about_submit');
     }
 }

@@ -28,3 +28,7 @@ vendor/
 
 ## stuff ##
 composer.lock
+
+## audio recordings ##
+
+/public/audio
