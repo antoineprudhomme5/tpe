@@ -16,7 +16,11 @@ Route::get('/', 'IndexController@index');
 // routes securisée
 Route::group(['middleware' => 'auth'], function () {
 
-	/* -- Forum */
+	/*
+	|--------------------------------------------------------------------------
+	| Forum
+	|--------------------------------------------------------------------------
+	*/
 	Route::get('/forum', 'TopicController@index');
 
 	Route::get('/forum/create', 'TopicController@create');
@@ -31,15 +35,36 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::post('/post/delete', ['uses' => 'PostController@destroy']);
 
-	/* -- Games */
+	/*
+	|--------------------------------------------------------------------------
+	| Games
+	|--------------------------------------------------------------------------
+	*/
 	Route::get('/games', 'GameController@index');
 	Route::get('games/synonyms', 'GameController@synonyms');
 	Route::post('games/synonyms/submit', 'GameController@post_synonyms');
 
-	/* -- Administration Prof */
-	Route::get('/administration', 'AdminController@index');
-	Route::get('/administration/news', 'AdminController@displayNews')->name('AdDisplayNews');
-	Route::get('/administration/news/add', 'AdminController@addNews')->name('AdAddNews');
-	Route::post('/administration/news/add', 'AdminController@storeNews');
-	Route::post('/administration/news/delete/{id}', 'AdminController@destroyNews');
+
+	Route::get('/administration', 'AdminController@index')->name('administration');
+	/* --> Actualités */
+	Route::resource('/administration/news', 'NewsController');
 });
+
+/*
+|--------------------------------------------------------------------------
+| Administration
+|--------------------------------------------------------------------------
+*/
+//Route::group(['middleware' => 'auth'], function () {
+//
+//	Route::get('/administration', 'AdminController@index')->name('administration');
+//	/* --> Actualités */
+//	Route::resource('news', 'NewsController');
+//
+////	Route::get('/administration/news', 'AdminController@displayNews')->name('AdminDisplayNews');
+////	Route::get('/administration/news/create', 'AdminController@createNews')->name('AdminCreateNews');
+////	Route::post('/administration/news/create', 'AdminController@storeNews');
+////	Route::get('/administration/news/update/{id}', 'AdminController@editNews');
+////	Route::post('/administration/news/update/{id}', 'AdminController@updateNews');
+////	Route::post('/administration/news/delete', 'AdminController@destroyNews');
+//});

@@ -9391,7 +9391,15 @@ footer {
   padding-left: 15px;
   padding-right: 15px;
 }
+/* line 528, ../sass/styles.scss */
+.wrapper-admin .content form.for-delete {
+  display: inline-block;
+}
 /* line 530, ../sass/styles.scss */
+.wrapper-admin .content form.for-delete i {
+  cursor: pointer;
+}
+/* line 536, ../sass/styles.scss */
 .wrapper-admin .onoffswitch {
   position: relative;
   width: 45px;
@@ -9399,11 +9407,11 @@ footer {
   -moz-user-select: none;
   -ms-user-select: none;
 }
-/* line 534, ../sass/styles.scss */
+/* line 540, ../sass/styles.scss */
 .wrapper-admin .onoffswitch-checkbox {
   display: none;
 }
-/* line 537, ../sass/styles.scss */
+/* line 543, ../sass/styles.scss */
 .wrapper-admin .onoffswitch-label {
   display: block;
   overflow: hidden;
@@ -9416,7 +9424,7 @@ footer {
   background-color: #616161;
   transition: background-color 0.3s ease-in;
 }
-/* line 543, ../sass/styles.scss */
+/* line 549, ../sass/styles.scss */
 .wrapper-admin .onoffswitch-label:before {
   content: "";
   display: block;
@@ -9431,15 +9439,15 @@ footer {
   border-radius: 19px;
   transition: all 0.3s ease-in 0s;
 }
-/* line 555, ../sass/styles.scss */
+/* line 561, ../sass/styles.scss */
 .wrapper-admin .onoffswitch-checkbox:checked + .onoffswitch-label {
   background-color: #61e8bb;
 }
-/* line 558, ../sass/styles.scss */
+/* line 564, ../sass/styles.scss */
 .wrapper-admin .onoffswitch-checkbox:checked + .onoffswitch-label, .wrapper-admin .onoffswitch-checkbox:checked + .onoffswitch-label:before {
   border-color: #61e8bb;
 }
-/* line 561, ../sass/styles.scss */
+/* line 567, ../sass/styles.scss */
 .wrapper-admin .onoffswitch-checkbox:checked + .onoffswitch-label:before {
   right: 0px;
 }

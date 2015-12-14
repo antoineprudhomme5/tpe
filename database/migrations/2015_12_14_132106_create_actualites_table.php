@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNewsTable extends Migration
+class CreateActualitesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateNewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('news', function (Blueprint $table) {
+        Schema::create('actualites', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')
@@ -22,6 +22,7 @@ class CreateNewsTable extends Migration
             $table->string('title', 200);
             $table->string('slug', 250);
             $table->text('description');
+            $table->tinyInteger('online')->unsigned();
             $table->timestamps();
         });
     }
@@ -33,9 +34,9 @@ class CreateNewsTable extends Migration
      */
     public function down()
     {
-        Schema::table('news', function(Blueprint $table) {
+        Schema::table('actualites', function(Blueprint $table) {
             $table->dropForeign('user_id');
         });
-        Schema::drop('news');
+        Schema::drop('actualites');
     }
 }

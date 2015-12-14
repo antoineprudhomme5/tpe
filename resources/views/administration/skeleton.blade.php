@@ -16,7 +16,7 @@
     -->
         <header class="main-header">
             <!-- Logo -->
-            <a href="#" class="logo">
+            <a href="{{route('administration')}}" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>A</b>LT</span>
                 <!-- logo for regular state and mobile devices -->
@@ -48,7 +48,7 @@
             <ul class="sidebar-menu">
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="treeview">
-                    <a href="{{ route('AdDisplayNews') }}">
+                    <a href="{{ route('administration.news.index') }}">
                         <i class="fa fa-newspaper-o"></i>
                         <span>News</span>
                     </a>
@@ -89,6 +89,7 @@
     {!! HTML::script('js/jquery.js') !!}
     {!! HTML::script('bootstrap/js/bootstrap.min.js') !!}
     {!! HTML::script('js/app.min.js') !!}
+    {!! HTML::script('js/admin.js') !!}
     @yield('scripts')
 </body>
 </html>
