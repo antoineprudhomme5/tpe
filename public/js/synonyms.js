@@ -5,6 +5,7 @@ var values = [];
 
 $(document).ready(function () {
 
+    // ajax request to get the game data
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -54,6 +55,7 @@ $(document).ready(function () {
         moveNext();
     });
 
+    // start the game
     $('.btn-ready').on('click', function () {
         $('#ready').css('visibility', 'hidden');
         $('#loading').css('visibility', 'hidden');
@@ -61,8 +63,29 @@ $(document).ready(function () {
         chrono();
     });
 
+    // on form submit, call the submit function to send it with ajax request
+    $('#form_synonyms').on('submit', function(e) {
+        e.preventDefault();
+        submit();
+    });
+
 });
 
+/**
+ * Submit the synonyms game form with a json request
+ */
+function submit()
+{
+    $('#game').css('visibility', 'hidden');
+    $('#loading').css('visibility', 'visible');
+
+    var formData = new FormData(document.getElementById('form_synonyms'));
+    formData.append('values', JSON.stringify(values));
+}
+
+/**
+ * Prepare the game after the first json request response
+ */
 function prepare()
 {
     for(var i = 0; i < values.length; i++)
@@ -91,13 +114,15 @@ function prepare()
             content +=      '</div>';
 
             element.find('div').html(content).text();
-            //element.append(content);
     }
 
 
     ready();
 }
 
+/**
+ * Display the button ready to start the game
+ */
 function ready()
 {
     $('#ready').css('visibility', 'visible');
@@ -110,6 +135,9 @@ function nextTab(elem) {
     $(elem).next().find('a[data-toggle="tab"]').click();
 }
 
+/**
+ * Chronometer
+ */
 function chrono() {
 
     displayTime();
@@ -119,7 +147,7 @@ function chrono() {
         if(time<=0){
             if($('li#end').hasClass('active'))
             {
-                $('#form_synonyms').submit();
+                submit();
             }
             else
             {
@@ -130,12 +158,18 @@ function chrono() {
     }, 1000);
 }
 
+/**
+ * Display the time
+ */
 function displayTime() {
 
     $('#time').text(time.getSeconds());
     $('#timebar').css('width', (time.getSeconds()*10) + "%");
 }
 
+/**
+ * Move to the next question
+ */
 function moveNext() {
 
     // move to the next word

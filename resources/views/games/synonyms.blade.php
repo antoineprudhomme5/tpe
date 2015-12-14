@@ -52,7 +52,7 @@
                         </ul>
                     </div>
 
-                    <form role="form" action="{{ url('games/post_synonyms') }}" method="post" id="form_synonyms">
+                    <form id="form_synonyms">
                         {!! csrf_field() !!}
                         <div class="tab-content">
                             <div class="tab-pane active" role="tabpanel" id="step1">
