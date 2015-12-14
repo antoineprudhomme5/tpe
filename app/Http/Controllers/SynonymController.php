@@ -33,9 +33,42 @@ class SynonymController extends Controller
     public function post_synonyms(Request $request)
     {
         $points = 0;
-
         $user = Auth::user();
+        $response = '';
 
+        try
+        {
+            $inputs = array(
+                $request->radio1, // 0 = the user choice, 1 = the synonym row id
+                $request->radio2,
+                $request->radio3,
+                $request->radio4
+            );
+            $decode_values = json_decode($request->values); // games data
+
+            for($i = 0; $i < sizeof($inputs); $i++)
+            {
+                if($inputs[$i] == $decode_values[$i]->response)
+                {
+                    $points += 10;
+                }
+            }
+
+            $response = 'points : ' + $points;
+
+        }
+        catch(Exception $e)
+        {
+            $response = '<div class="alert alert-danger" role="alert">
+                            <strong>Validation Error </strong>'
+                .$e.
+                '</div>';
+            return Response::json($response);
+        }
+
+        return Response::json($response);
+
+        /*
         $rep1 = explode('-', $request->radio1); // 0 = the choice, 1 = the id
         $rep2 = explode('-', $request->radio2);
         $rep3 = explode('-', $request->radio3);
@@ -102,6 +135,6 @@ class SynonymController extends Controller
         $user->points = $points;
         $user->save();
 
-        return view('games/synonyms_submit', ['results' => $results, 'points' => $points]);
+        return view('games/synonyms_submit', ['results' => $results, 'points' => $points]);*/
     }
 }

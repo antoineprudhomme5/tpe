@@ -81,6 +81,28 @@ function submit()
 
     var formData = new FormData(document.getElementById('form_synonyms'));
     formData.append('values', JSON.stringify(values));
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url:  'post_synonyms',
+        type: "POST",
+        processData: false,
+        contentType: false,
+        data: formData,
+        dataType : 'json',
+        success: function(data)
+        {
+            console.log(data);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            document.write(JSON.stringify(jqXHR));
+            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        }
+    });
 }
 
 /**
@@ -100,15 +122,15 @@ function prepare()
             content +=      '<div class="funkyradio">';
             content +=          '<div class="funkyradio-primary">';
             content +=              '<div class="funkyradio-primary">';
-            content +=                  '<input type="radio" name="radio'+ n +'" id="radio'+ (1+3*i) +'" value="'+ values[i].p1 + '-' + values[i].id +'"/>';
+            content +=                  '<input type="radio" name="radio'+ n +'" id="radio'+ (1+3*i) +'" value="'+ values[i].p1 +'"/>';
             content +=                  '<label for="radio' + (1+3*i) + '">'+ values[i].p1 +'</label>';
             content +=              '</div>';
             content +=              '<div class="funkyradio-primary">';
-            content +=                  '<input type="radio" name="radio'+ n +'" id="radio'+ (2+3*i) +'" value="'+ values[i].p2 + '-' + values[i].id +'"/>';
+            content +=                  '<input type="radio" name="radio'+ n +'" id="radio'+ (2+3*i) +'" value="'+ values[i].p2 +'"/>';
             content +=                  '<label for="radio' + (2+3*i) + '">'+ values[i].p2 +'</label>';
             content +=              '</div>';
             content +=              '<div class="funkyradio-primary">';
-            content +=                  '<input type="radio" name="radio'+ n +'" id="radio'+ (3+3*i) +'" value="'+ values[i].p3 + '-' + values[i].id +'"/>';
+            content +=                  '<input type="radio" name="radio'+ n +'" id="radio'+ (3+3*i) +'" value="'+ values[i].p3 +'"/>';
             content +=                  '<label for="radio' + (3+3*i) + '">'+ values[i].p3 +'</label>';
             content +=              '</div>';
             content +=      '</div>';
