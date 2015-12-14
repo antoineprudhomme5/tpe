@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Topic;
+use App\Actualite;
+use DateTime;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -19,9 +21,10 @@ class IndexController extends Controller
     {
         if(Auth::check())
         {
+            $actu   = Actualite::orderBy('id', 'desc')->first();
             $topics = Topic::orderBy('id', 'desc')->take(5)->get();
 
-            return view('index', ['topics' => $topics]);
+            return view('index', ['topics' => $topics, 'actu' => $actu]);
         }
         else
         {
