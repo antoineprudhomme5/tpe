@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
             $table->rememberToken();
+            $table->dateTime('last_login');
             $table->timestamps();
         });
     }
