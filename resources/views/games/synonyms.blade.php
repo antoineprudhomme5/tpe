@@ -58,25 +58,26 @@
                             <div class="tab-pane active" role="tabpanel" id="step1">
                                 <h3></h3>
                                 <p>Choose the good response</p>
-                                <div>
-                                    <input type="radio" name="radio1" id="d1" style="display:none" checked="checked"/>
-                                    <div class="funkyradio">
-                                        <div class="funkyradio-primary">
-                                            <input type="radio" name="radio1" id="radio1" value="syn1-SYNID"/>
-                                            <label for="radio1">syn1</label>
-                                        </div>
-                                        <div class="funkyradio-primary">
-                                            <input type="radio" name="radio1" id="radio2" value="syn2-SYNID"/>
-                                            <label for="radio2">syn2</label>
-                                        </div>
-                                        <div class="funkyradio-primary">
-                                            <input type="radio" name="radio1" id="radio3" value="syn3-SYNID"/>
-                                            <label for="radio3">syn3</label>
-                                        </div>
+                                <input type="radio" name="radio1" id="d1" style="display:none" checked="checked"/>
+                                <div class="funkyradio">
+                                    <div class="funkyradio-primary">
+                                        <input type="radio" name="radio1" id="radio1" value="syn1-SYNID"/>
+                                        <label id="label1">syn1</label>
+                                    </div>
+                                    <div class="funkyradio-primary">
+                                        <input type="radio" name="radio1" id="radio2" value="syn2-SYNID"/>
+                                        <label id="label1">syn2</label>
+                                    </div>
+                                    <div class="funkyradio-primary">
+                                        <input type="radio" name="radio1" id="radio3" value="syn3-SYNID"/>
+                                        <label for="radio3">syn3</label>
                                     </div>
                                 </div>
                                 <ul class="list-inline pull-right">
-                                    <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                                    <li>
+                                        <button type="button" class="btn btn-primary next-step">Save and continue
+                                        </button>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="tab-pane" role="tabpanel" id="step2">

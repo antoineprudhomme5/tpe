@@ -73,24 +73,25 @@ function prepare()
 
         element.find('h3').text(values[i].word);
 
-        var content = '<input type="radio" name="radio'+ n +'" id="d'+ n +'" style="display:none" checked="checked"/>';
-        content +=      '<div class="funkyradio">';
-        content +=          '<div class="funkyradio-primary">';
-        content +=              '<div class="funkyradio-primary">';
-        content +=                  '<input type="radio" name="radio'+ n +'" id="radio'+ (1+3*i) +'" value="'+ values[i].p1 + '-' + values[i].id +'"/>';
-        content +=                  '<label>'+ values[i].p1 +'</label>';
-        content +=              '</div>';
-        content +=              '<div class="funkyradio-primary">';
-        content +=                  '<input type="radio" name="radio'+ n +'" id="radio'+ (2+3*i) +'" value="'+ values[i].p2 + '-' + values[i].id +'"/>';
-        content +=                  '<label>'+ values[i].p2 +'</label>';
-        content +=              '</div>';
-        content +=              '<div class="funkyradio-primary">';
-        content +=                  '<input type="radio" name="radio'+ n +'" id="radio'+ (3+3*i) +'" value="'+ values[i].p3 + '-' + values[i].id +'"/>';
-        content +=                  '<label>'+ values[i].p3 +'</label>';
-        content +=              '</div>';
-        content +=      '</div>';
+            var content = '<input type="radio" name="radio'+ n +'" id="d'+ n +'" style="display:none" checked="checked"/>';
+            content +=      '<div class="funkyradio">';
+            content +=          '<div class="funkyradio-primary">';
+            content +=              '<div class="funkyradio-primary">';
+            content +=                  '<input type="radio" name="radio'+ n +'" id="radio'+ (1+3*i) +'" value="'+ values[i].p1 + '-' + values[i].id +'"/>';
+            content +=                  '<label for="radio' + (1+3*i) + '">'+ values[i].p1 +'</label>';
+            content +=              '</div>';
+            content +=              '<div class="funkyradio-primary">';
+            content +=                  '<input type="radio" name="radio'+ n +'" id="radio'+ (2+3*i) +'" value="'+ values[i].p2 + '-' + values[i].id +'"/>';
+            content +=                  '<label for="radio' + (2+3*i) + '">'+ values[i].p2 +'</label>';
+            content +=              '</div>';
+            content +=              '<div class="funkyradio-primary">';
+            content +=                  '<input type="radio" name="radio'+ n +'" id="radio'+ (3+3*i) +'" value="'+ values[i].p3 + '-' + values[i].id +'"/>';
+            content +=                  '<label for="radio' + (3+3*i) + '">'+ values[i].p3 +'</label>';
+            content +=              '</div>';
+            content +=      '</div>';
 
-        element.find('div').html(content);
+            element.find('div').html(content).text();
+            //element.append(content);
     }
 
 
