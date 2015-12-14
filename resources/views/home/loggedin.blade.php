@@ -1,3 +1,6 @@
+<?php
+use Carbon\Carbon;
+?>
 <div class="container-fluid" id="hero">
     <div class="wrapper container">
         <div class="page-header">
@@ -35,7 +38,14 @@
                             </li>
                         </ul>
                         <div class="last-visit">
-                            Last visit <time datetime="2015-11-25T12:00:38Z" class="timeago" lang="fr" title="November 25, 2015 12:00">about 4 hours ago</time>.
+                            Last visit <time datetime="2015-11-25T12:00:38Z" class="timeago" lang="fr" title="November 25, 2015 12:00">
+                                <?php
+                                $last = new Carbon(Auth::user()->last_login);
+                                $now = Carbon::now();
+                                echo $last->diffForHumans($now, true);
+                                ?>
+                                ago
+                            </time>
                         </div>
                     </div>
                 </div>
@@ -64,17 +74,13 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="home-news block scheme-white">
-                        <h3>Last news:</h3>
+                        <h2>Last news</h2>
                         <hr/>
-                        <h4>Cambridge</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi doloremque explicabo
-                            fugit in porro. Assumenda eius ex explicabo, facere, impedit in ipsum nam nesciunt omnis
-                            perferendis quam quos rem repudiandae!</p>
-                        <img class="img-responsive" src="http://www.hd-wallpaper1.com/images/cambridge-campus.jpeg" alt="">
-
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur cum doloremque fuga
-                            fugiat, in laudantium magni maiores non obcaecati, recusandae reprehenderit tempora, totam
-                            unde vero voluptates? Nemo recusandae ut voluptatibus.</p>
+                        <h4>{{ $actu->title }}</h4>
+                        <p class="small">On <i>{{ $actu->created_at->format('d M Y') }}</i></p>
+                        <div>
+                            {!! $actu->description !!}
+                        </div>
                     </div>
                 </div>
             </div><!-- /.Second row _ News -->
