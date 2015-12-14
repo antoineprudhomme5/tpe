@@ -1,3 +1,13 @@
+#game
+{
+    visibility: hidden;
+}
+
+#ready
+{
+    visibility: hidden;
+}
+
 .wizard {
     margin: 20px auto;
     background: #fff;

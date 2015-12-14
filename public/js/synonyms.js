@@ -1,8 +1,41 @@
 var startValue = 10000; // in ms
 var time = new Date(startValue);
 var interv;
+var values = [];
 
 $(document).ready(function () {
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url:  'get_synonyms',
+        type: "POST",
+        cache: false,
+        dataType : 'json',
+        success: function(data)
+        {
+            values = values.concat(data);
+            console.log(values);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            document.write(JSON.stringify(jqXHR));
+            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        },
+        complete: function()
+        {
+            if (values.length > 0)
+            {
+                prepare();
+            }
+            else
+            {
+                alert("erreur lors du chargement des données de jeu.");
+            }
+        }
+    });
 
     //Initialize tooltips
     $('.nav-tabs > li a[title]').tooltip();
@@ -17,12 +50,59 @@ $(document).ready(function () {
         }
     });
 
-    $(".next-step").click(function () {
+    $(".next-step").on('click', function () {
         moveNext();
     });
 
-    chrono();
+    $('.btn-ready').on('click', function () {
+        $('#ready').css('visibility', 'hidden');
+        $('#loading').css('visibility', 'hidden');
+        $('#game').css('visibility', 'visible');
+        chrono();
+    });
+
 });
+
+function prepare()
+{
+    for(var i = 0; i < values.length; i++)
+    {
+        var n = i+1;
+
+        var element = $('#step' + n);
+
+        element.find('h3').text(values[i].word);
+
+        var content = '<input type="radio" name="radio'+ n +'" id="d'+ n +'" style="display:none" checked="checked"/>';
+        content +=      '<div class="funkyradio">';
+        content +=          '<div class="funkyradio-primary">';
+        content +=              '<div class="funkyradio-primary">';
+        content +=                  '<input type="radio" name="radio'+ n +'" id="radio'+ (1+3*i) +'" value="'+ values[i].p1 + '-' + values[i].id +'"/>';
+        content +=                  '<label>'+ values[i].p1 +'</label>';
+        content +=              '</div>';
+        content +=              '<div class="funkyradio-primary">';
+        content +=                  '<input type="radio" name="radio'+ n +'" id="radio'+ (2+3*i) +'" value="'+ values[i].p2 + '-' + values[i].id +'"/>';
+        content +=                  '<label>'+ values[i].p2 +'</label>';
+        content +=              '</div>';
+        content +=              '<div class="funkyradio-primary">';
+        content +=                  '<input type="radio" name="radio'+ n +'" id="radio'+ (3+3*i) +'" value="'+ values[i].p3 + '-' + values[i].id +'"/>';
+        content +=                  '<label>'+ values[i].p3 +'</label>';
+        content +=              '</div>';
+        content +=      '</div>';
+
+        element.find('div').html(content);
+    }
+
+
+    ready();
+}
+
+function ready()
+{
+    $('#ready').css('visibility', 'visible');
+}
+
+/* JEU ET CHRONO*/
 
 function nextTab(elem) {
 
