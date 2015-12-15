@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\GameSynonym;
 use Auth;
+use App\GameHistory;
 
 class SynonymController extends Controller
 {
@@ -77,6 +78,14 @@ class SynonymController extends Controller
 
             $user->points = $points;
             $user->save();
+
+            $history = new GameHistory();
+
+            $history->user_id = Auth::id();
+            $history->game_id = 1;
+            $history->points = $points;
+
+            $history->save();
 
         }
         catch(Exception $e)

@@ -64,15 +64,15 @@
                                 <input type="radio" name="radio1" id="d1" style="display:none" checked="checked"/>
                                 <div class="funkyradio">
                                     <div class="funkyradio-primary">
-                                        <input type="radio" name="radio1" id="radio1" value="syn1-SYNID"/>
+                                        <input type="radio" name="radio1" id="radio1" value=""/>
                                         <label id="label1">syn1</label>
                                     </div>
                                     <div class="funkyradio-primary">
-                                        <input type="radio" name="radio1" id="radio2" value="syn2-SYNID"/>
+                                        <input type="radio" name="radio1" id="radio2" value=""/>
                                         <label id="label1">syn2</label>
                                     </div>
                                     <div class="funkyradio-primary">
-                                        <input type="radio" name="radio1" id="radio3" value="syn3-SYNID"/>
+                                        <input type="radio" name="radio1" id="radio3" value=""/>
                                         <label for="radio3">syn3</label>
                                     </div>
                                 </div>
@@ -90,15 +90,15 @@
                                     <input type="radio" name="radio2" id="d2" style="display:none" checked="checked"/>
                                     <div class="funkyradio">
                                         <div class="funkyradio-primary">
-                                            <input type="radio" name="radio2" id="radio4" value="syn1-SYNID"/>
+                                            <input type="radio" name="radio2" id="radio4" value=""/>
                                             <label for="radio4">syn1</label>
                                         </div>
                                         <div class="funkyradio-primary">
-                                            <input type="radio" name="radio2" id="radio5" value="syn2-SYNID"/>
+                                            <input type="radio" name="radio2" id="radio5" value=""/>
                                             <label for="radio5">syn2</label>
                                         </div>
                                         <div class="funkyradio-primary">
-                                            <input type="radio" name="radio2" id="radio6" value="syn3-SYNID"/>
+                                            <input type="radio" name="radio2" id="radio6" value=""/>
                                             <label for="radio6">syn3</label>
                                         </div>
                                     </div>
@@ -114,15 +114,15 @@
                                     <input type="radio" name="radio3" id="d3" value="" style="display:none" checked="checked"/>
                                     <div class="funkyradio">
                                         <div class="funkyradio-primary">
-                                            <input type="radio" name="radio3" id="radio7" value="syn1-SYNID"/>
+                                            <input type="radio" name="radio3" id="radio7" value=""/>
                                             <label for="radio7">syn1</label>
                                         </div>
                                         <div class="funkyradio-primary">
-                                            <input type="radio" name="radio3" id="radio8" value="syn2-SYNID"/>
+                                            <input type="radio" name="radio3" id="radio8" value=""/>
                                             <label for="radio8">syn2</label>
                                         </div>
                                         <div class="funkyradio-primary">
-                                            <input type="radio" name="radio3" id="radio9" value="syn3-SYNID"/>
+                                            <input type="radio" name="radio3" id="radio9" value=""/>
                                             <label for="radio9">syn3</label>
                                         </div>
                                     </div>
@@ -138,15 +138,15 @@
                                     <input type="radio" name="radio4" id="d4" value="" style="display:none" checked="checked"/>
                                     <div class="funkyradio">
                                         <div class="funkyradio-primary">
-                                            <input type="radio" name="radio4" id="radio10" value="syn1-SYNID"/>
+                                            <input type="radio" name="radio4" id="radio10" value=""/>
                                             <label for="radio10">syn1</label>
                                         </div>
                                         <div class="funkyradio-primary">
-                                            <input type="radio" name="radio4" id="radio11" value="syn2-SYNID"/>
+                                            <input type="radio" name="radio4" id="radio11" value=""/>
                                             <label for="radio11">syn2</label>
                                         </div>
                                         <div class="funkyradio-primary">
-                                            <input type="radio" name="radio4" id="radio12" value="syn3-SYNID"/>
+                                            <input type="radio" name="radio4" id="radio12" value=""/>
                                             <label for="radio12">syn3</label>
                                         </div>
                                     </div>

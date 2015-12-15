@@ -120,7 +120,7 @@ function prepare()
 
         element.find('h3').text(values[i].word);
 
-            var content = '<input type="radio" name="radio'+ n +'" id="d'+ n +'" style="display:none" checked="checked"/>';
+            var content = '<input type="radio" name="radio'+ n +'" id="d'+ n +'" style="display:none" value="/" checked="checked"/>';
             content +=      '<div class="funkyradio">';
             content +=          '<div class="funkyradio-primary">';
             content +=              '<div class="funkyradio-primary">';
