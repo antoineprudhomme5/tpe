@@ -1,9 +1,15 @@
 .app-content
 {
 	margin-top: 100px;
+	margin-bottom: 50px;
 }
 
 .jumbotron
 {
 	background: #ffffff;
+}
+
+.jumbotron-success
+{
+	background: green;
 }

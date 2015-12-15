@@ -42,8 +42,14 @@ Route::group(['middleware' => 'auth'], function () {
 	*/
 	Route::get('/games', 'GameController@index');
 
-	Route::get('games/synonyms', 'GameController@synonyms');
-	Route::post('games/synonyms/submit', 'GameController@post_synonyms');
+	Route::get('games/synonyms', 'SynonymController@synonyms');
+	Route::post('games/get_synonyms', 'SynonymController@get_synonyms');
+	Route::post('games/post_synonyms', 'SynonymController@post_synonyms');
+
+	Route::get('games/speak_about', 'GameController@speakAbout');
+	Route::post('games/speak_about/submit', 'GameController@speakAbout_submit');
+
+	Route::post('games/upload_audio', 'GameController@upload');
 
 	Route::get('games/speak_about', 'GameController@speakAbout');
 	Route::post('games/speak_about/submit', 'GameController@speakAbout_submit');
@@ -64,6 +70,12 @@ Route::group(['middleware' => 'auth'], function () {
 	|--------------------------------------------------------------------------
 	*/
 	Route::get('/administration', 'AdminController@index')->name('administration');
+	/* -- Administration Prof */
+	Route::get('/administration', 'AdminController@index');
+	Route::get('/administration/news', 'AdminController@displayNews')->name('AdDisplayNews');
+	Route::get('/administration/news/add', 'AdminController@addNews')->name('AdAddNews');
+	Route::post('/administration/news/add', 'AdminController@storeNews');
+	Route::post('/administration/news/delete/{id}', 'AdminController@destroyNews');
 	/* --> Actualités */
 	Route::resource('/administration/news', 'NewsController');
 });
