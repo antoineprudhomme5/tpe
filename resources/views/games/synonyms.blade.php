@@ -14,6 +14,9 @@
     <div class="container app-content">
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         <div class="row">
+            <section id="response">
+
+            </section>
             <section id="game">
                 <div class="wizard">
                     <div class="wizard-inner">

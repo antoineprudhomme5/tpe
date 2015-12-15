@@ -97,6 +97,8 @@ function submit()
         success: function(data)
         {
             console.log(data);
+            $('#response').html(data);
+            $('#loading').css('display', 'none');
         },
         error: function(jqXHR, textStatus, errorThrown) {
             document.write(JSON.stringify(jqXHR));
@@ -137,7 +139,6 @@ function prepare()
 
             element.find('div').html(content).text();
     }
-
 
     ready();
 }
