@@ -12,10 +12,9 @@
 @section('content')
     <div class="container app-content">
         <div class="row">
-            <section>
 
+            <section id="game">
                 <meta name="csrf-token" content="{{ csrf_token() }}"/> <!-- token ajax request -->
-
                 @if($resource[0]->type === 'img')
                     <div class="row">
                         <div class="col-xs-12">
@@ -88,6 +87,15 @@
 
                 </div>
             </section>
+
+            <section id="loading">
+                @include('include/loading')
+            </section>
+
+            <section id="ready">
+                @include('include/ready')
+            </section>
+
         </div>
     </div>
 @stop

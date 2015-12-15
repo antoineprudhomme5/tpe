@@ -44,3 +44,11 @@
 #chrono {
     color: green;
 }
+
+#game {
+    visibility: hidden;
+}
+
+#ready {
+    visibility: hidden;
+}

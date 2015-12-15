@@ -1,10 +1,9 @@
+var interv;
+
 $(document).ready(function() {
 
     'use strict';
 
-    // CHRONO VARIABLES
-
-    var interv;
 
     // DRAG AND DROP VARIABLES
 
@@ -19,14 +18,32 @@ $(document).ready(function() {
         formData.append('audio', file);
     };
 
-    //var display_success = "success !!";
-    var display_success = "<div class='alert alert-success' role='alert'>";
-        display_success += "<strong>Success</strong>";
-        display_success += "<span id='display_success'> File uploaded</span>";
-        display_success += '<button class="btn btn-success pull-right"><a href="' + "{{ url('/games') }}" + '">return</a></button>';
-        display_success += "</div>";
+    // AJAX REQUEST TO GET THE GAME RESOURCE
 
-    // -----
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url:  'get_speak_about',
+        type: "POST",
+        cache: false,
+        dataType : 'json',
+        success: function(data)
+        {
+            console.log(data);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            document.write(JSON.stringify(jqXHR));
+            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        },
+        complete: function()
+        {
+            console.log('complete');
+            $('#ready').css('visibility', 'visible');
+        }
+    });
 
     /**
      * Check the type of resource loaded and start the chronometer with analyze time
@@ -35,7 +52,11 @@ $(document).ready(function() {
     {
         var analyzeTime = 5;
         displayTime(0,analyzeTime);
-        chrono(analyzeTime); // 5 secondes to analyze the image
+        $('#ready').on('click', function() {
+            $('#game').css('visibility', 'hidden');
+            $('#ready').css('visibility', 'hidden');
+            chrono(analyzeTime); // 5 secondes to analyze the image
+        });
     }
     else if( $('#resource_audio').length )
     {
@@ -48,73 +69,6 @@ $(document).ready(function() {
             displayTime(0,analyzeTime);
             chrono(analyzeTime); // chrono start after the listening
         });
-    }
-
-    /**
-     * Calculate the chronometer time
-     * @param analyzeTime the time before start the chronometer (time to analyse the resource before start recording)
-     */
-    function chrono(analyzeTime)
-    {
-        var i = analyzeTime;
-        var m = 0; // minutes
-        var s = 0; // seconds
-
-        interv = setInterval(function() {
-            // if analyze time ended
-            if(i == 0)
-            {
-                $('#chrono').css('color', 'black');
-            }
-            // analyze time
-            if(i > 0)
-            {
-                i--;
-                displayTime(0,i);
-            }
-            // chronometer
-            else if(i <= 0)
-            {
-                i--;
-                s++;
-                if(s > 59)
-                {
-                    m++;
-                    s = 0;
-                }
-                displayTime(m,s);
-            }
-        }, 1000); // each second
-    }
-
-    /**
-     * Display the chronometer time 'mm:ss'
-     * @param m the minutes
-     * @param s the seconds
-     */
-    function displayTime(m, s)
-    {
-        var time = '';
-
-        if(m < 10)
-        {
-            time += '0' + m + ':';
-        }
-        else
-        {
-            time += m + ':';
-        }
-
-        if(s < 10)
-        {
-            time += '0' + s;
-        }
-        else
-        {
-            time += s;
-        }
-
-        $('#chrono').text(time); // set the time on the page
     }
 
     /**
@@ -141,7 +95,8 @@ $(document).ready(function() {
             {
                 if(response === 'success')
                 {
-                    $('#game_form').html(display_success);
+                    console.log('success');
+                    //$('#game_form').html(display_success);
                     // window.location.replace("http://localhost/tpe/public/games");
                 }
                 else
@@ -189,3 +144,70 @@ $(document).ready(function() {
     };
 
 });
+
+/**
+ * Calculate the chronometer time
+ * @param analyzeTime the time before start the chronometer (time to analyse the resource before start recording)
+ */
+function chrono(analyzeTime)
+{
+    var i = analyzeTime;
+    var m = 0; // minutes
+    var s = 0; // seconds
+
+    interv = setInterval(function() {
+        // if analyze time ended
+        if(i == 0)
+        {
+            $('#chrono').css('color', 'black');
+        }
+        // analyze time
+        if(i > 0)
+        {
+            i--;
+            displayTime(0,i);
+        }
+        // chronometer
+        else if(i <= 0)
+        {
+            i--;
+            s++;
+            if(s > 59)
+            {
+                m++;
+                s = 0;
+            }
+            displayTime(m,s);
+        }
+    }, 1000); // each second
+}
+
+/**
+ * Display the chronometer time 'mm:ss'
+ * @param m the minutes
+ * @param s the seconds
+ */
+function displayTime(m, s)
+{
+    var time = '';
+
+    if(m < 10)
+    {
+        time += '0' + m + ':';
+    }
+    else
+    {
+        time += m + ':';
+    }
+
+    if(s < 10)
+    {
+        time += '0' + s;
+    }
+    else
+    {
+        time += s;
+    }
+
+    $('#chrono').text(time); // set the time on the page
+}
