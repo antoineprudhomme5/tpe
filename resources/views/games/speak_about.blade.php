@@ -24,6 +24,10 @@
                 @include('include/ready')
             </section>
 
+            <section id="response">
+
+            </section>
+
             <section id="game">
 
                 <div class="row">

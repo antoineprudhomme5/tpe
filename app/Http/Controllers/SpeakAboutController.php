@@ -54,9 +54,7 @@ class SpeakAboutController extends Controller
 
     public function speakAbout()
     {
-        $resource = GameSpeakAbout::orderByRaw('RAND()')->take(1)->get();
-
-        return view('games/speak_about', ['resource' => $resource]);
+        return view('games/speak_about');
     }
 
 
@@ -69,6 +67,44 @@ class SpeakAboutController extends Controller
 
     public function post_speak_about(Request $request)
     {
-        return Response::json('success');
+        try
+        {
+            $file = $request->file('audio');
+
+            $destinationPath = 'audio';
+            $extension = $file->getClientOriginalExtension();
+            $data = json_decode($request->data);
+            $resource_name = explode('/', $data->link);
+            $resource_name = explode('.', $resource_name[3]);
+            $resource_name = $resource_name[0];
+            $fileName = $resource_name.'_'.Auth::id().'_'.date('Y-m-d_H-i-s').'.'.$extension;
+            $file->move($destinationPath, $fileName);
+
+            $record = new GameSpeakAboutRecord();
+
+            $record->time = $request->time;
+            $record->link = $destinationPath.'/'.$fileName;
+            $record->user_id = Auth::id();
+            $record->speakabout_id = $data->id;
+
+            $record->save();
+
+            $response = '<div class="jumbotron alert-success">
+                            <div class="container">
+                                <h1>Your file is upload !</h1>
+                                <p> You will have the result when the teacher will have corrected it.</p>
+                            </div>
+                        </div>';
+        }
+        catch(Exception $e)
+        {
+            $response = '<div class="alert alert-danger" role="alert">
+                            <strong>Validation Error </strong>'
+                .$e.
+                '</div>';
+            return Response::json($response);
+        }
+
+        return Response::json($response);
     }
 }

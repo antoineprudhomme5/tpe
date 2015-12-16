@@ -21,7 +21,7 @@ $(document).ready(function() {
         dataType : 'json',
         success: function(data)
         {
-            formData.append('data', data[0]);
+            formData.append('data', JSON.stringify(data[0]));
             if(data[0].type === 'img')
             {
                 speakAboutImage(data[0]);
@@ -90,14 +90,15 @@ function startUpload(file)
     // ajax request
     $.ajax({
         type: "POST",
-        url: "upload_audio",
+        url: "post_speak_about",
         data: formData,
         dataType : 'json',
         processData: false,
         contentType: false,
         success: function(data)
         {
-           console.log(data)
+            $('#loading').css('visibility', 'hidden');
+            $('#response').html(data);
         },
         error: function(request, status, error)
         {
