@@ -42,19 +42,18 @@ Route::group(['middleware' => 'auth'], function () {
 	*/
 	Route::get('/games', 'GameController@index');
 
+	//synonyms
 	Route::get('games/synonyms', 'SynonymController@synonyms');
 	Route::post('games/get_synonyms', 'SynonymController@get_synonyms');
 	Route::post('games/post_synonyms', 'SynonymController@post_synonyms');
 
-	Route::get('games/speak_about', 'GameController@speakAbout');
-	Route::post('games/speak_about/submit', 'GameController@speakAbout_submit');
+	//speakabout
+	Route::post('games/upload_audio', 'SpeakAboutController@upload');
 
-	Route::post('games/upload_audio', 'GameController@upload');
+	Route::get('games/speak_about', 'SpeakAboutController@speakAbout');
 
-	Route::get('games/speak_about', 'GameController@speakAbout');
-	Route::post('games/speak_about/submit', 'GameController@speakAbout_submit');
-
-	Route::post('games/upload_audio', 'GameController@upload');
+	Route::post('games/get_speak_about', 'SpeakAboutController@get_speak_about');
+	Route::post('games/post_speak_about', 'SpeakAboutController@post_speak_about');
 
 
 	/*
