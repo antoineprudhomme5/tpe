@@ -38,7 +38,9 @@ use Carbon\Carbon;
                             </li>
                         </ul>
                         <div class="last-visit">
-                            Last visit <time datetime="2015-11-25T12:00:38Z" class="timeago" lang="fr" title="November 25, 2015 12:00">
+                            <p><b>Last visit :</b></p>
+                            <time>
+                                About
                                 <?php
                                 $last = new Carbon(Auth::user()->last_login);
                                 $now = Carbon::now();

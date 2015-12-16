@@ -39,7 +39,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ucfirst(Auth::user()->firstname)}}<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#"><i class="fa fa-pencil-square-o"></i> Profile</a></li>
+                        <li><a href="{{ url('/profile') }}"><i class="fa fa-pencil-square-o"></i> Profile</a></li>
                         <li><a href="{{ url('/auth/logout') }}"><i class="fa fa-sign-out"></i> Log out</a></li>
                     </ul>
                 </li>
