@@ -11,6 +11,9 @@
 
 @section('content')
     <div class="container app-content">
+
+        <meta name="csrf-token" content="{{ csrf_token() }}"/> <!-- token ajax request -->
+
         <div class="row">
 
             <section id="loading">
@@ -22,53 +25,21 @@
             </section>
 
             <section id="game">
-                <meta name="csrf-token" content="{{ csrf_token() }}"/> <!-- token ajax request -->
-                @if($resource[0]->type === 'img')
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="game-resource">
-                                <h3>Speak About...<span id='chrono' class="pull-right"></span></h3>
-                                <hr/>
-                                <h4>This picture</h4>
 
-                                <p>You have 15 secondes before the chronometer starts. During this time, analyse the
-                                    photo below. After that, record yourself with Audacity or another software by
-                                    speaking 1 or 2 minutes on the picture.</p>
-                                <img id="resource_image" src="../../{{ $resource[0]->link }}" class="img-responsive"
-                                     alt="Responsive image">
-                                <br>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="game-resource">
+                            <h3>Speak About...<span id='chrono' class="pull-right"></span></h3>
+                            <hr/>
+                            <div id="game-resource">
 
-                                <p>When you have finished, send your .mp3 recording. A teacher will listen it and give
-                                    you some points if you did it well.</p>
                             </div>
+                            <br>
+                            <p>When you have finished, send your .mp3 recording. A teacher will listen it and give
+                                you some points if you did it well.</p>
                         </div>
                     </div>
-                @elseif($resource[0]->type === 'audio')
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="game-resource">
-                                <h3>Speak About...<span id='chrono' class="pull-right"><span></h3>
-                                <hr/>
-                                <h4>This recording</h4>
-
-                                <p>When your listening will be ended ,the chronometer will starts. During this time,
-                                    analyse the photo below. After that, record yourself with Audacity or another
-                                    software by speaking 1 or 2 minutes.</p>
-
-                                <div class="text-center">
-                                    <audio controls id="audio">
-                                        <source id="resource_audio" src="../../{{ $resource[0]->link }}"
-                                                type="audio/mpeg">
-                                    </audio>
-                                </div>
-                                <br>
-
-                                <p>When you have finished, send your .mp3 recording. A teacher will listen it and give
-                                    you some points if you did it well.</p>
-                            </div>
-                        </div>
-                    </div>
-                @endif
+                </div>
 
                 <div id="game_form">
 

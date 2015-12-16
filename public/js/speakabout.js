@@ -4,7 +4,6 @@ $(document).ready(function() {
 
     'use strict';
 
-
     // DRAG AND DROP VARIABLES
 
     var dropZone = document.getElementById('drop-zone'); // the drag and drop zone
@@ -32,7 +31,14 @@ $(document).ready(function() {
         dataType : 'json',
         success: function(data)
         {
-            console.log(data);
+            if(data[0].type === 'img')
+            {
+                speakAboutImage(data[0]);
+            }
+            else if(data[0].type === 'audio')
+            {
+                speakAboutAudio(data[0]);
+            }
         },
         error: function(jqXHR, textStatus, errorThrown) {
             document.write(JSON.stringify(jqXHR));
@@ -44,39 +50,6 @@ $(document).ready(function() {
             $('#ready').css('visibility', 'visible');
         }
     });
-
-    /**
-     * Check the type of resource loaded and start the chronometer with analyze time
-     */
-    if( $('#resource_image').length )
-    {
-        var analyzeTime = 5;
-        displayTime(0,analyzeTime);
-        $('#ready').on('click', function() {
-            $('#loading').css('visibility', 'hidden');
-            $('#ready').css('visibility', 'hidden');
-            $('#game').css('visibility', 'visible');
-            chrono(analyzeTime); // 5 secondes to analyze the image
-        });
-    }
-    else if( $('#resource_audio').length )
-    {
-        var audio = document.getElementById("audio");
-
-        $('#ready').on('click', function() {
-            $('#loading').css('visibility', 'hidden');
-            $('#ready').css('visibility', 'hidden');
-            $('#game').css('visibility', 'visible');
-        });
-
-        // only on the first listening
-        $('#audio').one('play', function() {
-
-            var analyzeTime = Math.floor(audio.duration) + 1;
-            displayTime(0,analyzeTime);
-            chrono(analyzeTime); // chrono start after the listening
-        });
-    }
 
     /**
      * Event: click on the submit button to send the recording
@@ -151,6 +124,59 @@ $(document).ready(function() {
     };
 
 });
+
+/**
+ * prepare the game to speak about an image
+ */
+function speakAboutImage(data)
+{
+    console.log('img');
+    var imageResource = '<h4>This picture</h4>';
+        imageResource += '<p>You have 15 secondes before the chronometer starts. During this time, analyse thephoto below. After that, record yourself with Audacity or another software byspeaking 1 or 2 minutes on the picture.</p>';
+        imageResource += '<img id="resource_image" src="../../'+ data.link +'" class="img-responsive" alt="Responsive image">';
+    $('#game-resource').html(imageResource);
+
+    var analyzeTime = 5;
+    displayTime(0,analyzeTime);
+    $('#ready').on('click', function() {
+        $('#loading').css('visibility', 'hidden');
+        $('#ready').css('visibility', 'hidden');
+        $('#game').css('visibility', 'visible');
+        chrono(analyzeTime); // 5 secondes to analyze the image
+    });
+}
+
+/**
+ * prepare the game to speak about an audio file
+ */
+function speakAboutAudio (data)
+{
+    console.log('audio');
+    var audioResource = '<h4>This recording</h4>';
+        audioResource += ' <p>When your listening will be ended ,the chronometer will starts. During this time, analyse the photo below. After that, record yourself with Audacity or another software by speaking 1 or 2 minutes.</p>';
+        audioResource += '<div class="text-center">' +
+                            '<audio controls id="audio">' +
+                                '<source id="resource_audio" src="../../'+ data.link +'" type="audio/mpeg">' +
+                            '</audio>' +
+                        '</div>';
+    $('#game-resource').html(audioResource);
+
+    var audio = document.getElementById("audio");
+
+    $('#ready').on('click', function() {
+        $('#loading').css('visibility', 'hidden');
+        $('#ready').css('visibility', 'hidden');
+        $('#game').css('visibility', 'visible');
+    });
+
+    // only on the first listening
+    $('#audio').one('play', function() {
+
+        var analyzeTime = Math.floor(audio.duration) + 1;
+        displayTime(0,analyzeTime);
+        chrono(analyzeTime); // chrono start after the listening
+    });
+}
 
 /**
  * Calculate the chronometer time
