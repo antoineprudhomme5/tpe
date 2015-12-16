@@ -13,6 +13,14 @@
     <div class="container app-content">
         <div class="row">
 
+            <section id="loading">
+                @include('include/loading')
+            </section>
+
+            <section id="ready">
+                @include('include/ready')
+            </section>
+
             <section id="game">
                 <meta name="csrf-token" content="{{ csrf_token() }}"/> <!-- token ajax request -->
                 @if($resource[0]->type === 'img')
@@ -86,14 +94,6 @@
                     </form>
 
                 </div>
-            </section>
-
-            <section id="loading">
-                @include('include/loading')
-            </section>
-
-            <section id="ready">
-                @include('include/ready')
             </section>
 
         </div>

@@ -14,9 +14,19 @@
     <div class="container app-content">
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         <div class="row">
+
+            <section id="loading">
+                @include('include/loading')
+            </section>
+
+            <section id="ready">
+                @include('include/ready')
+            </section>
+
             <section id="response">
 
             </section>
+
             <section id="game">
                 <div class="wizard">
                     <div class="wizard-inner">
@@ -167,12 +177,7 @@
                     <span id="time"></span> secondes left !
                 </p>
             </section>
-            <section id="loading">
-                @include('include/loading')
-            </section>
-            <section id="ready">
-                @include('include/ready')
-            </section>
+
         </div>
 
     </div>

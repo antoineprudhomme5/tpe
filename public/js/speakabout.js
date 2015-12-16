@@ -53,14 +53,21 @@ $(document).ready(function() {
         var analyzeTime = 5;
         displayTime(0,analyzeTime);
         $('#ready').on('click', function() {
-            $('#game').css('visibility', 'hidden');
+            $('#loading').css('visibility', 'hidden');
             $('#ready').css('visibility', 'hidden');
+            $('#game').css('visibility', 'visible');
             chrono(analyzeTime); // 5 secondes to analyze the image
         });
     }
     else if( $('#resource_audio').length )
     {
         var audio = document.getElementById("audio");
+
+        $('#ready').on('click', function() {
+            $('#loading').css('visibility', 'hidden');
+            $('#ready').css('visibility', 'hidden');
+            $('#game').css('visibility', 'visible');
+        });
 
         // only on the first listening
         $('#audio').one('play', function() {
