@@ -76,4 +76,12 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany('App\GameHistory');
     }
+
+    /**
+     * One user has many answers
+     */
+    public function answers()
+    {
+        return $this->hasMany('App\ProfileAnswer');
+    }
 }

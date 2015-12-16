@@ -1,6 +1,6 @@
 @extends('templates.app')
-
 @section('content')
+    @include('partials.alerts.flash')
     <div class="container-fluid profile-theme" id="hero">
         <div class="wrapper container">
             <div class="page-header">
@@ -19,6 +19,7 @@
                 {!! Form::open([
                     'route' => 'profile.about'
                 ]) !!}
+                    {!! csrf_field() !!}
                     <?php $boucle = 1; ?>
                     @foreach($questions as $key => $q)
                         @if($key === 0)
@@ -26,7 +27,7 @@
                                 <div class="col-xs-12">
                                     <label for="{{$q->tag}}">{{$q->topic}}</label>
                                     <div class="controls">
-                                        <textarea name="{{$q->tag}}" id="" rows="3" placeholder="{{$q->question}}"></textarea>
+                                        <textarea name="{{$q->tag}}" id="" rows="3" placeholder="{{$q->question}}">{{$q->answer}}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -37,7 +38,7 @@
                                 <div class="col-sm-6 col-xs-12">
                                     <label for="{{$q->tag}}">{{$q->topic}}</label>
                                     <div class="controls">
-                                        <textarea name="{{$q->tag}}" id="" rows="3" placeholder="{{$q->question}}"></textarea>
+                                        <textarea name="{{$q->tag}}" id="" rows="3" placeholder="{{$q->question}}">{{$q->answer}}</textarea>
                                     </div>
                                 </div>
                             @if($boucle === 2)
@@ -57,4 +58,7 @@
             </div>
         </div>
     </div>
+    @section('scripts')
+    {!! HTML::script('js/alert.js') !!}
+    @endsection
 @endsection

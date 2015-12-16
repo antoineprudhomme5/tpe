@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\ProfileQuestion;
+use App\ProfileAnswer;
+use App\User;
+use Input;
 
 class ProfileController extends Controller
 {
@@ -29,7 +32,11 @@ class ProfileController extends Controller
      */
     public function about()
     {
-        $questions = ProfileQuestion::all();
+        //$questions = ProfileQuestion::all();
+        $questions = ProfileQuestion::join('profiles_answers', 'profiles_questions.id', '=', 'profiles_answers.profile_question_id')
+            ->where('profiles_answers.user_id', Auth::user()->id)
+            ->get();
+
         return view('profile.about', ['questions' => $questions]);
     }
 
@@ -38,12 +45,20 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update()
     {
-        //
-    }
+        $input = Input::except('_token');
 
+        foreach ($input as $key => $value) {
+
+            $tag = ProfileQuestion::where('tag', $key)->firstOrFail();
+            $id  = $tag->id;
+            $answer = ProfileAnswer::where('profile_question_id', $id)->where('user_id', Auth::user()->id)->firstOrFail();
+            $answer->answer = $value;
+            $answer->save();
+        }
+        return Redirect::back()->with('success', 'Profile updated!');
+    }
 }

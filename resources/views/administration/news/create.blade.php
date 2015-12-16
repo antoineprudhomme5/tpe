@@ -6,7 +6,7 @@
     <h1>News <small>write a news</small></h1>
 @endsection
 @section('content')
-    @include('partials.alerts.errors')
+    @include('partials.alerts.flash')
     {!! Form::open([
         'route' => 'administration.news.store'
     ]) !!}

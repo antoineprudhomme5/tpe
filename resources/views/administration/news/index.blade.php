@@ -1,6 +1,6 @@
 @extends('administration.skeleton')
-
 @section('wrapper')
+    @include('partials.alerts.flash')
 @parent
     @section('pageTitle')
         <h1>News <small>preview of the news</small></h1>
