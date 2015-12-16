@@ -53,15 +53,14 @@
                         <span id="filename"></span>
                     </div>
 
-                    <form action=" " method="post" enctype="multipart/form-data" id="js-upload-form">
-                        <input type="hidden" name="resource" id="resource" value="{{ $resource[0]->id }}"/>
+                    <form id="js-upload-form">
                         <!-- Drop Zone -->
                         <h4>Drag your audio file below</h4>
 
                         <div class="upload-drop-zone" id="drop-zone">
                             Just drag and drop your record here
                         </div>
-                        <button type="button" class="btn btn-primary" id="js-upload-submit">Upload files</button>
+
                     </form>
 
                 </div>

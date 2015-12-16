@@ -1,21 +1,11 @@
 var interv;
+var formData = new FormData();
 
 $(document).ready(function() {
 
     'use strict';
 
-    // DRAG AND DROP VARIABLES
-
-    var dropZone = document.getElementById('drop-zone'); // the drag and drop zone
-    var uploadForm = document.getElementById('js-upload-form'); // the form
-    var formData = new FormData(uploadForm); // form objetct
-
-    var startUpload = function(file) {
-        $('#upload_success').show();
-        $('#filename').text(file.name);
-
-        formData.append('audio', file);
-    };
+    var dropZone = document.getElementById('drop-zone'); // the drag and drop zones
 
     // AJAX REQUEST TO GET THE GAME RESOURCE
 
@@ -31,6 +21,7 @@ $(document).ready(function() {
         dataType : 'json',
         success: function(data)
         {
+            formData.append('data', data[0]);
             if(data[0].type === 'img')
             {
                 speakAboutImage(data[0]);
@@ -49,49 +40,6 @@ $(document).ready(function() {
             console.log('complete');
             $('#ready').css('visibility', 'visible');
         }
-    });
-
-    /**
-     * Event: click on the submit button to send the recording
-     */
-    $('#js-upload-submit').on('click', function(){
-
-        // ajax request to upload the file, on success => send the form
-        // add a token to the ajax request
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        // ajax request
-        $.ajax({
-            type: "POST",
-            url: "upload_audio",
-            data: formData,
-            dataType : 'json',
-            processData: false,
-            contentType: false,
-            success: function(response)
-            {
-                if(response === 'success')
-                {
-                    console.log('success');
-                    //$('#game_form').html(display_success);
-                    // window.location.replace("http://localhost/tpe/public/games");
-                }
-                else
-                {
-                    $('#upload_error').css('display', true);
-                    $('#error_message').text('Error during the upload');
-                    document.getElementById("js-upload-submit").disabled = false;
-                }
-            },
-            error: function(request, status, error)
-            {
-                document.write(request.responseText);
-                document.getElementById("js-upload-submit").disabled = false;
-            }
-        });
     });
 
     dropZone.ondrop = function(e) {
@@ -124,6 +72,40 @@ $(document).ready(function() {
     };
 
 });
+
+function startUpload(file)
+{
+    $('#upload_success').show();
+    $('#filename').text(file.name);
+    formData.append('audio', file);
+
+    $('#loading').css('visibility', 'visible');
+    $('#game').css('visibility', '');
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    // ajax request
+    $.ajax({
+        type: "POST",
+        url: "upload_audio",
+        data: formData,
+        dataType : 'json',
+        processData: false,
+        contentType: false,
+        success: function(data)
+        {
+           console.log(data)
+        },
+        error: function(request, status, error)
+        {
+            document.write(request.responseText);
+            document.getElementById("js-upload-submit").disabled = false;
+        }
+    });
+}
 
 /**
  * prepare the game to speak about an image
