@@ -71,12 +71,6 @@ Route::group(['middleware' => 'auth'], function () {
 	|--------------------------------------------------------------------------
 	*/
 	Route::get('/administration', 'AdminController@index')->name('administration');
-	/* -- Administration Prof */
-	Route::get('/administration', 'AdminController@index');
-	Route::get('/administration/news', 'AdminController@displayNews')->name('AdDisplayNews');
-	Route::get('/administration/news/add', 'AdminController@addNews')->name('AdAddNews');
-	Route::post('/administration/news/add', 'AdminController@storeNews');
-	Route::post('/administration/news/delete/{id}', 'AdminController@destroyNews');
 	/* --> Actualités */
 	Route::resource('/administration/news', 'NewsController');
 });
