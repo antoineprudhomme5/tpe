@@ -78,7 +78,7 @@ class NewsController extends Controller
             // save the news
             $news->save();
 
-            $request->session()->flash('success', 'User was successful added!');
+            $request->session()->flash('success', 'News was successful added!');
             // redirect ----------------------------------------
             return Redirect::to('administration/news');
 
@@ -152,7 +152,7 @@ class NewsController extends Controller
             // save the news
             $news->save();
 
-            Session::flash('flash_message', 'News successfully added!');
+            Session::flash('flash_message', 'News was successfully updated!');
             // redirect ----------------------------------------
             return Redirect::to('administration/news ');
 
