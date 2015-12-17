@@ -73,4 +73,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/administration', 'AdminController@index')->name('administration');
 	/* --> Actualités */
 	Route::resource('/administration/news', 'NewsController');
+	/* --> Exercices */
+	Route::get('administration/games', 'GameController@adminIndex');
 });

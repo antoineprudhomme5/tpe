@@ -23,4 +23,10 @@ class GameController extends Controller
         $games = Game::get();
         return view('games/index', ['games' => $games]);
     }
+
+    public function adminIndex()
+    {
+        $games = Game::get();
+        return view('administration/games/index', compact('games'));
+    }
 }

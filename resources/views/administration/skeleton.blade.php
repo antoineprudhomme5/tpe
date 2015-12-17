@@ -54,9 +54,9 @@
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="#">
+                    <a href="{{ url('administration/games') }}">
                         <i class="fa fa-briefcase"></i>
-                        <span>Exercises</span>
+                        <span>Games</span>
                     </a>
                 </li>
                 <li class="treeview">
