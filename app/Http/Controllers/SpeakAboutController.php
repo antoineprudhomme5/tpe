@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\GameSpeakAbout;
 use App\GameSpeakAboutRecord;
 use Auth;
+use DB;
 
 class SpeakAboutController extends Controller
 {
@@ -106,5 +107,20 @@ class SpeakAboutController extends Controller
         }
 
         return Response::json($response);
+    }
+
+    /**
+     * 10 synonym per page
+     * @return the view page in the admin section
+     */
+    public function dataManaging()
+    {
+        $speakAbouts = DB::table('game_speakabouts')
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+
+        $links = $speakAbouts->setPath('')->render();
+
+        return view('administration/games/speak_about/data_managing', compact('speakAbouts', 'links'));
     }
 }

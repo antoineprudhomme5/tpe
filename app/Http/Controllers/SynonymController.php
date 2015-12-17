@@ -124,7 +124,7 @@ class SynonymController extends Controller
     /**
      * Store a new synonym in database
      * @param Request $request
-     * @return the same view
+     * @return the original view
      */
     public function store(Request $request)
     {
@@ -141,6 +141,11 @@ class SynonymController extends Controller
         return Redirect::to('administration/games/data/synonyms');
     }
 
+    /**
+     * Remove a synonym from the database
+     * @param $id of the synonym to delete
+     * @return the original view
+     */
     public function remove($id)
     {
         $synonym = GameSynonym::find($id);

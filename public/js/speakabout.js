@@ -116,7 +116,7 @@ function speakAboutImage(data)
     console.log('img');
     var imageResource = '<h4>This picture</h4>';
         imageResource += '<p>You have 15 secondes before the chronometer starts. During this time, analyse thephoto below. After that, record yourself with Audacity or another software byspeaking 1 or 2 minutes on the picture.</p>';
-        imageResource += '<img id="resource_image" src="../../'+ data.link +'" class="img-responsive" alt="Responsive image">';
+        imageResource += '<img id="resource_image" src="../'+ data.link +'" class="img-responsive" alt="Responsive image">';
     $('#game-resource').html(imageResource);
 
     var analyzeTime = 5;
@@ -139,7 +139,7 @@ function speakAboutAudio (data)
         audioResource += ' <p>When your listening will be ended ,the chronometer will starts. During this time, analyse the photo below. After that, record yourself with Audacity or another software by speaking 1 or 2 minutes.</p>';
         audioResource += '<div class="text-center">' +
                             '<audio controls id="audio">' +
-                                '<source id="resource_audio" src="../../'+ data.link +'" type="audio/mpeg">' +
+                                '<source id="resource_audio" src="../'+ data.link +'" type="audio/mpeg">' +
                             '</audio>' +
                         '</div>';
     $('#game-resource').html(audioResource);

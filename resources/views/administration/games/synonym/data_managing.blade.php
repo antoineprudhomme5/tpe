@@ -5,7 +5,7 @@
     @parent
 
 @section('pageTitle')
-    <h1>Games <small>preview of the games</small></h1>
+    <h1>Synonym game <small>Here you can manage the data from the database easily.</small></h1>
 @endsection
 
 @section('content')
@@ -104,4 +104,5 @@
         </div>
     </div>
 
+@endsection
 @endsection

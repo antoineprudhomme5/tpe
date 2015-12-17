@@ -12,9 +12,9 @@ class SpeakAboutTableSeeder extends Seeder
     public function run()
     {
         DB::table('game_speakabouts')->insert(array(
-            array('link' => 'public/games_resources/speakabout/img1.jpg', 'type' => 'img'),
-            array('link' => 'public/games_resources/speakabout/img2.jpg', 'type' => 'img'),
-            array('link' => 'public/games_resources/speakabout/mario.mp3', 'type' => 'audio')
+            array('link' => 'games_resources/speakabout/img1.jpg', 'type' => 'img'),
+            array('link' => 'games_resources/speakabout/img2.jpg', 'type' => 'img'),
+            array('link' => 'games_resources/speakabout/mario.mp3', 'type' => 'audio')
         ));
     }
 }

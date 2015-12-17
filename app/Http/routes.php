@@ -80,6 +80,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('administration/games/synonym/store', 'SynonymController@store');
 	Route::post('administration/games/synonym/remove/{id}', ['uses' => 'SynonymController@remove']);
 
-	Route::get('administration/games/data/speak_about', 'SpeakAboutController@SynonymController@dataManaging');
+	Route::get('administration/games/data/speak_about', 'SpeakAboutController@dataManaging');
+	Route::post('administration/games/speak_about/store', 'SpeakAboutController@store');
+	Route::post('administration/games/speak_about/remove/{id}', ['uses' => 'SpeakAboutController@remove']);
 	Route::get('administration/games/evaluate/speak_about', 'SpeakAboutController@evaluate');
 });
