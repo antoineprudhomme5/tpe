@@ -6,14 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 use App\GameSynonym;
 use Auth;
+use DB;
 use App\GameHistory;
 
 class SynonymController extends Controller
 {
     /**
-     * Synonyms game get
+     * Return the game view
      */
     public function synonyms()
     {
@@ -21,6 +23,9 @@ class SynonymController extends Controller
         return view('games/synonyms');
     }
 
+    /**
+     * @return the game data
+     */
     public function get_synonyms()
     {
         $synonyms = GameSynonym::orderByRaw('RAND()')->take(4)->get();
@@ -29,7 +34,7 @@ class SynonymController extends Controller
     }
 
     /**
-     * Synonyms game post
+     * Save in database the score, update his profile and return a message to the user
      */
     public function post_synonyms(Request $request)
     {
@@ -99,6 +104,49 @@ class SynonymController extends Controller
 
         return Response::json($response);
 
+    }
 
+    /**
+     * 10 synonym per page
+     * @return the view page in the admin section
+     */
+    public function dataManaging()
+    {
+        $synonyms = DB::table('game_synonyms')
+                        ->orderBy('id', 'desc')
+                        ->paginate(10);
+
+        $links = $synonyms->setPath('')->render();
+
+        return view('administration/games/synonym/data_managing', compact('synonyms', 'links'));
+    }
+
+    /**
+     * Store a new synonym in database
+     * @param Request $request
+     * @return the same view
+     */
+    public function store(Request $request)
+    {
+        $synonym = new GameSynonym();
+
+        $synonym->word = $request->word;
+        $synonym->p1 = $request->p1;
+        $synonym->p2 = $request->p2;
+        $synonym->p3 = $request->p3;
+        $synonym->response = $request->response;
+
+        $synonym->save();
+
+        return Redirect::to('administration/games/data/synonyms');
+    }
+
+    public function remove($id)
+    {
+        $synonym = GameSynonym::find($id);
+
+        $synonym->delete();
+
+        return Redirect::to('administration/games/data/synonyms');
     }
 }

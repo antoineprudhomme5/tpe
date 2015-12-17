@@ -33,7 +33,7 @@
                                 </button>
                             </a>
                             @if($game->alias == 'speak_about')
-                            <a href="{{ url('administration/games/listen', $game->alias) }}">
+                            <a href="{{ url('administration/games/evaluate', $game->alias) }}">
                                 <button class="btn btn-success">
                                     <i class="fa fa-star"> </i>
                                     Grade students

@@ -75,4 +75,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('/administration/news', 'NewsController');
 	/* --> Exercices */
 	Route::get('administration/games', 'GameController@adminIndex');
+
+	Route::get('administration/games/data/synonyms', 'SynonymController@dataManaging');
+	Route::post('administration/games/synonym/store', 'SynonymController@store');
+	Route::post('administration/games/synonym/remove/{id}', ['uses' => 'SynonymController@remove']);
+
+	Route::get('administration/games/data/speak_about', 'SpeakAboutController@SynonymController@dataManaging');
+	Route::get('administration/games/evaluate/speak_about', 'SpeakAboutController@evaluate');
 });
