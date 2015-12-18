@@ -13,7 +13,7 @@ class GameSpeakAboutRecord extends Model
      */
     public function speakAbout()
     {
-        return $this->belongsTo('App\GameSpeakAbout');
+        return $this->belongsTo('App\GameSpeakAbout', 'speakabout_id');
     }
 
     /**

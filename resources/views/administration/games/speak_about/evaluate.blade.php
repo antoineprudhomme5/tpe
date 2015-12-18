@@ -46,7 +46,7 @@
                     <td>
                         @if($record->speakAbout->type == 'img')
                             <img src="{{ asset($record->speakAbout->link) }}" class="img-responsive img-speakabout-admin"/>
-                        @elseif($record->speakAbotu->type == 'audio')
+                        @elseif($record->speakAbout->type == 'audio')
                             <audio controls>
                                 <source src="{{ asset($record->speakAbout->link) }}" type="audio/mpeg">
                             </audio>
