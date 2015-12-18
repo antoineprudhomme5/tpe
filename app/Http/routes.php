@@ -83,5 +83,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('administration/games/data/speak_about', 'SpeakAboutController@dataManaging');
 	Route::post('administration/games/speak_about/store', 'SpeakAboutController@store');
 	Route::post('administration/games/speak_about/remove/{id}', ['uses' => 'SpeakAboutController@remove']);
+
 	Route::get('administration/games/evaluate/speak_about', 'SpeakAboutController@evaluate');
+	Route::post('administration/games/evaluate/speak_about/evaluate/{id}', ['uses' => 'SpeakAboutController@post_evaluate']);
 });

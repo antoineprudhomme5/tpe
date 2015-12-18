@@ -123,4 +123,15 @@ class SpeakAboutController extends Controller
 
         return view('administration/games/speak_about/data_managing', compact('speakAbouts', 'links'));
     }
+
+    public function evaluate()
+    {
+        $records = GameSpeakAboutRecord::with('user', 'speakAbout')
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+
+        $links = $records->setPath('')->render();
+
+        return view('administration/games/speak_about/evaluate', compact('records', 'links'));
+    }
 }
