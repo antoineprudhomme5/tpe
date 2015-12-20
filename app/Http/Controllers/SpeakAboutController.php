@@ -186,4 +186,12 @@ class SpeakAboutController extends Controller
 
         return Response::json('success');
     }
+
+    public function remove($id)
+    {
+        $resource = GameSpeakAbout::find($id);
+        $resource->delete();
+
+        return Redirect::to('administration/games/data/speak_about');
+    }
 }
