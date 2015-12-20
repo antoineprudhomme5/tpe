@@ -160,4 +160,9 @@ class SpeakAboutController extends Controller
 
         return Redirect::to('administration/games/evaluate/speak_about');
     }
+
+    public function store()
+    {
+        echo 'store';
+    }
 }

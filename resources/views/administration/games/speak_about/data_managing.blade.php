@@ -12,6 +12,7 @@
             height: auto;
         }
     </style>
+    {!! HTML::style('css/dragdrop.css') !!}
 @stop
 
 @section('pageTitle')
@@ -68,5 +69,23 @@
         </div>
     @endif
 
+    <meta name="csrf-token" content="{{ csrf_token() }}"/> <!-- token ajax request -->
+
+    <div class="row">
+        <div class="container">
+            <form class="form-horizontal" method="post" action="{{ url('administration/games/speak_about/store') }}" id="upload-form">
+                <h4>Drag the file below</h4>
+
+                <div class="upload-drop-zone" id="drop-zone">
+                    Just drag and drop your file here.
+                </div>
+            </form>
+        </div>
+    </div>
+
 @endsection
 @endsection
+
+@section('scripts')
+    {!! HTML::script('js/speakabout-admin.js') !!}
+@stop
