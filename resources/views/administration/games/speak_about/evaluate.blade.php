@@ -59,7 +59,11 @@
                     </td>
                     <td class="pull-right">
                         <form method="post" action="{{ url('administration/games/evaluate/speak_about/evaluate', $record->id) }}">
-                            <input type="text" class="form-control" name="mark" placehoder="/20"/>
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                                <label for="mark">Mark</label>
+                                <input type="text" class="form-control" id="mark" name="mark" placeholder="/20">
+                            </div>
                             <button class="btn btn-success">Send</button>
                         </form>
                     </td>

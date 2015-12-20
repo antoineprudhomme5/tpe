@@ -10,7 +10,10 @@ use App\Http\Controllers\Controller;
 use App\GameSpeakAbout;
 use App\GameSpeakAboutRecord;
 use Auth;
+use App\User;
+use Illuminate\Support\Facades\Redirect;
 use DB;
+use App\GameHistory;
 
 class SpeakAboutController extends Controller
 {
@@ -128,10 +131,33 @@ class SpeakAboutController extends Controller
     {
         $records = GameSpeakAboutRecord::with('user', 'speakAbout')
             ->orderBy('id', 'desc')
-            ->paginate(10);
+            ->where('points', '=', 0)
+            ->paginate(5);
 
         $links = $records->setPath('')->render();
 
         return view('administration/games/speak_about/evaluate', compact('records', 'links'));
+    }
+
+    public function post_evaluate(Request $request,$id)
+    {
+        $points = $request->mark * 5;
+
+        $record = GameSpeakAboutRecord::find($id);
+        $record->points = $points;
+
+        $history = new GameHistory();
+        $history->user_id = $record->user_id;
+        $history->game_id = 2;
+        $history->points = $points;
+
+        $student = User::find($record->user_id);
+        $student->points = $student->points + $points;
+
+        $student->save();
+        $history->save();
+        $record->save();
+
+        return Redirect::to('administration/games/evaluate/speak_about');
     }
 }

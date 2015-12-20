@@ -81,7 +81,7 @@ class SynonymController extends Controller
                             </div>
                         </div>'.$score_table;
 
-            $user->points = $points;
+            $user->points = $user->points + $points;
             $user->save();
 
             $history = new GameHistory();
