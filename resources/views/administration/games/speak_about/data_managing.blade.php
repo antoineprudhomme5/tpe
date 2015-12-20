@@ -73,7 +73,7 @@
 
     <div class="row">
         <div class="container">
-            <form class="form-horizontal" method="post" action="{{ url('administration/games/speak_about/store') }}" id="upload-form">
+            <form class="form-horizontal" id="upload-form">
                 <h4>Drag the file below</h4>
 
                 <div class="upload-drop-zone" id="drop-zone">

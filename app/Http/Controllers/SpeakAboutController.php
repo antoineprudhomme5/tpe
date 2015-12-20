@@ -161,8 +161,29 @@ class SpeakAboutController extends Controller
         return Redirect::to('administration/games/evaluate/speak_about');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        echo 'store';
+        try
+        {
+            $file = $request->file('file');
+
+            $destinationPath = 'games_resources/speakabout';
+            $fileName = $file->getClientOriginalName();
+            $file->move($destinationPath, $fileName);
+
+            $resource = new GameSpeakAbout();
+
+            $resource->type = $request->type;
+            $resource->link = $destinationPath.'/'.$fileName;
+
+            $resource->save();
+
+        }
+        catch(Exception $e)
+        {
+            return Response::json('error');
+        }
+
+        return Response::json('success');
     }
 }

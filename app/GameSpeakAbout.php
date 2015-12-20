@@ -8,6 +8,8 @@ class GameSpeakAbout extends Model
 {
     protected $table = 'game_speakabouts';
 
+    public $timestamps = false;
+
     /**
      * One game ressource have many record
      */
