@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SpeakAboutTableSeeder::class);
         $this->call(ProfilesQuestionsTableSeeder::class);
         $this->call(ProfilesAnswersTableSeeder::class);
+        $this->call(AchievementTableSeeder::class);
 
         Model::reguard();
     }
