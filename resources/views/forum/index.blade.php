@@ -9,15 +9,7 @@
 @stop
 
 @section('content')
-	<div class="container app-content">
-
-        <div>
-            <br>
-            <a href="{{ url('/') }}">
-                <button class="btn btn-primary">return to the home page</button>
-            </a>
-            <hr>
-        </div>
+	<div class="app-content">
 
         <div class="jumbotron">
             <div class="container">
@@ -33,19 +25,24 @@
             </div>
         </div>
 
-        <table class="table table-condensed table-hover">
-        @foreach ($topics as $topic)
-            <tr>
-                <td>{{ $topic->id }}</td>
-                <td>By <strong>{{ $topic->user->firstname }} {{ $topic->user->name }}</strong></td>
-                <td><span class="label pull-right"></span></td>
-                <td><strong>{{ $topic->title }}</strong></td>
-                <td>{{ $topic->created_at->format('d M Y') }}</td>
-                <td>
-                    <a href="{{ url('/forum/show', $topic->id) }}"><button class="btn btn-primary">see</button></a>
-                </td>
-            </tr>
-        @endforeach
-        <table>
+        <div class="container">
+            <table class="table table-condensed table-hover">
+                @foreach ($topics as $topic)
+                    <tr>
+                        <td>{{ $topic->id }}</td>
+                        <td>By <strong>{{ $topic->user->firstname }} {{ $topic->user->name }}</strong></td>
+                        <td><span class="label pull-right"></span></td>
+                        <td><strong>{{ $topic->title }}</strong></td>
+                        <td>{{ $topic->created_at->format('d M Y') }}</td>
+                        <td>
+                            <a href="{{ url('/forum/show', $topic->id) }}">
+                                <button class="btn btn-primary">see</button>
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+            </table>
+        </div>
+
     </div>
-@stop
+@endsection
