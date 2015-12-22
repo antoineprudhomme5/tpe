@@ -92,19 +92,24 @@ class SynonymController extends Controller
 
             $history->save();
 
-            $this->check_achievements();
+            $achievement = $this->check_achievements();
+
+            if($achievement)
+            {
+                $response .= '<br>';
+                $response .= '<div>'
+                                .'<h3>New achievement !</h3> <h4>'.$achievement['title'].'</h4>'
+                                .'<img src="{{ asset('.$achievement['link'].') }}" class="img-responsive"/>'
+                            .'</div>';
+            }
 
         }
         catch(Exception $e)
         {
-            $response = '<div class="alert alert-danger" role="alert">
-                            <strong>Validation Error </strong>'
-                            .$e.
-                        '</div>';
             return Response::json($response);
         }
 
-        return Response::json($response);
+        return Response::json($response, $achievement);
 
     }
 
@@ -186,9 +191,16 @@ class SynonymController extends Controller
 
         if($achievement != -1)
         {
-            $achievement = $achievement[0]->id;
+            $id = $achievement[0]->id;
             $user = Auth::user();
-            $user->achievements()->attach($achievement);
+            $user->achievements()->attach($id);
+
+            $return = ['link' => $achievement[0]->link, 'title' => $achievement[0]->title];
+            return $return;
+        }
+        else
+        {
+            return false;
         }
     }
 }
