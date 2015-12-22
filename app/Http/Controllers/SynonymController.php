@@ -162,7 +162,33 @@ class SynonymController extends Controller
      */
     private function check_achievements()
     {
-        $user = Auth::user();
-        $user->achievements()->attach(1);
+        $games = DB::table('games_history')->where('user_id', '=', Auth::id())->count();
+        $achievement = -1;
+
+        switch($games)
+        {
+            case 1:
+                $achievement = DB::table('achievements')->where('link', '=', 'badges/synonyms1.png')->get();
+                break;
+            case 10:
+                $achievement = DB::table('achievements')->where('link', '=', 'badges/synonyms10.png')->get();
+                break;
+            case 25:
+                $achievement = DB::table('achievements')->where('link', '=', 'badges/synonyms25.png')->get();
+                break;
+            case 50:
+                $achievement = DB::table('achievements')->where('link', '=', 'badges/synonyms50.png')->get();
+                break;
+            case 100:
+                $achievement = DB::table('achievements')->where('link', '=', 'badges/synonyms100.png')->get();
+                break;
+        }
+
+        if($achievement != -1)
+        {
+            $achievement = $achievement[0]->id;
+            $user = Auth::user();
+            $user->achievements()->attach($achievement);
+        }
     }
 }
