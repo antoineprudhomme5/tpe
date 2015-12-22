@@ -86,7 +86,8 @@
                                         <label for="radio3">syn3</label>
                                     </div>
                                 </div>
-                                <ul class="list-inline pull-right">
+                                <br>
+                                <ul class="list-inline">
                                     <li>
                                         <button type="button" class="btn btn-primary next-step">Save and continue
                                         </button>
@@ -113,7 +114,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <ul class="list-inline pull-right">
+                                <br>
+                                <ul class="list-inline">
                                     <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
                                 </ul>
                             </div>
@@ -137,7 +139,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <ul class="list-inline pull-right">
+                                <br>
+                                <ul class="list-inline">
                                     <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
                                 </ul>
                             </div>
@@ -161,6 +164,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <br>
                                 <ul class="list-inline pull-right">
                                     <li><button type="submit" class="btn btn-success btn-info-full next-step">Submit</button></li>
                                 </ul>
