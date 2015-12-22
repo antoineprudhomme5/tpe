@@ -84,4 +84,12 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany('App\ProfileAnswer');
     }
+
+    /**
+     * @return all the achievements from this user
+     */
+    public function achievements()
+    {
+        return $this->belongsToMany('App\Achievement');
+    }
 }
