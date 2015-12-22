@@ -36,10 +36,11 @@ class CreateProfilesAnswersTable extends Migration
     public function down()
     {
         Schema::table('profiles_answers', function(Blueprint $table) {
-            $table->dropForeign('profile_question_id_foreign');
-            $table->dropForeign('profile_question_id_foreign');
-
+            $table->dropForeign('profiles_answers_user_id_foreign');
         });
-        Schema::drop('users');
+        Schema::table('profiles_answers', function(Blueprint $table) {
+            $table->dropForeign('profiles_answers_profile_question_id_foreign');
+        });
+        Schema::drop('profiles_answers');
     }
 }

@@ -90,6 +90,6 @@ class User extends Model implements AuthenticatableContract,
      */
     public function achievements()
     {
-        return $this->belongsToMany('App\Achievement');
+        return $this->belongsToMany('App\Achievement', 'users_achievements');
     }
 }

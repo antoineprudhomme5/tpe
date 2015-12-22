@@ -12,9 +12,9 @@ class Achievement extends Model
 
     /**
      * @return all the users who have this achievement
-     */
+     *//*
     public function users()
     {
         return $this->belongsToMany('App\User');
-    }
+    }*/
 }

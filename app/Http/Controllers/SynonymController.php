@@ -92,6 +92,8 @@ class SynonymController extends Controller
 
             $history->save();
 
+            $this->check_achievements();
+
         }
         catch(Exception $e)
         {
@@ -153,5 +155,14 @@ class SynonymController extends Controller
         $synonym->delete();
 
         return Redirect::to('administration/games/data/synonyms');
+    }
+
+    /**
+     * Check if the user win a new achievements or not
+     */
+    private function check_achievements()
+    {
+        $user = Auth::user();
+        $user->achievements()->attach(1);
     }
 }
