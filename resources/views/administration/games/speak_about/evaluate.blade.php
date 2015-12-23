@@ -31,6 +31,7 @@
         <table class="table table-hover">
             <thead>
             <tr>
+                <th>Remove</th>
                 <th>Student</th>
                 <th>Subject</th>
                 <th>Record</th>
@@ -40,6 +41,12 @@
             <tbody>
             @foreach($records as $record)
                 <tr>
+                    <td>
+                        <form action="{{ url('administration/games/evaluate/speak_about/delete', $record->id) }}" method="post">
+                            {{ csrf_field() }}
+                            <button class="btn btn-danger">X</button>
+                        </form>
+                    </td>
                     <td>
                         {{ $record->user->firstname }} {{ $record->user->name }}
                     </td>

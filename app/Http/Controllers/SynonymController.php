@@ -168,7 +168,7 @@ class SynonymController extends Controller
      */
     private function check_achievements()
     {
-        $games = DB::table('games_history')->where('user_id', '=', Auth::id())->count();
+        $games = DB::table('games_history')->where('user_id', '=', Auth::id())->where('game_id', '=', 1)->count();
         $achievement = -1;
 
         switch($games)
