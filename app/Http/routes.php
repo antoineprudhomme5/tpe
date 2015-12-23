@@ -86,4 +86,5 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('administration/games/evaluate/speak_about', 'SpeakAboutController@evaluate');
 	Route::post('administration/games/evaluate/speak_about/evaluate/{id}', ['uses' => 'SpeakAboutController@post_evaluate']);
+	Route::post('administration/games/evaluate/speak_about/delete/{id}', ['uses' => 'SpeakAboutController@delete_record']);
 });
