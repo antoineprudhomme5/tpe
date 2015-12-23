@@ -1,37 +1,85 @@
 @extends('templates.app')
 
 @section('content')
+    @include('partials.alerts.flash')
     <div class="container-fluid profile-theme" id="hero">
         <div class="wrapper container">
             <div class="page-header">
-                <h1>Your profile</h1>
+                <div class="block scheme-white">
+                    <h2 class="user-username"><b>{{ ucfirst(Auth::user()->firstname) }}</b> {{ ucfirst(Auth::user()->name) }} <small class="user-label">Casual</small></h2>
+                </div>
             </div>
             <div class="row">
-                <div class="col-xs-12">
-                    <div class="block block-sm block-header scheme-white">
-                        <h4 class="catcher self">This session is empty. Edit your profile to fill it.</h4>
+                <div class="col-sm-4 col-xs-12 hidden-xs">
+                    <div class="hidden-xs">
+                        <div class="block scheme-white text-center">
+                            @if (Auth::user()->avatar === '' || Auth::user()->avatar === null)
+                                <p>You haven't set any profile picture yet. Click below on <i>Add profile picture</i> to set one.</p>
+                                <button type="button" class="btn btn-app-reverse btn-lg" data-toggle="modal" data-target="#addPicture">Add profile picture</button>
+                            @else
+                                <img class="pic" src="{{ asset("/img/avatars") }}/{{Auth::user()->avatar}}" alt="">
+                                <br>
+                                <button type="button" class="btn btn-app-reverse btn-lg" data-toggle="modal" data-target="#addPicture">Modify</button>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-xs-12">
+                    <div class="visible-xs">
+                        <div class="block text-center">
+                            @if (Auth::user()->avatar === '' || Auth::user()->avatar === null)
+                                <p>You haven't set any profile picture yet. Click below on <i>Add profile picture</i> to set one.</p>
+                                <button type="button" class="btn btn-app-reverse btn-lg" data-toggle="modal" data-target="#addPicture">Add profile picture</button>
+                            @else
+                                <img class="pic" src="{{ asset("/img/avatars") }}/{{Auth::user()->avatar}}" alt="">
+                                <br>
+                                <button type="button" class="btn btn-app-reverse btn-lg" data-toggle="modal" data-target="#addPicture">Modify</button>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="block no-padding block-sm scheme-white">
+                        <ul class="questions-answers">
+                            @foreach($questions as $key => $q)
+                                <li class="question-answer">
+                                    <h3>{{$q->topic}}</h3>
+                                    <p>{{$q->answer}}</p>
+                                </li>
+                            @endforeach
+                        </ul>
+                        <div class="text-center">
+                            <br>
+                            <a class="btn btn-lg btn-app-reverse" href="{{url("/profile/about")}}" role="button">Edit</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-sm-4 col-xs-12 hidden-xs">
-                <div class="hidden-xs">
-                    <div class="block scheme-white text-center">
-                        <img src="{{ asset("/img/students/avatar.jpg") }}" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-8 col-xs-12">
-                <div class="block block-sm white-scheme">
-                    <h2 class="user-username">{{ ucfirst(Auth::user()->firstname) }} <small class="user-label">Casual</small></h2>
-                    <p class="profile-info">
-                        <i class="fa fa-user fa-fw"></i>
-                    </p>
-                </div>
-            </div>
-        </div>
-
     </div>
+    <div class="modal fade" id="addPicture" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Profile picture</h4>
+                </div>
+                {!! Form::open(
+                        ['route' => 'profile.picture',
+                         'files' => true
+                         ]
+                     )
+                     !!}
+                    <div class="modal-body">
+                            <input type="file" name="avatar" id="avatar" required>
+                    </div>
+                    <div class="modal-footer">
+                        {!! Form::submit('Save', ['class' => 'btn btn-app-reverse']) !!}
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                {!! Form::close() !!}
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    @section('scripts')
+        {!! HTML::script('js/alert.js') !!}
+    @endsection
 @endsection

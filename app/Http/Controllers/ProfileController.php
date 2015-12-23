@@ -22,7 +22,11 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profile.index');
+        $questions = ProfileQuestion::join('profiles_answers', 'profiles_questions.id', '=', 'profiles_answers.profile_question_id')
+            ->where('profiles_answers.user_id', Auth::user()->id)
+            ->get();
+
+        return view('profile.index', ['questions' => $questions]);
     }
 
     /**
@@ -32,7 +36,6 @@ class ProfileController extends Controller
      */
     public function about()
     {
-        //$questions = ProfileQuestion::all();
         $questions = ProfileQuestion::join('profiles_answers', 'profiles_questions.id', '=', 'profiles_answers.profile_question_id')
             ->where('profiles_answers.user_id', Auth::user()->id)
             ->get();
@@ -60,5 +63,66 @@ class ProfileController extends Controller
             $answer->save();
         }
         return Redirect::back()->with('success', 'Profile updated!');
+    }
+
+    public function uploadPicture(Request $request){
+        try{
+            $user = User::find(Auth::user()->id);
+            $file = $request->file('avatar');
+
+            if ($file) {
+
+                if ($_FILES['avatar']['error'] > 0) return Redirect::back()->with('error', 'An error has occured');
+
+                $extensions_valides = array('jpg', 'png', 'jpeg', 'gif');
+                $extension_upload = strtolower(substr(strrchr($_FILES['avatar']['name'], '.') , 1));
+
+                if (!in_array($extension_upload, $extensions_valides));
+
+                $uniq = $this->uniqString(40);
+                $fileName = $uniq.'.'.$extension_upload;
+                $fileName = (string)$fileName;
+
+                $destination = "img/avatars/";
+
+                $file->move($destination, $fileName);
+
+                $user->avatar = $fileName;
+                $user->save();
+            }
+
+        }catch(\Exception $e){
+            return Redirect::back()->with('error', 'An error has occured');
+        }
+        return Redirect::back()->with('success', 'Profile picture updated!');
+    }
+
+    protected function crypto_rand_secure($min, $max) {
+        $range = $max - $min;
+        if ($range < 0) return $min; // not so random...
+        $log = log($range, 2);
+        $bytes = (int) ($log / 8) + 1; // length in bytes
+        $bits = (int) $log + 1; // length in bits
+        $filter = (int) (1 << $bits) - 1; // set all lower bits to 1
+        do {
+            $rnd = hexdec(bin2hex(openssl_random_pseudo_bytes($bytes)));
+            $rnd = $rnd & $filter; // discard irrelevant bits
+        }while ($rnd >= $range);
+
+        return $min + $rnd;
+    }
+
+
+    protected function uniqString($length) {
+        $_SESSION['token']="";
+        unset($_SESSION['token']);
+        $token = "";
+        $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
+        $codeAlphabet.= "0123456789";
+        for($i = 0; $i < $length; $i++){
+            $token .= $codeAlphabet[$this->crypto_rand_secure(0,strlen($codeAlphabet))];
+        }
+        return $token;
     }
 }

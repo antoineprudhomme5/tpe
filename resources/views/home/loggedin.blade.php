@@ -15,7 +15,7 @@ use Carbon\Carbon;
                 <div class="col-sm-4 col-xs-12">
                     <div class="block home-dashboard scheme-blue">
                         <div class="home-pic hidden-sm">
-                            <a href="#"><img class="pic img-circle" src="{{ asset("/img/students/avatar.jpg") }}" alt=""></a>
+                            <a href="#"><img class="pic img-circle" src="{{ asset("/img/avatars/avatar.jpg") }}" alt=""></a>
                         </div>
                         <h4 class="block-heading home-username">
                             <a href="/{{ Auth::user()->firstname }}">{{ ucfirst(Auth::user()->firstname) }} {{ ucfirst(Auth::user()->name) }}</a>
