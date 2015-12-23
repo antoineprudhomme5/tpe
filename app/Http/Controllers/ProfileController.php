@@ -125,4 +125,12 @@ class ProfileController extends Controller
         }
         return $token;
     }
+
+    /**
+     * Return the view achievements with all the users games informations
+     */
+    public function achievements()
+    {
+        return view('profile/achievements');
+    }
 }

@@ -65,6 +65,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/profile/about', 'ProfileController@about');
 	Route::post('/profile/about', 'ProfileController@update')->name('profile.about');
 	Route::post('/profile/picture', 'ProfileController@uploadPicture')->name('profile.picture');
+	Route::get('/achievements', 'ProfileController@achievements');
 
 	/*
 	|--------------------------------------------------------------------------

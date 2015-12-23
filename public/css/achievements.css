@@ -1,0 +1,10 @@
+.panel-red .panel-heading
+{
+    background: #C62828;
+    color: white;
+}
+
+.panel-red .panel-footer
+{
+    border: 1px solid #C62828;
+}
