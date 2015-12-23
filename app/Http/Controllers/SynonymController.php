@@ -94,14 +94,14 @@ class SynonymController extends Controller
 
             $achievement = $this->check_achievements();
 
-            if($achievement)
+            /*if($achievement)
             {
                 $response .= '<br>';
                 $response .= '<div>'
                                 .'<h3>New achievement !</h3> <h4>'.$achievement['title'].'</h4>'
                                 .'<img src="{{ asset('.$achievement['link'].') }}" class="img-responsive"/>'
                             .'</div>';
-            }
+            }*/
 
         }
         catch(Exception $e)
@@ -109,7 +109,8 @@ class SynonymController extends Controller
             return Response::json($response);
         }
 
-        return Response::json($response, $achievement);
+        $return = json_encode(['response' => $response, 'achievement' => $achievement]);
+        return Response::json($return);
 
     }
 

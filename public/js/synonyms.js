@@ -19,7 +19,6 @@ $(document).ready(function () {
         success: function(data)
         {
             values = values.concat(data);
-            console.log(values);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             document.write(JSON.stringify(jqXHR));
@@ -96,9 +95,17 @@ function submit()
         dataType : 'json',
         success: function(data)
         {
-            console.log(data);
-            $('#response').html(data);
+            var data_parsed = JSON.parse(data);
+
+            $('#response').html(data_parsed['response']);
             $('#loading').css('display', 'none');
+
+            if(data_parsed['achievement'])
+            {
+                $('#response').append('<div class="text-center"><h2>New achievement</h2> <h3>'+ data_parsed["achievement"].title +'</h3></div>');
+                $('#response').append('<div><img class="img-responsive achievement" src="../'+ data_parsed['achievement'].link +'"/></div>');
+
+            }
         },
         error: function(jqXHR, textStatus, errorThrown) {
             document.write(JSON.stringify(jqXHR));
