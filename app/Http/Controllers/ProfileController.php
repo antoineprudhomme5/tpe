@@ -131,6 +131,9 @@ class ProfileController extends Controller
      */
     public function achievements()
     {
-        return view('profile/achievements');
+        $user = User::find(Auth::id());
+        $points = $user->points;
+
+        return view('profile/achievements', compact('points'));
     }
 }

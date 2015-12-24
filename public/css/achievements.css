@@ -8,3 +8,26 @@
 {
     border: 1px solid #C62828;
 }
+
+.panel-purple .panel-heading
+{
+    background: #4A148C;
+    color: white;
+}
+
+.panel-purple .panel-footer
+{
+    border: 1px solid #4A148C;
+}
+
+
+.panel-green .panel-heading
+{
+    background: #1B5E20;
+    color: white;
+}
+
+.panel-green .panel-footer
+{
+    border: 1px solid #1B5E20;
+}
