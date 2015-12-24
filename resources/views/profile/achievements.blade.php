@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <div class="panel-footer text-center">
-                            <h2>{{ $points }}</h2>
+                            <h2>{{ $user->points }}</h2>
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                                     <i class="fa fa-mortar-board fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <h2 class="huge">Rank</h2>
+                                    <h2 class="huge">Ranking</h2>
                                 </div>
                             </div>
                         </div>
@@ -55,31 +55,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Jean michel</td>
-                                        <td>589</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Jean michel</td>
-                                        <td>589</td>
-                                    </tr>
+                                    @foreach($topranking as $toprank)
+                                        <tr>
+                                            <th scope="row">{{ $toprank->id }}</th>
+                                            <td>{{ $toprank->firstname }} {{ $toprank->name }}</td>
+                                            <td>{{ $toprank->points }}</td>
+                                        </tr>
+                                    @endforeach
                                     <tr class="active">
-                                        <th scope="row">2</th>
-                                        <td>Antoine prudhomme</td>
-                                        <td>666</td>
+                                        <th scope="row">{{ $user->id }}</th>
+                                        <td>{{ $user->firstname }} {{ $user->name }}</td>
+                                        <td>{{ $user->points }}</td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Jean michel</td>
-                                        <td>589</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Jean michel</td>
-                                        <td>589</td>
-                                    </tr>
+                                    @foreach($lowranking as $lowrank)
+                                        <tr>
+                                            <th scope="row">{{ $lowrank->id }}</th>
+                                            <td>{{ $lowrank->firstname }} {{ $lowrank->name }}</td>
+                                            <td>{{ $lowrank->points }}</td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                             <div class="clearfix"></div>
@@ -105,38 +99,22 @@
                         <div class="panel-footer">
                             <table class="table table-condensed">
                                 <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Game</th>
-                                    <th>Points</th>
-                                </tr>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Game</th>
+                                        <th>Points</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Synonyms</td>
-                                    <td>20</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Synonyms</td>
-                                    <td>0</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Synonyms</td>
-                                    <td>40</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>Synonyms</td>
-                                    <td>30</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>Synonyms</td>
-                                    <td>10</td>
-                                </tr>
+                                    <?php $i = 1; ?>
+                                    @foreach($games as $g)
+                                        <tr>
+                                            <th scope="row">{{ $i }}</th>
+                                            <td>{{ $g->game->title }}</td>
+                                            <td>{{ $g->points }}</td>
+                                        </tr>
+                                        <?php $i++; ?>
+                                    @endforeach
                                 </tbody>
                             </table>
                             <div class="clearfix"></div>

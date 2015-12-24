@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\GameHistory;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -11,6 +12,7 @@ use App\ProfileQuestion;
 use App\ProfileAnswer;
 use App\User;
 use Input;
+use DB;
 
 class ProfileController extends Controller
 {
@@ -132,8 +134,26 @@ class ProfileController extends Controller
     public function achievements()
     {
         $user = User::find(Auth::id());
-        $points = $user->points;
 
-        return view('profile/achievements', compact('points'));
+        $topranking = DB::table('users')
+                            ->orderBy('points', 'desc')
+                            ->where('points', '>', $user->points)
+                            ->take(2)
+                            ->get();
+
+        $lowranking = DB::table('users')
+                            ->orderBy('points', 'desc')
+                            ->where('points', '<', $user->points)
+                            ->take(2)
+                            ->get();
+
+        $games = GameHistory::with('game')
+                            ->orderBy('created_at', 'desc')
+                            ->where('user_id', '=', $user->id)
+                            ->take(5)
+                            ->get();
+
+
+        return view('profile/achievements', compact('user', 'topranking', 'lowranking', 'games'));
     }
 }
