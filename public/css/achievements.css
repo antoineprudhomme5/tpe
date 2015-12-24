@@ -42,3 +42,9 @@
 {
     border: 1px solid #FBC02D;
 }
+
+.thumbnail
+{
+    background: transparent;
+    border: none;
+}

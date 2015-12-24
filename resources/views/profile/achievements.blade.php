@@ -99,21 +99,26 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <?php
+                                    $pos = $row - sizeof($topranking);
+                                ?>
                                 @foreach($topranking as $toprank)
                                     <tr>
-                                        <th scope="row">{{ $toprank->id }}</th>
+                                        <th scope="row">{{ $pos }}</th>
                                         <td>{{ $toprank->firstname }} {{ $toprank->name }}</td>
                                         <td>{{ $toprank->points }}</td>
                                     </tr>
+                                    <?php $pos++; ?>
                                 @endforeach
                                 <tr class="active">
-                                    <th scope="row">{{ $user->id }}</th>
+                                    <th scope="row">{{ $pos }}</th>
                                     <td>{{ $user->firstname }} {{ $user->name }}</td>
                                     <td>{{ $user->points }}</td>
                                 </tr>
                                 @foreach($lowranking as $lowrank)
+                                    <?php $pos++; ?>
                                     <tr>
-                                        <th scope="row">{{ $lowrank->id }}</th>
+                                        <th scope="row">{{ $pos }}</th>
                                         <td>{{ $lowrank->firstname }} {{ $lowrank->name }}</td>
                                         <td>{{ $lowrank->points }}</td>
                                     </tr>

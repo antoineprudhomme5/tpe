@@ -136,6 +136,20 @@ class ProfileController extends Controller
     {
         $user = User::find(Auth::id());
 
+        $users = DB::table('users')->orderBy('points', 'desc')->get();
+
+        $i = 0;
+        $row = 0;
+        $length = sizeof($users);
+        while(($row == 0) && ($i < $length))
+        {
+            if($users[$i]->id == $user->id)
+            {
+                $row = $i+1;
+            }
+            $i++;
+        }
+
         $topranking = DB::table('users')
                             ->orderBy('points', 'desc')
                             ->where('points', '>', $user->points)
@@ -157,6 +171,7 @@ class ProfileController extends Controller
         $badges = Auth::user()->achievements()->get();
 
 
-        return view('profile/achievements', compact('user', 'topranking', 'lowranking', 'games', 'badges'));
+        return view('profile/achievements', compact('user', 'topranking', 'lowranking', 'games', 'badges', 'row'));
     }
+
 }
