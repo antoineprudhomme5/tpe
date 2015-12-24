@@ -141,11 +141,16 @@
                             </div>
                         </div>
                         <div class="panel-footer">
-                            @foreach($badges as $badge)
-                                <div>
-                                    {{ $badge->title }}
-                                </div>
-                            @endforeach
+                            <div class="row">
+                                @foreach($badges as $badge)
+                                    <div class="col-xs-6 col-md-3 text-center">
+                                        <h3>{{ $badge->title }}</h3>
+                                        <div class="thumbnail">
+                                            <img src="{{ asset($badge->link) }}" alt="{{ $badge->title }}">
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
