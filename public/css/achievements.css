@@ -22,12 +22,23 @@
 
 
 .panel-green .panel-heading
-{
-    background: #1B5E20;
-    color: white;
-}
+ {
+     background: #1B5E20;
+     color: white;
+ }
 
 .panel-green .panel-footer
 {
     border: 1px solid #1B5E20;
+}
+
+.panel-yellow .panel-heading
+{
+    background: #FBC02D;
+    color: white;
+}
+
+.panel-yellow .panel-footer
+{
+    border: 1px solid #FBC02D;
 }

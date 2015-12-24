@@ -32,59 +32,11 @@
                         </div>
                     </div>
                 </div>
-                <!-- RANK -->
-                <div class="col-lg-6 col-md-12">
-                    <div class="panel panel-purple">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-mortar-board fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <h2 class="huge">Ranking</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel-footer">
-                            <table class="table table-condensed">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Name</th>
-                                        <th>Points</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($topranking as $toprank)
-                                        <tr>
-                                            <th scope="row">{{ $toprank->id }}</th>
-                                            <td>{{ $toprank->firstname }} {{ $toprank->name }}</td>
-                                            <td>{{ $toprank->points }}</td>
-                                        </tr>
-                                    @endforeach
-                                    <tr class="active">
-                                        <th scope="row">{{ $user->id }}</th>
-                                        <td>{{ $user->firstname }} {{ $user->name }}</td>
-                                        <td>{{ $user->points }}</td>
-                                    </tr>
-                                    @foreach($lowranking as $lowrank)
-                                        <tr>
-                                            <th scope="row">{{ $lowrank->id }}</th>
-                                            <td>{{ $lowrank->firstname }} {{ $lowrank->name }}</td>
-                                            <td>{{ $lowrank->points }}</td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div class="row">
                 <!-- RANK -->
-                <div class="col-lg-6 col-md-12">
+                <div class="col-lg-6 col-md-12 col-md-offset-6">
                     <div class="panel panel-green">
                         <div class="panel-heading">
                             <div class="row">
@@ -124,7 +76,79 @@
             </div>
 
             <div class="row">
-                liste des badges
+                <!-- GAMES HISTORY -->
+                <div class="col-lg-6 col-md-12">
+                    <div class="panel panel-purple">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-mortar-board fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <h2 class="huge">Ranking</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <table class="table table-condensed">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Points</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($topranking as $toprank)
+                                    <tr>
+                                        <th scope="row">{{ $toprank->id }}</th>
+                                        <td>{{ $toprank->firstname }} {{ $toprank->name }}</td>
+                                        <td>{{ $toprank->points }}</td>
+                                    </tr>
+                                @endforeach
+                                <tr class="active">
+                                    <th scope="row">{{ $user->id }}</th>
+                                    <td>{{ $user->firstname }} {{ $user->name }}</td>
+                                    <td>{{ $user->points }}</td>
+                                </tr>
+                                @foreach($lowranking as $lowrank)
+                                    <tr>
+                                        <th scope="row">{{ $lowrank->id }}</th>
+                                        <td>{{ $lowrank->firstname }} {{ $lowrank->name }}</td>
+                                        <td>{{ $lowrank->points }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Achievements -->
+                <div class="col-lg-12 col-md-12">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-bar-chart fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <h2 class="huge">Achievements</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            @foreach($badges as $badge)
+                                <div>
+                                    {{ $badge->title }}
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>

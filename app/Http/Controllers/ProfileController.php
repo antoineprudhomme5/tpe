@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Achievement;
 use App\GameHistory;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -153,7 +154,9 @@ class ProfileController extends Controller
                             ->take(5)
                             ->get();
 
+        $badges = Auth::user()->achievements()->get();
 
-        return view('profile/achievements', compact('user', 'topranking', 'lowranking', 'games'));
+
+        return view('profile/achievements', compact('user', 'topranking', 'lowranking', 'games', 'badges'));
     }
 }
