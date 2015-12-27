@@ -52,10 +52,10 @@
                             <span class="input-group-addon"><i class="fa fa-key"></i></span>
                             <input type="password" name="password" id="password" class="form-control" placeholder="Password">
                         </div>
-                        <a href="{{ url('/password/email') }}">Can't log in?</a>
+                        {{--<a href="{{ url('/password/email') }}">Can't log in?</a>--}}
                         <div class="modal-footer">
+                            <input type="submit" class="btn btn-app-reverse" value="Log in">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <input type="submit" class="btn btn-primary" value="Log in">
                         </div>
                     </form>
                 </div>
@@ -82,16 +82,12 @@
                             <span class="input-group-addon"><i class="fa fa-key"></i></span>
                             <input type="password" name="password" id="password" class="form-control" placeholder="Password">
                         </div>
-                        <a href="{{ url('/password/email') }}">Can't log in?</a>
+                        {{--<a href="{{ url('/password/email') }}">Can't log in?</a>--}}
                         <div class="modal-footer">
+                            <input type="submit" class="btn btn-app-reverse" value="Sing up">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <input type="submit" class="btn btn-primary" value="Log in">
                         </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>

@@ -66,7 +66,7 @@ class ProfileController extends Controller
             $answer->answer = $value;
             $answer->save();
         }
-        return Redirect::back()->with('success', 'Profile updated!');
+        return Redirect::route('profile.index')->with('success', 'Profile updated!');
     }
 
     /**

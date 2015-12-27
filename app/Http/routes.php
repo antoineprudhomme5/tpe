@@ -62,6 +62,7 @@ Route::group(['middleware' => 'auth'], function () {
 	|--------------------------------------------------------------------------
 	*/
 	Route::get('/members', 'MemberController@index');
+	Route::get('/members/{name}/{id}', 'MemberController@show');
 
 
 	/*
@@ -69,7 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
 	| Profile
 	|--------------------------------------------------------------------------
 	*/
-	Route::get('/profile', 'ProfileController@index');
+	Route::get('/profile', 'ProfileController@index')->name('profile.index');
 	Route::get('/profile/about', 'ProfileController@about');
 	Route::post('/profile/about', 'ProfileController@update')->name('profile.about');
 	Route::post('/profile/picture', 'ProfileController@uploadPicture')->name('profile.picture');

@@ -4,9 +4,11 @@
     @include('partials.alerts.flash')
     <div class="container-fluid profile-theme" id="hero">
         <div class="wrapper container">
-            <div class="page-header">
-                <div class="block scheme-white">
-                    <h2 class="user-username"><b>{{ ucfirst(Auth::user()->firstname) }}</b> {{ ucfirst(Auth::user()->name) }} <small class="user-label">Casual</small></h2>
+            <div class="block-header block-sm block scheme-white">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="user-username"><b>{{ ucfirst(Auth::user()->firstname) }}</b> {{ ucfirst(Auth::user()->name) }} <small class="user-label">Casual</small></h2>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -81,6 +83,5 @@
     </div><!-- /.modal -->
     @section('scripts')
         {!! HTML::script('js/alert.js') !!}
-        {!! HTML::script('js/imgareaselect/jquery.imgareaselect.pack.js') !!}
     @endsection
 @endsection

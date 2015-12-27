@@ -21,7 +21,7 @@
                                     @if($u->avatar === null || $u->avatar === '')
                                         <img class="pic" src="{{asset('img/avatars/default_avatar.png')}}" alt="">
                                     @else
-                                        <img class="pic" src="{{$u->avatar}}" alt="">
+                                        <img class="pic" src="{{asset('img/avatars')}}/{{$u->avatar_sm}}" alt="">
                                     @endif
                                 </div>
                             </div>
@@ -31,7 +31,7 @@
                                     <p>{{$u->answer}}</p>
                                 </div>
                             </div>
-                            <a href="" class="panel-link"></a>
+                            <a href="{{url('/members/'.$u->firstname)}}/{{$u->id}}" class="panel-link"></a>
                         </div>
                     @endforeach
                 </div>

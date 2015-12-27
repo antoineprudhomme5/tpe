@@ -71,7 +71,7 @@ use Carbon\Carbon;
                             <h4 class="block-heading">Improve your skills</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aut blanditiis commodi,
                                 cumque, cupiditate dolor ea id obcaecati porro quam quia saepe velit veritatis.
-                                Aspernatur ex placeat quibusdam totam ullam?</p>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@ use Carbon\Carbon;
                             <i class="fa fa-comments" style="color: #DAD8D8; font-size: 65px; text-shadow: 1px 1px 0 #A0A0A0;"></i>
                         </div>
                         <div class="text-center padding-sm">
-                            <a type="button" target="_blank" class="btn btn-app btn-sm" data-toggle="modal" href="/chatroom">Check out chatroom</a>
+                            <a type="button" target="_blank" class="btn btn-app btn-sm" data-toggle="modal" href="#">Check out chatroom</a>
                         </div>
                     </div>
                 </div>

@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\User;
-
+use App\ProfileQuestion;
 
 class MemberController extends  Controller{
 
@@ -26,5 +26,20 @@ class MemberController extends  Controller{
 
         //$users = User::where('category_id', 2)->where('id', '<>', Auth::user()->id)->get();
         return view('members/index', ['users' => $users]);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show(Request $request)
+    {
+        $questions = ProfileQuestion::join('profiles_answers', 'profiles_questions.id', '=', 'profiles_answers.profile_question_id')
+            ->where('profiles_answers.user_id', $request->id)
+            ->get();
+
+        $user = User::find($request->id);
+
+        //$users = User::where('category_id', 2)->where('id', '<>', Auth::user()->id)->get();
+        return view('members/show', ['user' => $user, 'questions' => $questions]);
     }
 }

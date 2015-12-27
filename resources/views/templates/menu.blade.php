@@ -18,9 +18,6 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 @if(auth()->guest())
-                    {{--<li><a href="{{ url('/') }}" class="page-scroll" data-toggle="modal" data-target="#logIn"><i class="fa fa-user"></i> Home</a></li>
-                    <li><a href="#" class="page-scroll" data-toggle="modal" data-target="#logIn"><i class="fa fa-users"></i> Members</a></li>
-                    <li><a href="#" class="page-scroll" data-toggle="modal" data-target="#logIn"><i class="fa fa-comment"></i> Chat</a></li>--}}
                 @else
                     <li><a href="{{ url('/games') }}" class="page-scroll"><i class="fa fa-gamepad"></i> Exercises</a></li>
                     <li><a href="{{url('/members')}}" class="page-scroll"><i class="fa fa-users"></i> Members</a></li>
