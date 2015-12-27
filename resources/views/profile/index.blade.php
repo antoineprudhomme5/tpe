@@ -17,7 +17,7 @@
                                 <p>You haven't set any profile picture yet. Click below on <i>Add profile picture</i> to set one.</p>
                                 <button type="button" class="btn btn-app-reverse btn-lg" data-toggle="modal" data-target="#addPicture">Add profile picture</button>
                             @else
-                                <img class="pic" src="{{ asset("/img/avatars") }}/{{Auth::user()->avatar}}" alt="">
+                                <img class="avatar" src="{{ asset("/img/avatars") }}/{{Auth::user()->avatar}}" alt="">
                                 <br>
                                 <button type="button" class="btn btn-app-reverse btn-lg" data-toggle="modal" data-target="#addPicture">Modify</button>
                             @endif
@@ -69,7 +69,7 @@
                      )
                      !!}
                     <div class="modal-body">
-                            <input type="file" name="avatar" id="avatar" required>
+                        <input type="file" name="avatar" id="avatar" required>
                     </div>
                     <div class="modal-footer">
                         {!! Form::submit('Save', ['class' => 'btn btn-app-reverse']) !!}
@@ -81,5 +81,6 @@
     </div><!-- /.modal -->
     @section('scripts')
         {!! HTML::script('js/alert.js') !!}
+        {!! HTML::script('js/imgareaselect/jquery.imgareaselect.pack.js') !!}
     @endsection
 @endsection

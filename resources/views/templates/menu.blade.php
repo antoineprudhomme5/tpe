@@ -22,9 +22,8 @@
                     <li><a href="#" class="page-scroll" data-toggle="modal" data-target="#logIn"><i class="fa fa-users"></i> Members</a></li>
                     <li><a href="#" class="page-scroll" data-toggle="modal" data-target="#logIn"><i class="fa fa-comment"></i> Chat</a></li>--}}
                 @else
-                    <li><a href="{{ url('/') }}" class="page-scroll"><i class="fa fa-user"></i> Home</a></li>
                     <li><a href="{{ url('/games') }}" class="page-scroll"><i class="fa fa-gamepad"></i> Exercises</a></li>
-                    <li><a href="#" class="page-scroll"><i class="fa fa-users"></i> Members</a></li>
+                    <li><a href="{{url('/members')}}" class="page-scroll"><i class="fa fa-users"></i> Members</a></li>
                     <li><a href="#" class="page-scroll"><i class="fa fa-comment"></i> Chat</a></li>
                     <li><a href="{{ url('/forum') }}" class="page-scroll"><i class="fa fa-comments-o"></i> Forum</a></li>
                     @if(Auth::user()->category_id == 1)
@@ -43,6 +42,10 @@
                         <li><a href="{{ url('/auth/logout') }}"><i class="fa fa-sign-out"></i> Log out</a></li>
                     </ul>
                 </li>
+            </ul>
+            @else
+            <ul class="nav navbar-nav navbar-right">
+                <button type="button" class="btn btn-app-reverse btn-lg" data-toggle="modal" data-target="#signUp">Sign up</button>
             </ul>
             @endif
         </div><!-- /.navbar-collapse -->

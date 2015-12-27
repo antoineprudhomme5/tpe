@@ -15,31 +15,35 @@ use Carbon\Carbon;
                 <div class="col-sm-4 col-xs-12">
                     <div class="block home-dashboard scheme-blue">
                         <div class="home-pic hidden-sm">
-                            <a href="#"><img class="pic img-circle" src="{{ asset("/img/avatars/avatar.jpg") }}" alt=""></a>
+                            @if(Auth::user()->avatar === null || Auth::user()->avatar === '')
+                                <img class="pic img-circle" src="{{asset('img/avatars/default_avatar.png')}}" alt="">
+                            @else
+                                <img class="pic img-circle" src="{{asset('img/avatars')}}/{{Auth::user()->avatar_sm}}" alt="">
+                            @endif
                         </div>
                         <h4 class="block-heading home-username">
                             <a href="/{{ Auth::user()->firstname }}">{{ ucfirst(Auth::user()->firstname) }} {{ ucfirst(Auth::user()->name) }}</a>
                         </h4>
                         <ul class="home-notifications text-center">
                             <li>
-                                <a href="/messages" title="" data-toggle="tooltip" data-container="body" data-original-title="0 nouveau message">
+                                <a href="#" title="" data-toggle="tooltip" data-container="body" data-original-title="0 nouveau message">
                                     <i class="fa fa-envelope"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="/{{ Auth::user()->firstname }}" title="" data-toggle="tooltip" data-container="body" data-original-title="0 nouveau commentaire">
+                                <a href="#" title="" data-toggle="tooltip" data-container="body" data-original-title="0 nouveau commentaire">
                                     <i class="fa fa-comment"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="/{{ Auth::user()->firstname }}" title="" data-toggle="tooltip" data-container="body" data-original-title="0 nouveau badge">
+                                <a href="#" title="" data-toggle="tooltip" data-container="body" data-original-title="0 nouveau badge">
                                     <i class="fa fa-trophy"></i>
                                 </a>
                             </li>
                         </ul>
                         <div class="last-visit">
                             <p><b>Last visit :</b></p>
-                            <time>
+                            <p class="text-center">
                                 About
                                 <?php
                                 $last = new Carbon(Auth::user()->last_login);
@@ -47,7 +51,7 @@ use Carbon\Carbon;
                                 echo $last->diffForHumans($now, true);
                                 ?>
                                 ago
-                            </time>
+                            </p>
                         </div>
                     </div>
                 </div>

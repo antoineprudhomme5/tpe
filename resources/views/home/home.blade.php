@@ -62,6 +62,40 @@
             </div>
         </div>
     </div>
+
+    <!-- SignUp Modal -->
+    <div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Sign up</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="text-right " action="{{ url('/auth/register') }}" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token">
+                        {!! csrf_field() !!}
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input type="email" name="email" id="email" class="form-control js-focus" placeholder="Email address" value="{{ old('email') }}">
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                        </div>
+                        <a href="{{ url('/password/email') }}">Can't log in?</a>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <input type="submit" class="btn btn-primary" value="Log in">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @else
     @include('home.loggedin')
 @endif

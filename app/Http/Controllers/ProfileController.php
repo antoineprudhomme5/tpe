@@ -14,6 +14,7 @@ use App\ProfileAnswer;
 use App\User;
 use Input;
 use DB;
+use App\Libraries\ResizeImage;
 
 class ProfileController extends Controller
 {
@@ -68,9 +69,14 @@ class ProfileController extends Controller
         return Redirect::back()->with('success', 'Profile updated!');
     }
 
+    /**
+     * Upload l'image de profile de l'utilisateur
+     * @param Request $request
+     * @return mixed
+     */
     public function uploadPicture(Request $request){
+
         try{
-            $user = User::find(Auth::user()->id);
             $file = $request->file('avatar');
 
             if ($file) {
@@ -78,19 +84,44 @@ class ProfileController extends Controller
                 if ($_FILES['avatar']['error'] > 0) return Redirect::back()->with('error', 'An error has occured');
 
                 $extensions_valides = array('jpg', 'png', 'jpeg', 'gif');
+
+                // Récupération de l'extension uploadée
                 $extension_upload = strtolower(substr(strrchr($_FILES['avatar']['name'], '.') , 1));
 
+                // On vérifie qu'elle existe parmi celles valides
                 if (!in_array($extension_upload, $extensions_valides));
 
+                // On définit une chaine de caractères unique qui sera le nom de l'image
                 $uniq = $this->uniqString(40);
                 $fileName = $uniq.'.'.$extension_upload;
                 $fileName = (string)$fileName;
 
                 $destination = "img/avatars/";
 
+                // On la déplace dans le répertoire des avatars
                 $file->move($destination, $fileName);
 
+                $resize = new ResizeImage($destination.$fileName);
+                $resize->resizeTo(100, 100, 'exact');
+                $fileNameResize = $uniq.'-sm'.'.'.$extension_upload;
+                $resize->saveImage($destination.'/'.$fileNameResize);
+
+                // On récupère le user actuellement loggé
+                $id = Auth::user()->id;
+                $check_if_avatar = User::where('id', $id)->first();
+
+                // On vérifie si un avatar (nom de fichier) était déjà présent en BDD
+                // Si c'est le cas, alors on ordonne la destruction de ce dernier (car il va être remplacé par le nouveau)
+                if (isset($check_if_avatar->avatar) && !empty($check_if_avatar->avatar)){
+                    if(file_exists($destination.$check_if_avatar->avatar)){
+                        unlink($destination.$check_if_avatar->avatar);
+                        unlink($destination.$check_if_avatar->avatar_sm);
+                    }
+                }
+
+                $user = User::find(Auth::user()->id);
                 $user->avatar = $fileName;
+                $user->avatar_sm = $fileNameResize;
                 $user->save();
             }
 
@@ -100,22 +131,11 @@ class ProfileController extends Controller
         return Redirect::back()->with('success', 'Profile picture updated!');
     }
 
-    protected function crypto_rand_secure($min, $max) {
-        $range = $max - $min;
-        if ($range < 0) return $min; // not so random...
-        $log = log($range, 2);
-        $bytes = (int) ($log / 8) + 1; // length in bytes
-        $bits = (int) $log + 1; // length in bits
-        $filter = (int) (1 << $bits) - 1; // set all lower bits to 1
-        do {
-            $rnd = hexdec(bin2hex(openssl_random_pseudo_bytes($bytes)));
-            $rnd = $rnd & $filter; // discard irrelevant bits
-        }while ($rnd >= $range);
-
-        return $min + $rnd;
-    }
-
-
+    /**
+     * Retourne une chaîne de caractères unique et aléatoire
+     * @param $length
+     * @return string
+     */
     protected function uniqString($length) {
         $_SESSION['token']="";
         unset($_SESSION['token']);
@@ -128,6 +148,22 @@ class ProfileController extends Controller
         }
         return $token;
     }
+
+    protected function crypto_rand_secure($min, $max) {
+        $range = $max - $min;
+        if ($range < 0) return $min;
+        $log = log($range, 2);
+        $bytes = (int) ($log / 8) + 1;
+        $bits = (int) $log + 1;
+        $filter = (int) (1 << $bits) - 1;
+        do {
+            $rnd = hexdec(bin2hex(openssl_random_pseudo_bytes($bytes)));
+            $rnd = $rnd & $filter;
+        }while ($rnd >= $range);
+
+        return $min + $rnd;
+    }
+
 
     /**
      * Return the view achievements with all the users games informations

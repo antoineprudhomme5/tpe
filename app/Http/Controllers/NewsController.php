@@ -175,4 +175,37 @@ class NewsController extends Controller
 
         return redirect()->route('administration.news.index');
     }
+
+    /**
+     * @param Request $request
+     * @return int
+     */
+    public function online(Request $request){
+        return 1;
+//
+//        $news = Actualite::findOrFail($request->id);
+//
+//        if ($news !== NULL){
+//            try{
+//                $news->online = $request->value;
+//                $news->save();
+//
+//                $message = array(
+//                    "reponse" => "success",
+//                    "message" => "succes"
+//                );
+//            }catch(\Exception $e){
+//                $message = array(
+//                    "reponse" => "error",
+//                    "message" => "erreur"
+//                );
+//            }
+//        }else{
+//            $message = array(
+//                "reponse" => "error",
+//                "message" => "erreur inconnue"
+//            );
+//        }
+//        echo json_encode($message);
+    }
 }

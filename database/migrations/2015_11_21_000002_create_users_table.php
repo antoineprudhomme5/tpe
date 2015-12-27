@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->string('avatar');
+            $table->string('avatar_sm');
             $table->integer('points')->default(0);
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')

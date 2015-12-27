@@ -47,9 +47,9 @@
                         <td>
                             <div class="switch-wrapper">
                                 @if ($n->online === 1)
-                                    <input type="checkbox" value="1" checked>
+                                    <input type="checkbox" class="online" value="1" checked>
                                 @else
-                                    <input type="checkbox">
+                                    <input type="checkbox" class="online">
                                 @endif
                             </div>
                         </td>
@@ -59,5 +59,8 @@
             </table>
         @endif
         <a href="{{ route('administration.news.create') }}" type="button" class="btn btn-primary btn-lg btn-block">Write a news</a>
+    @endsection
+    @section('scripts')
+        {!! HTML::script('js/news.js') !!}
     @endsection
 @endsection

@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'IndexController@index');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 // routes securisée
 Route::group(['middleware' => 'auth'], function () {
@@ -55,6 +56,13 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('games/get_speak_about', 'SpeakAboutController@get_speak_about');
 	Route::post('games/post_speak_about', 'SpeakAboutController@post_speak_about');
 
+	/*
+	|--------------------------------------------------------------------------
+	| Members
+	|--------------------------------------------------------------------------
+	*/
+	Route::get('/members', 'MemberController@index');
+
 
 	/*
 	|--------------------------------------------------------------------------
@@ -66,15 +74,20 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/profile/about', 'ProfileController@update')->name('profile.about');
 	Route::post('/profile/picture', 'ProfileController@uploadPicture')->name('profile.picture');
 	Route::get('/achievements', 'ProfileController@achievements');
+});
 
-	/*
-	|--------------------------------------------------------------------------
-	| Administration
-	|--------------------------------------------------------------------------
-	*/
+/*
+|--------------------------------------------------------------------------
+| Administration
+|--------------------------------------------------------------------------
+*/
+
+Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function(){
+
 	Route::get('/administration', 'AdminController@index')->name('administration');
 	/* --> Actualités */
 	Route::resource('/administration/news', 'NewsController');
+	Route::post('/administration/news/online', 'NewsController@online');
 	/* --> Exercices */
 	Route::get('administration/games', 'GameController@adminIndex');
 
