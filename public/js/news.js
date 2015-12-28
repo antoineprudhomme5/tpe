@@ -21,14 +21,13 @@ $(document).ready(function () {
             url: "news/online",
             data: formData,
             dataType: 'json',
-            processData: false,
-            contentType: false,
-            success:function(json){
-                if(json.reponse === 'success'){
-                    bootstrap_alert.success(json.message);
+            cache: false,
+            success:function(data){
+                if(data.reponse === 'success'){
+                    bootstrap_alert.success(data.message);
                     location.reload();
                 }else{
-                    bootstrap_alert.danger(json.message);
+                    bootstrap_alert.danger(data.message);
                 }
             },
             error: function() {
