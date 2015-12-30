@@ -75,6 +75,14 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/profile/about', 'ProfileController@update')->name('profile.about');
 	Route::post('/profile/picture', 'ProfileController@uploadPicture')->name('profile.picture');
 	Route::get('/achievements', 'ProfileController@achievements');
+
+	/*
+	|--------------------------------------------------------------------------
+	| News
+	|--------------------------------------------------------------------------
+	*/
+	Route::get('/news', 'NewsController@index');
+	Route::get('/news/{slug}', 'NewsController@show');
 });
 
 /*
@@ -87,8 +95,8 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 
 	Route::get('/administration', 'AdminController@index')->name('administration');
 	/* --> Actualités */
-	Route::resource('/administration/news', 'NewsController');
-	Route::post('/administration/news/online', 'NewsController@online');
+	Route::resource('/administration/news', 'AdminNewsController');
+	Route::post('/administration/news/online', 'AdminNewsController@online');
 	/* --> Exercices */
 	Route::get('administration/games', 'GameController@adminIndex');
 

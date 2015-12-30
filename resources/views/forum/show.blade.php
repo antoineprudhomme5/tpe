@@ -60,7 +60,7 @@
                         <form method="post" action="{{ url('forum/delete') }}">
                             {!! csrf_field() !!}
                             <input type="hidden" name="topic_id" value="{{ $topic->id }}"/>
-                            <input type="submit" class="btn btn-danger btn-sm pull-right" name="remove" value="remove"/>
+                            <input type="submit" class="btn btn-danger btn-sm pull-right" name="remove" value="remove topic"/>
                         </form>
                     </div>
                 @endif

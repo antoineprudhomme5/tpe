@@ -99,5 +99,14 @@
 <!-- scripts -->
 {!! HTML::script('js/jquery.js') !!}
 {!! HTML::script('bootstrap/js/bootstrap.min.js') !!}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.home-news', function(){
+            $('img').each(function() {
+                $(this).addClass("img-responsive");
+            });
+        });
+    });
+</script>
 </body>
 </html>
