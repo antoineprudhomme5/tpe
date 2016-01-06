@@ -56,11 +56,11 @@ use Carbon\Carbon;
                         <div class="inline-left"><strong>Level progress:</strong></div>
                         <div class="inline-full">
                             <div class="progress progress-sm">
-                                <div class="progress-bar" role="progressbar" style="width: 66%">
+                                <div class="progress-bar" role="progressbar" style="width: {{$level['percent']}}%">
                                 </div>
                             </div>
                         </div>
-                        <div class="inline-right"><strong><a class="orange-links" href="#">Casual</a></strong></div>
+                        <div class="inline-right"><strong><a class="orange-links" href="#">{{$level['level']}}</a></strong></div>
                     </div>
                     <div class="block block-sm home-tip">
                         <h4 class="block-heading">Improve your skills</h4>
@@ -117,3 +117,10 @@ use Carbon\Carbon;
         </div><!-- /.Third row -->
     </div>
 </div>
+@section('scripts')
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+    </script>
+@endsection

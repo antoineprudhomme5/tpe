@@ -23,8 +23,9 @@ class IndexController extends Controller
         {
             $actu   = Actualite::orderBy('id', 'desc')->first();
             $topics = Topic::orderBy('id', 'desc')->take(5)->get();
+            $userLevel = $this::checkLevel();
 
-            return view('index', ['topics' => $topics, 'actu' => $actu]);
+            return view('index', ['topics' => $topics, 'actu' => $actu, 'level' => $userLevel]);
         }
         else
         {
@@ -96,5 +97,38 @@ class IndexController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Fonction permettant de connaître le niveau d'un user :
+     * - le nom de son niveau actuel
+     * - le % de son niveau actuel
+     *
+     * Les données sont calculées en fonction du nombre de badges gagnés par l'utilisateur
+     * @return array
+     */
+    static function checkLevel(){
+        $user = User::with('achievements')->where('id', Auth::user()->id)->count();
+        $badges      = Auth::user()->achievements()->count();
+        $totalBadges = \App\Achievement::count();
+
+        if ($badges >= 0 && $badges <= 7){
+            $level = 'Beginner';
+        }
+        elseif ($badges > 7 && $badges <= 14){
+            $level = 'Casual';
+        }
+        elseif ($badges > 14 && $badges <= 21){
+            $level = 'Advanced';
+        }
+        elseif($badges > 21 && $badges <= 28){
+            $level = 'Expert';
+        }
+
+        $percent = round($badges * 100 / $totalBadges);
+
+        $userLevel = ['percent' => $percent, 'level' => $level];
+
+        return $userLevel;
     }
 }

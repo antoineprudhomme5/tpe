@@ -151,7 +151,7 @@
                                     <div class="col-xs-6 col-md-3 text-center">
                                         <h3>{{ $badge->title }}</h3>
                                         <div class="thumbnail">
-                                            <img src="{{ asset($badge->link) }}" alt="{{ $badge->title }}">
+                                            <img class="img-responsive" src="{{ asset($badge->link) }}" alt="{{ $badge->title }}">
                                         </div>
                                     </div>
                                 @endforeach

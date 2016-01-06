@@ -20,6 +20,7 @@ class NewsController extends Controller
     public function index()
     {
         $news = Actualite::paginate(7);
+
         return view('news.index', ['news' => $news]);
     }
 
