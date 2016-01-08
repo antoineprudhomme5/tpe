@@ -24,7 +24,7 @@ class TopicController extends Controller
     {
         //$topics = Topic::paginate($this->nbrPerPage);
         $topics = Topic::with('user')
-                        ->orderBy('id', 'desc')
+                        ->orderBy('created_at', 'desc')
                         ->get();
 
         return view('forum.index', ['topics' => $topics]);

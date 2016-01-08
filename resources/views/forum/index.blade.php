@@ -27,7 +27,7 @@
                             @foreach ($topics as $topic)
                                 <tr>
                                     <td>{{ $topic->id }}</td>
-                                    <td>By <strong>{{ $topic->user->firstname }} {{ $topic->user->name }}</strong></td>
+                                    <td>By <strong>{{ ucfirst($topic->user->firstname) }} {{ ucfirst($topic->user->name) }}</strong></td>
                                     <td><span class="label pull-right"></span></td>
                                     <td><strong>{{ $topic->title }}</strong></td>
                                     <td>{{ $topic->created_at->format('d M Y') }}</td>

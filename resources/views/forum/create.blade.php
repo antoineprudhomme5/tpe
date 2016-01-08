@@ -51,5 +51,9 @@
             </div>
         </div>
     </div>
-
 @stop
+
+@section('scripts')
+    {!! HTML::script('js/tinymce/tinymce.min.js') !!}
+    {!! HTML::script('js/tinymceConf-forum.js') !!}
+@endsection
