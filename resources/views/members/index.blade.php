@@ -16,7 +16,7 @@
                     @foreach($users as $u)
                         <div class="user">
                             <div class="user-left">
-                                <h4><a href="/{{$u->firstname}}/{{$u->id}}">{{$u->firstname}}</a></h4>
+                                <h4><a href="/{{$u->firstname}}/{{$u->user_id}}">{{$u->firstname}}</a></h4>
                                 <div>
                                     @if($u->avatar === null || $u->avatar === '')
                                         <img class="pic" src="{{asset('img/avatars/default_avatar.png')}}" alt="">
@@ -31,7 +31,7 @@
                                     <p>{{$u->answer}}</p>
                                 </div>
                             </div>
-                            <a href="{{url('/members/'.$u->firstname)}}/{{$u->id}}" class="panel-link"></a>
+                            <a href="{{url('/members/'.$u->firstname)}}/{{$u->user_id}}" class="panel-link"></a>
                         </div>
                     @endforeach
                 </div>

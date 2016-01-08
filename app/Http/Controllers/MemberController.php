@@ -24,7 +24,6 @@ class MemberController extends  Controller{
             ->where('profiles_answers.profile_question_id', 1)
             ->get();
 
-        //$users = User::where('category_id', 2)->where('id', '<>', Auth::user()->id)->get();
         return view('members/index', ['users' => $users]);
     }
 
