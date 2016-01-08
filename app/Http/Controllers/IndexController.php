@@ -21,9 +21,10 @@ class IndexController extends Controller
     {
         if(Auth::check())
         {
-            $actu   = Actualite::orderBy('id', 'desc')->first();
-            $topics = Topic::orderBy('created_at', 'desc')->take(5)->get();
-            $userLevel = $this::checkLevel();
+            $actu         = Actualite::orderBy('id', 'desc')->first();
+            $topics       = Topic::with('posts')->orderBy('created_at', 'desc')->take(5)->get();
+            //$postPerTopic =
+            $userLevel    = $this::checkLevel();
 
             return view('index', ['topics' => $topics, 'actu' => $actu, 'level' => $userLevel]);
         }

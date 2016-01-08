@@ -180,7 +180,7 @@ class AdminNewsController extends Controller
      * @param Request $request
      * @return int
      */
-    public function online(Request $request){
+    public function online($id, $value){
         return 1;
 //
 //        $news = Actualite::findOrFail($request->id);

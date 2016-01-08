@@ -68,6 +68,7 @@
                     by <strong>{{ $topic->user->firstname }} {{ $topic->user->name }}</strong><br>
                     at <strong>{{ $topic->created_at->format('d M Y - H:i:s') }}</strong>
                 </div>
+            @endif
             <div class="row">
                 <div class="col-xs-12">
                     <div class="panel panel-default subject arrow left">
@@ -79,7 +80,6 @@
                     </div>
                 </div>
             </div>
-            @endif
             @foreach ($posts as $post)
                 <div class="row">
                     <div class="col-xs-12">

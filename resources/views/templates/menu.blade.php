@@ -21,6 +21,7 @@
                 @else
                     <li><a href="{{ url('/games') }}" class="page-scroll"><i class="fa fa-gamepad"></i> Exercises</a></li>
                     <li><a href="{{url('/members')}}" class="page-scroll"><i class="fa fa-users"></i> Members</a></li>
+                    <li><a href="{{url('/news')}}" class="page-scroll"><i class="fa fa-newspaper-o"></i> News</a></li>
                     <li><a href="#" class="page-scroll"><i class="fa fa-comment"></i> Chat</a></li>
                     <li><a href="{{ url('/forum') }}" class="page-scroll"><i class="fa fa-comments-o"></i> Forum</a></li>
                     @if(Auth::user()->category_id == 1)

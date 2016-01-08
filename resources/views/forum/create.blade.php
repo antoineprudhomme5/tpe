@@ -9,44 +9,36 @@
 @stop
 
 @section('content')
+    <div class="container-fluid" id="hero">
+        <div class="wrapper container">
+            <div class="page-header">
+                <h1>Create a new topic</h1>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <form id="create-topic" action="{{ url('/forum/create') }}" method="post">
 
-    <div class="container app-content">
-        <div class="row">
-            <div class="jumbotron">
-                <div class="container">
+                        {!! csrf_field() !!}
 
-                    <h1>Create new topic</h1>
-                    <p>
-                        <form class="form-horizontal" id="create-topic" action="{{ url('/forum/create') }}" method="post">
+                                <!-- subject input-->
+                        <div class="form-group">
+                            <label class="control-label" for="title">Subject</label>
+                            <input id="title" name="title" type="text" placeholder="subject" class="form-control" value="{{ old('title') }}">
 
-                            {!! csrf_field() !!}
+                        </div>
 
-                                    <!-- subject input-->
-                            <div class="form-group">
-                                <label class="col-md-3 control-label" for="title">Subject</label>
-                                <div class="col-md-9">
-                                    <input id="title" name="title" type="text" placeholder="subject" class="form-control" value="{{ old('title') }}">
-                                </div>
-                            </div>
+                        <!-- Message body -->
+                        <div class="form-group">
+                            <label class="control-label" for="content">Your topic</label>
+                            <textarea class="form-control" id="content" name="content" placeholder="Please enter your message here..." rows="5" value="{{ old('content') }}"></textarea>
 
-                            <!-- Message body -->
-                            <div class="form-group">
-                                <label class="col-md-3 control-label" for="content">Your topic</label>
-                                <div class="col-md-9">
-                                    <textarea class="form-control" id="content" name="content" placeholder="Please enter your message here..." rows="5" value="{{ old('content') }}"></textarea>
-                                </div>
-                            </div>
+                        </div>
 
-                            <!-- Form actions -->
-                            <div class="form-group">
-                                <div class="col-md-12 text-right">
-                                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-                                </div>
-                            </div>
-
+                        <!-- Form actions -->
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-app-reverse btn-lg">Submit</button>
+                        </div>
                     </form>
-                    </p>
-
                 </div>
             </div>
         </div>

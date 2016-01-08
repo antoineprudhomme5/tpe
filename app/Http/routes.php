@@ -96,7 +96,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	Route::get('/administration', 'AdminController@index')->name('administration');
 	/* --> Actualités */
 	Route::resource('/administration/news', 'AdminNewsController');
-	Route::post('/administration/news/online', 'AdminNewsController@online');
+	Route::post('administration/news/online', 'AdminNewsController@online');
 	/* --> Exercices */
 	Route::get('administration/games', 'GameController@adminIndex');
 

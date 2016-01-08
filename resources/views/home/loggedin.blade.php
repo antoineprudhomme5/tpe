@@ -53,7 +53,7 @@ use Carbon\Carbon;
             <div class="col-sm-8 col-xs-12">
                 <div class="block-group scheme-blue">
                     <div class="block block-sm hidden-xs">
-                        <div class="inline-left"><strong>Level progress:</strong></div>
+                        <div class="inline-left color-white"><strong>Level progress:</strong></div>
                         <div class="inline-full">
                             <div class="progress progress-sm">
                                 <div class="progress-bar" role="progressbar" style="width: {{$level['percent']}}%">
@@ -64,8 +64,9 @@ use Carbon\Carbon;
                     </div>
                     <div class="block block-sm home-tip">
                         <h4 class="block-heading">Improve your skills</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aut blanditiis commodi,
-                            cumque, cupiditate dolor ea id obcaecati porro quam quia saepe velit veritatis.
+                        <p>Our most precious piece of advice is: <i>Do something (anything)</i>. If you don't do anything, you won't get anywhere.
+                            Post messages on the forum, play games, enter the chat...
+                            <br>Above all: <strong>have fun</strong>!
                         </p>
                     </div>
                 </div>
@@ -90,10 +91,9 @@ use Carbon\Carbon;
         <div class="row">
             <div class="col-sm-6 hidden-sx">
                 <div class="block block-sm scheme-blue">
-                    <h3 class="block-heading">Live chat activity</h3>
+                    <h3 class="block-heading color-white">Live chat activity</h3>
                     <div class="forum">
-                        <p>It's pretty quiet in here. Come take a look!</p>
-                        <br>
+                        <p class="color-white">It's pretty quiet in here. Come take a look!</p>
                         <i class="fa fa-comments" style="color: #DAD8D8; font-size: 65px; text-shadow: 1px 1px 0 #A0A0A0;"></i>
                     </div>
                     <div class="text-center padding-sm">
@@ -103,11 +103,17 @@ use Carbon\Carbon;
             </div>
             <div class="col-sm-6 col-xs-12">
                 <div class="block block-sm scheme-blue">
-                    <h3 class="block-heading">Latest forum activity</h3>
+                    <h3 class="block-heading color-white">Latest forum activity</h3>
                     <ul class="list-group">
                         @foreach($topics as $topic)
                             <li class="list-group-item">
-                                <span class="badge">3 posts</span>
+                                <span class="badge">
+                                    @if($topic->posts->count() > 1)
+                                        {{$topic->posts->count()}} answers
+                                    @else
+                                        {{$topic->posts->count()}} answer
+                                    @endif
+                                </span>
                                 <a class="topic-recently-updated" href="{{ url('forum/show', $topic->id) }}">{{ $topic->title }}</a>
                             </li>
                         @endforeach

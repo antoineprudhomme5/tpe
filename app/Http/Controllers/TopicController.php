@@ -23,7 +23,7 @@ class TopicController extends Controller
     public function index()
     {
         //$topics = Topic::paginate($this->nbrPerPage);
-        $topics = Topic::with('user')
+        $topics = Topic::with('user', 'posts')
                         ->orderBy('created_at', 'desc')
                         ->get();
 

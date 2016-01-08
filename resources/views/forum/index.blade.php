@@ -26,11 +26,16 @@
                         <table class="table table-condensed table-hover">
                             @foreach ($topics as $topic)
                                 <tr>
-                                    <td>{{ $topic->id }}</td>
-                                    <td>By <strong>{{ ucfirst($topic->user->firstname) }} {{ ucfirst($topic->user->name) }}</strong></td>
-                                    <td><span class="label pull-right"></span></td>
-                                    <td><strong>{{ $topic->title }}</strong></td>
+                                    <td><b>{{ $topic->title }}</b></td>
+                                    <td>By {{ ucfirst($topic->user->firstname) }} {{ ucfirst($topic->user->name) }}</td>
                                     <td>{{ $topic->created_at->format('d M Y') }}</td>
+                                    <td>
+                                        @if($topic->posts->count() > 1)
+                                            {{$topic->posts->count()}} answers
+                                        @else
+                                            {{$topic->posts->count()}} answer
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="{{ url('/forum/show', $topic->id) }}">
                                             <button class="btn btn-app-reverse">see</button>

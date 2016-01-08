@@ -20,7 +20,7 @@
                     <th>Action</th>
                     <th>Title</th>
                     <th>Created at</th>
-                    <th>Online</th>
+                    {{--<th>Online</th>--}}
                 </tr>
                 </thead>
                 <tbody>
@@ -44,15 +44,15 @@
                         </td>
                         <td>{{ $n->title }}</td>
                         <td>{{ $n->created_at->format('d M Y - H:i:s') }}</td>
-                        <td>
-                            <div class="switch-wrapper">
-                                @if ($n->online === 1)
-                                    <input type="checkbox" class="online" value="1" checked>
-                                @else
-                                    <input type="checkbox" class="online">
-                                @endif
-                            </div>
-                        </td>
+                        {{--<td>--}}
+                            {{--<div class="switch-wrapper">--}}
+                                {{--@if ($n->online === 1)--}}
+                                    {{--<input type="checkbox" class="online" value="1" checked>--}}
+                                {{--@else--}}
+                                    {{--<input type="checkbox" class="online" value="0">--}}
+                                {{--@endif--}}
+                            {{--</div>--}}
+                        {{--</td>--}}
                     </tr>
                 @endforeach
                 </tbody>
