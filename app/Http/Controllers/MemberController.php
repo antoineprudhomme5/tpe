@@ -22,6 +22,7 @@ class MemberController extends  Controller{
         $users = User::join('profiles_answers', 'users.id', '=', 'profiles_answers.user_id')
             ->where('profiles_answers.user_id', '<>' ,Auth::user()->id)
             ->where('profiles_answers.profile_question_id', 1)
+            ->orderBy('users.last_login', 'desc')
             ->get();
 
         return view('members/index', ['users' => $users]);
@@ -36,7 +37,7 @@ class MemberController extends  Controller{
             ->where('profiles_answers.user_id', $request->id)
             ->get();
 
-        $user = User::find($request->id);
+        $user = User::with('achievements')->where('users.id', $request->id)->first();
 
         //$users = User::where('category_id', 2)->where('id', '<>', Auth::user()->id)->get();
         return view('members/show', ['user' => $user, 'questions' => $questions]);

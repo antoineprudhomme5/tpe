@@ -19,9 +19,30 @@
                                 <img class="pic" src="{{ asset("/img/avatars/default_avatar.png") }}" alt="">
                             @else
                                 <img class="avatar" src="{{ asset("/img/avatars") }}/{{$user->avatar}}" alt="">
-                                <br>
-                                <button type="button" class="btn btn-app-reverse btn-lg" data-toggle="modal" data-target="#addPicture">Modify</button>
                             @endif
+                            <div class="stats">
+                                <br>
+                                <p>
+                                    <b>
+                                        {{$user->points}}
+                                        @if($user->points > 1)
+                                            points
+                                        @else
+                                            point
+                                        @endif
+                                    </b>
+                                </p>
+                                <p>
+                                    <b>
+                                        {{$user->achievements->count()}}
+                                        @if ($user->achievements->count() > 1)
+                                            badges
+                                        @else
+                                            badge
+                                        @endif
+                                    </b>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
