@@ -23,6 +23,28 @@
                                 <br>
                                 <button type="button" class="btn btn-app-reverse btn-lg" data-toggle="modal" data-target="#addPicture">Modify</button>
                             @endif
+                            <br><br>
+                                <p>
+                                    <b>
+                                        {{Auth::user()->points}}
+                                        @if(Auth::user()->points > 1)
+                                            points
+                                        @else
+                                            point
+                                        @endif
+                                    </b>
+                                </p>
+                                <p>
+                                    <b>
+                                        {{$level->count()}}
+                                        @if ($level->count() > 1)
+                                            badges
+                                        @else
+                                            badge
+                                        @endif
+                                    </b>
+                                </p>
+                                <a href="{{url('achievements')}}">Achievements</a>
                         </div>
                     </div>
                 </div>

@@ -7,7 +7,6 @@
 @section('style')
     {!! HTML::style('css/synonyms.css') !!}
     {!! HTML::style('css/style.css') !!}
-    {!! HTML::style('compass/stylesheets/styles.css') !!}
 @stop
 
 @section('content')
@@ -32,36 +31,15 @@
                     <div class="wizard-inner">
                         <div class="connecting-line"></div>
                         <ul class="nav nav-tabs" role="tablist">
-
-                            <li role="presentation" class="active">
-                                <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step1">
+                            @for ($i = 1; $i !== 5; $i++)
+                                <li role="presentation" class="active">
+                                    <a href="#step{{$i}}" data-toggle="tab" aria-controls="step{{$i}}" role="tab" title="Step{{$i}}">
                                     <span class="round-tab">
-                                        <i class="glyphicon glyphicon-tasks"></i>
+                                        <i class="fa fa-tasks"></i>
                                     </span>
-                                </a>
-                            </li>
-
-                            <li role="presentation" class="disabled">
-                                <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step2">
-                                    <span class="round-tab">
-                                        <i class="glyphicon glyphicon-tasks"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            <li role="presentation" class="disabled">
-                                <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step3">
-                                    <span class="round-tab">
-                                        <i class="glyphicon glyphicon-tasks"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            <li role="presentation" class="disabled" id="end">
-                                <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="Step4">
-                                    <span class="round-tab">
-                                        <i class="glyphicon glyphicon-tasks"></i>
-                                    </span>
-                                </a>
-                            </li>
+                                    </a>
+                                </li>
+                            @endfor
                         </ul>
                     </div>
 

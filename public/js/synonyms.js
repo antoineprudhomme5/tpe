@@ -75,7 +75,7 @@ $(document).ready(function () {
  */
 function submit()
 {
-    $('#game').css('visibility', 'hidden');
+    $('#game').css('display', 'none');
     $('#loading').css('visibility', 'visible');
 
     var formData = new FormData(document.getElementById('form_synonyms'));
