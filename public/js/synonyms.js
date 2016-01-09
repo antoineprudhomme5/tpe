@@ -88,7 +88,7 @@ function submit()
     });
     $.ajax({
         url:  'post_synonyms',
-        type: "PUT",
+        type: "post",
         processData: false,
         contentType: false,
         data: formData,
