@@ -12,38 +12,75 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert(array(
-            array('name' => 'Prudhomme', 'firstname' => 'Antoine', 'category_id' => 2, 'email' => 'antoineprudhomme5@gmail.com',
+            array(
+                'category_id' => 2,
+                'name' => 'Prudhomme',
+                'firstname' => 'Antoine',
+                'email' => 'antoineprudhomme5@gmail.com',
                 'password' => '$2a$10$n9qAMFM1fhRpdd9rcYdhEO8dkQQiqEm3D/Ro2KC9hgSMhZGejWw/S',
                 'avatar' => 'Qoo8OCzsNSO8ZPi5VyN6MAoirpAygWpYvb3twUAD.jpg',
-                'avatar_sm' => 'Qoo8OCzsNSO8ZPi5VyN6MAoirpAygWpYvb3twUAD-sm.jpg'
+                'avatar_sm' => 'Qoo8OCzsNSO8ZPi5VyN6MAoirpAygWpYvb3twUAD-sm.jpg',
+                'points' => 150
             ),
-            array('name' => 'Obara', 'firstname' => 'Nicolas', 'category_id' => 2, 'email' => 'user@gmail.com',
+            array(
+                'category_id' => 2,
+                'name' => 'Obara',
+                'firstname' => 'Nicolas',
+                'email' => 'user@gmail.com',
                 'password' => '$2a$10$n9qAMFM1fhRpdd9rcYdhEO8dkQQiqEm3D/Ro2KC9hgSMhZGejWw/S',
                 'avatar' => 'Qoo8OCzsNSO8ZPi5VyN6MAoirpAygWpYvb3twUAD.jpg',
-                'avatar_sm' => 'Qoo8OCzsNSO8ZPi5VyN6MAoirpAygWpYvb3twUAD-sm.jpg'
+                'avatar_sm' => 'Qoo8OCzsNSO8ZPi5VyN6MAoirpAygWpYvb3twUAD-sm.jpg',
+                'points' => 190
             ),
-            array('name' => 'Doe', 'firstname' => 'John', 'category_id' => 1, 'email' => 'prof@gmail.com',
+            array(
+                'category_id' => 1,
+                'name' => 'Doe',
+                'firstname' => 'John',
+                'email' => 'prof@gmail.com',
                 'password' => '$2a$10$n9qAMFM1fhRpdd9rcYdhEO8dkQQiqEm3D/Ro2KC9hgSMhZGejWw/S',
                 'avatar' => 'Qoo8OCzsNSO8ZPi5VyN6MAoirpAygWpYvb3twUAD.jpg',
-                'avatar_sm' => 'Qoo8OCzsNSO8ZPi5VyN6MAoirpAygWpYvb3twUAD-sm.jpg'
+                'avatar_sm' => 'Qoo8OCzsNSO8ZPi5VyN6MAoirpAygWpYvb3twUAD-sm.jpg',
+                'points' => 190
             ),
-            array('name' => 'Lafont', 'firstname' => 'Emma', 'category_id' => 2, 'email' => 'user1@gmail.com',
+            array(
+                'category_id' => 2,
+                'name' => 'Lafont',
+                'firstname' => 'Emma',
+                'email' => 'user1@gmail.com',
                 'password' => '$2a$10$n9qAMFM1fhRpdd9rcYdhEO8dkQQiqEm3D/Ro2KC9hgSMhZGejWw/S',
-                'avatar' => 'JBu08aFGqY1ohbYO4Q2SRn5gHMcEcUjpFkXRO7Ig.jpg.jpg',
-                'avatar_sm' => 'JBu08aFGqY1ohbYO4Q2SRn5gHMcEcUjpFkXRO7Ig-sm.jpg'
+                'avatar' => 'JBu08aFGqY1ohbYO4Q2SRn5gHMcEcUjpFkXRO7Ig.jpg',
+                'avatar_sm' => 'JBu08aFGqY1ohbYO4Q2SRn5gHMcEcUjpFkXRO7Ig-sm.jpg',
+                'points' => 100
             ),
-            array('name' => 'Labat', 'firstname' => 'Laurent', 'category_id' => 2, 'email' => 'user2@gmail.com',
+            array(
+                'category_id' => 2,
+                'name' => 'Labat',
+                'firstname' => 'Laurent',
+                'email' => 'user2@gmail.com',
                 'password' => '$2a$10$n9qAMFM1fhRpdd9rcYdhEO8dkQQiqEm3D/Ro2KC9hgSMhZGejWw/S',
                 'avatar' => 'obXfeCzUK7HStqyKcSPQ6SsX8naiErXulYXFx7f7.jpg',
-                'avatar_sm' => 'obXfeCzUK7HStqyKcSPQ6SsX8naiErXulYXFx7f7-sm.jpg'
+                'avatar_sm' => 'obXfeCzUK7HStqyKcSPQ6SsX8naiErXulYXFx7f7-sm.jpg',
+                'points' => 50
             ),
-            array('name' => 'Durand', 'firstname' => 'Tom', 'category_id' => 2, 'email' => 'user3@gmail.com',
-                'password' => '$2a$10$n9qAMFM1fhRpdd9rcYdhEO8dkQQiqEm3D/Ro2KC9hgSMhZGejWw/S'
+            array(
+                'category_id' => 2,
+                'name' => 'Durand',
+                'firstname' => 'Tom',
+                'email' => 'user3@gmail.com',
+                'password' => '$2a$10$n9qAMFM1fhRpdd9rcYdhEO8dkQQiqEm3D/Ro2KC9hgSMhZGejWw/S',
+                'avatar' => 'Qoo8OCzsNSO8ZPi5VyN6MAoirpAygWpYvb3twUAD.jpg',
+                'avatar_sm' => 'Qoo8OCzsNSO8ZPi5VyN6MAoirpAygWpYvb3twUAD-sm.jpg',
+                'points' => 50
             ),
-            array('name' => 'Dupont', 'firstname' => 'Louis', 'category_id' => 2, 'email' => 'user4@gmail.com',
+            array(
+                'category_id' => 2,
+                'name' => 'Dupont',
+                'firstname' => 'Louis',
+                'email' => 'user4@gmail.com',
                 'password' => '$2a$10$n9qAMFM1fhRpdd9rcYdhEO8dkQQiqEm3D/Ro2KC9hgSMhZGejWw/S',
                 'avatar' => 'TjO7yr8EuEl00pAMGhHQFdSsExsk015pava3TfIU.png',
-                'avatar_sm' => 'TjO7yr8EuEl00pAMGhHQFdSsExsk015pava3TfIU-sm.png'
+                'avatar_sm' => 'TjO7yr8EuEl00pAMGhHQFdSsExsk015pava3TfIU-sm.png',
+                'points' => 398
                 )
         ));
     }

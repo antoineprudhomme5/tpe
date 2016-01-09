@@ -14,6 +14,11 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')
+                ->references('id')->on('users_categories')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
             $table->string('name');
             $table->string('firstname');
             $table->string('email')->unique();
@@ -21,11 +26,6 @@ class CreateUsersTable extends Migration
             $table->string('avatar');
             $table->string('avatar_sm');
             $table->integer('points')->default(0);
-            $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')
-                ->references('id')->on('users_categories')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
             $table->rememberToken();
             $table->dateTime('last_login');
             $table->timestamps();
