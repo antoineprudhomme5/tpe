@@ -31,15 +31,34 @@
                     <div class="wizard-inner">
                         <div class="connecting-line"></div>
                         <ul class="nav nav-tabs" role="tablist">
-                            @for ($i = 1; $i !== 5; $i++)
-                                <li role="presentation" class="active">
-                                    <a href="#step{{$i}}" data-toggle="tab" aria-controls="step{{$i}}" role="tab" title="Step{{$i}}">
-                                    <span class="round-tab">
-                                        <i class="fa fa-tasks"></i>
-                                    </span>
-                                    </a>
-                                </li>
-                            @endfor
+                            <li role="presentation" class="active">
+                                <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step1">
+                                <span class="round-tab">
+                                    <i class="fa fa-tasks"></i>
+                                </span>
+                                </a>
+                            </li>
+                            <li role="presentation" class="disabled">
+                                <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step2">
+                                <span class="round-tab">
+                                    <i class="fa fa-tasks"></i>
+                                </span>
+                                </a>
+                            </li>
+                            <li role="presentation" class="disabled">
+                                <a href="#step3" data-toggle="tab" aria-controls="step2" role="tab" title="Step3">
+                                <span class="round-tab">
+                                    <i class="fa fa-tasks"></i>
+                                </span>
+                                </a>
+                            </li>
+                            <li role="presentation" class="disabled">
+                                <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="Step4">
+                                <span class="round-tab">
+                                    <i class="fa fa-tasks"></i>
+                                </span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
 
