@@ -102,7 +102,7 @@ function submit()
 
             if(data_parsed['achievement'])
             {
-                $('#response').append('<div class="text-center"><h2>New achievement</h2> <h3>'+ data_parsed["achievement"].title +'</h3></div>');
+                $('#response').append('<div class="text-center"><h2>New achievement</h2> <h3>'+ data_parsed['achievement'].title +'</h3></div>');
                 $('#response').append('<div><img class="img-responsive achievement" src="../'+ data_parsed['achievement'].link +'"/></div>');
 
             }
