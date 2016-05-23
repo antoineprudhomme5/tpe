@@ -30,7 +30,8 @@ class ProfileController extends Controller
             ->where('profiles_answers.user_id', Auth::user()->id)
             ->get();
 
-        return view('profile.index', ['questions' => $questions]);
+        $level = Auth::user()->achievements()->get();
+        return view('profile.index', ['questions' => $questions, 'level' => $level]);
     }
 
     /**

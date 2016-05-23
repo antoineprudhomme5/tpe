@@ -6,7 +6,7 @@
 
 @section('style')
     {!! HTML::style('css/dragdrop.css') !!}
-    {!! HTML::style('compass/stylesheets/styles.css') !!}
+    {!! HTML::style('css/style.css') !!}
 @stop
 
 @section('content')

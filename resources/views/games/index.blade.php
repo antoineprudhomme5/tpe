@@ -1,9 +1,4 @@
 @extends('templates/app')
-
-@section('style')
-    {!! HTML::style('css/style.css') !!}
-@stop
-
 @section('title')
     Games
 @stop

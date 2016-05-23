@@ -64,12 +64,12 @@
                             <span>Games</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-certificate"></i>
-                            <span>Badges</span>
-                        </a>
-                    </li>
+                    {{--<li>--}}
+                        {{--<a href="#">--}}
+                            {{--<i class="fa fa-certificate"></i>--}}
+                            {{--<span>Badges</span>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
                 </ul>
             </section>
         </aside>
@@ -85,6 +85,11 @@
                     <div class="row">
                         <div class="col-xs-12">
                             @section('content')
+                                <div class="text-center">
+                                    <h1>Welcome to the administration section</h1>
+                                    <h4>You are free to add news and manage the games</h4>
+                                </div>
+                            @show
                         </div>
                     </div>
                 </section>

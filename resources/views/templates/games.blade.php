@@ -5,8 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>@yield('title')</title>
         <link href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
-        {!! HTML::style('bootstrap/css/bootstrap.min.css') !!}
-        {!! HTML::style('css/style.css') !!}
+        {!! HTML::style('compass/stylesheets/styles.css') !!}
         @yield('style')
     </head>
     <body>
