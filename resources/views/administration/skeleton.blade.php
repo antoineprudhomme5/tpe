@@ -64,12 +64,12 @@
                             <span>Games</span>
                         </a>
                     </li>
-                    {{--<li>--}}
-                        {{--<a href="#">--}}
-                            {{--<i class="fa fa-certificate"></i>--}}
-                            {{--<span>Badges</span>--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
+                    <li>
+                        <a href="{{ url('administration/mcq') }}">
+                            <i class="fa fa-briefcase"></i>
+                            <span>MCQ</span>
+                        </a>
+                    </li>
                 </ul>
             </section>
         </aside>

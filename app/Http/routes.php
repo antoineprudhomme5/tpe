@@ -97,6 +97,17 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	/* --> Actualités */
 	Route::resource('/administration/news', 'AdminNewsController');
 	Route::post('administration/news/online', 'AdminNewsController@online');
+
+	/* --> MCQ */
+	Route::get('administration/mcq', 'MCQController@index');
+	Route::get('administration/mcq/{id}', ['uses' => 'MCQController@getMCQ']);
+	Route::get('administration/mcq/{mcq_id}/answers/{id}', ['uses' => 'MCQController@getAnswers']);
+	Route::post('administration/mcq/create_mcq', 'MCQController@createMCQ');
+	Route::post('administration/mcq/{id}/create_question', ['uses' => 'MCQController@createQuestion']);
+	Route::post('administration/mcq/{mcq_id}/remove/{q_id}', ['uses' => 'MCQController@removeQuestion']);
+	Route::post('administration/mcq/{mcq_id}/answers/{q_id}/add_answer', ['uses' => 'MCQController@addAnswer']);
+	Route::post('administration/mcq/{mcq_id}/answers/{q_id}/remove_answer/{a_id}', ['uses' => 'MCQController@removeAnswer']);
+
 	/* --> Exercices */
 	Route::get('administration/games', 'GameController@adminIndex');
 
