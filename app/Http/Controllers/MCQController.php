@@ -157,6 +157,26 @@ class MCQController extends Controller
     }
 
     /**
+     * remove a mcq from the database
+     * @param $id
+     * @return mcq view
+     */
+    public function removeMCQ($id)
+    {
+        /*$questions = Question::where('id_mcq', $id);
+
+        foreach($questions as $q)
+        {
+            Answer::where('id_question', $q)->delete();
+            Question::destroy($q);
+        }*/
+
+        MCQ::destroy($id);
+
+        return redirect()->action('MCQController@index');
+    }
+
+    /**
      * @param $id => mcq id
      */
     public function playMCQ($id)

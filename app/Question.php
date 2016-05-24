@@ -8,4 +8,20 @@ class Question extends Model
 {
     protected $table = 'question';
     public $timestamps = false;
+
+    /**
+     * get the answers for the question
+     */
+    public function answers()
+    {
+        return $this->hasMany('App\Answer');
+    }
+
+    /**
+     * Each Question belongs to a MCQ
+     */
+    public function mcq()
+    {
+        return $this->belongsTo('App\MCQ');
+    }
 }

@@ -36,6 +36,7 @@
                 <th>Name</th>
                 <th>Playable</th>
                 <th>Actions</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -57,6 +58,14 @@
                                 show questions
                             </button>
                         </a>
+                    </td>
+                    <td>
+                        <form action="{{ url('administration/mcq/'.$m->id.'/remove') }}" method="post">
+                            {!! csrf_field() !!}
+                            <button class="btn btn-danger" type="submit">
+                                <i class="fa fa-remove"> </i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

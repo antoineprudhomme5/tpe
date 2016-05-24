@@ -18,7 +18,8 @@ class CreateAnswerTable extends Migration
             $table->boolean('correct');
             $table->integer('id_question')->unsigned();
             $table->foreign('id_question')
-                ->references('id')->on('question');
+                ->references('id')->on('question')
+                ->onDelete('cascade');
         });
     }
 

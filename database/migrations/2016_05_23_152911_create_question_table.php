@@ -18,7 +18,8 @@ class CreateQuestionTable extends Migration
             $table->boolean('playable')->default(false);
             $table->integer('id_mcq')->unsigned();
             $table->foreign('id_mcq')
-                ->references('id')->on('mcq');
+                ->references('id')->on('mcq')
+                ->onDelete('cascade');
         });
     }
 

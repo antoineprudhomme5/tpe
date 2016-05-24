@@ -110,6 +110,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 	Route::post('administration/mcq/{mcq_id}/remove/{q_id}', ['uses' => 'MCQController@removeQuestion']);
 	Route::post('administration/mcq/{mcq_id}/answers/{q_id}/add_answer', ['uses' => 'MCQController@addAnswer']);
 	Route::post('administration/mcq/{mcq_id}/answers/{q_id}/remove_answer/{a_id}', ['uses' => 'MCQController@removeAnswer']);
+	Route::post('administration/mcq/{id}/remove', ['uses' => 'MCQController@removeMCQ']);
 
 	/* --> Exercices */
 	Route::get('administration/games', 'GameController@adminIndex');
