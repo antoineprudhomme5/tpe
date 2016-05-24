@@ -12,7 +12,7 @@
 
     <div class="row">
         <div class="container-fluid">
-            <span>Create a new answer (max 5)</span>
+            <h2>Create a new answer</h2>
             <form class="form-inline" method="post" action="{{ url('administration/mcq/'.$mcq_id.'/answers/'.$question->id.'/add_answer') }}">
                 {!! csrf_field() !!}
                 <div class="form-group">
@@ -29,12 +29,23 @@
         </div>
     </div>
 
+    <div>
+        <h2>For a question to be valid : </h2>
+        <p>
+            A question requires at least 2 answers. You can write 5 answers max for a question.
+            One answers at least have to be correct.
+        </p>
+    </div>
+
     @if($answers->isEmpty())
         <div class="text-center">
             <h2>It looks like there is no answers for this question.</h2>
             <h3>Use the form below to create a new answer</h3>
         </div>
     @else
+        <div>
+            <h2>Answers</h2>
+        </div>
         <table class="table table-hover">
             <thead>
             <tr>

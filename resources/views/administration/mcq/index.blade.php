@@ -45,7 +45,7 @@
                         <a href="{{ url('administration/mcq', $q->id) }}">
                             <button class="btn btn-primary">
                                 <i class="fa fa-edit"> </i>
-                                Data managing
+                                show questions
                             </button>
                         </a>
                     </td>

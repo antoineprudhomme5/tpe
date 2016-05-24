@@ -110,20 +110,25 @@ class MCQController extends Controller
     {
         if($request->answer && $request->answer_correct)
         {
-            $a = new Answer();
-            $a->answer = $request->answer;
+            $nbAnswers = Answer::where('id_question', $q_id)->count();
 
-            if($request->answer_correct == "false")
+            if($nbAnswers < 5 ) // 5 answers max per question
             {
-                $a->correct = false;
-            }
-            else
-            {
-                $a->correct = true;
-            }
+                $a = new Answer();
+                $a->answer = $request->answer;
 
-            $a->id_question = $q_id;
-            $a->save();
+                if($request->answer_correct == "false")
+                {
+                    $a->correct = false;
+                }
+                else
+                {
+                    $a->correct = true;
+                }
+
+                $a->id_question = $q_id;
+                $a->save();
+            }
         }
 
         return redirect()->action('MCQController@getAnswers', ["mcq_id" => $mcq_id, "q_id" => $q_id]);
@@ -134,6 +139,7 @@ class MCQController extends Controller
      * @param $mcq_id
      * @param $q_id => question id
      * @param $a_id => answer id
+     * @return redirect to the answers view
      */
     public function removeAnswer($mcq_id, $q_id, $a_id)
     {
