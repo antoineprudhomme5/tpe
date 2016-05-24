@@ -5,10 +5,15 @@
     @parent
 
 @section('pageTitle')
-    <h1>{{ $mcq->name }} <small>Here you can manage the question from the mcq.</small></h1>
+    <h1>MCQ : {{ $mcq->name }} <small>Here you can manage the question from the mcq.</small></h1>
 @endsection
 
 @section('content')
+
+    <div>
+        <h2>Is playable ?</h2>
+        <p>{{ $mcq->playable }}</p>
+    </div>
 
     <div class="row">
         <div class="container-fluid">

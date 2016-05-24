@@ -5,7 +5,7 @@
     @parent
 
 @section('pageTitle')
-    <h1>{{ $question->question }} <small>Here you can manage the answers of the question.</small></h1>
+    <h1>Question : {{ $question->question }} <small>Here you can manage the answers of the question.</small></h1>
 @endsection
 
 @section('content')

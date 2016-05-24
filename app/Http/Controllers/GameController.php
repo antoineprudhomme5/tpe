@@ -17,8 +17,7 @@ class GameController extends Controller
 {
     public function index()
     {
-        $mcq = MCQ::get();
-
+        $mcq = MCQ::where("playable", true)->get(); // get all playable mcq
         $games = Game::get(); // get all games
 
         return view('games/index', ['games' => $games, 'mcq' => $mcq]);

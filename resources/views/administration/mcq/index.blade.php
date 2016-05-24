@@ -33,23 +33,31 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>Actions</th>
                 <th>Name</th>
+                <th>Playable</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($mcq as $q)
+            @foreach($mcq as $m)
                 <tr>
-                    <td>{{ $q->id }}</td>
+                    <td>{{ $m->id }}</td>
+                    <td>{{ $m->name }}</td>
                     <td>
-                        <a href="{{ url('administration/mcq', $q->id) }}">
+                        @if($m->playable)
+                            <i class="fa fa-check"> </i>
+                        @else
+                            <i class="fa fa-remove"> </i>
+                        @endif
+                    </td>
+                    <td>
+                        <a href="{{ url('administration/mcq', $m->id) }}">
                             <button class="btn btn-primary">
                                 <i class="fa fa-edit"> </i>
                                 show questions
                             </button>
                         </a>
                     </td>
-                    <td>{{ $q->name }}</td>
                 </tr>
             @endforeach
             </tbody>
