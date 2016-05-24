@@ -14,6 +14,8 @@ class CreateMcqTable extends Migration
     {
         Schema::create('mcq', function(Blueprint $table) {
             $table->increments('id');
+            $table->boolean('playable')->default(false);
+            $table->string('description')->default("no description");
             $table->string('name'); // mcq name
         });
     }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use App\Game;
+use App\Question;
+use App\MCQ;
 use Auth;
 use App\GameSpeakAboutRecord;
 use App\GameSpeakAbout;
@@ -15,8 +17,11 @@ class GameController extends Controller
 {
     public function index()
     {
-        $games = Game::get();
-        return view('games/index', ['games' => $games]);
+        $mcq = MCQ::get();
+
+        $games = Game::get(); // get all games
+
+        return view('games/index', ['games' => $games, 'mcq' => $mcq]);
     }
 
     public function adminIndex()

@@ -131,6 +131,8 @@ class MCQController extends Controller
             }
         }
 
+        $this->setQuestionPlayable($q_id);
+
         return redirect()->action('MCQController@getAnswers', ["mcq_id" => $mcq_id, "q_id" => $q_id]);
     }
 
@@ -145,6 +147,49 @@ class MCQController extends Controller
     {
         Answer::destroy($a_id);
 
+        $this->setQuestionPlayable($q_id);
+
         return redirect()->action('MCQController@getAnswers', ["mcq_id" => $mcq_id, "q_id" => $q_id]);
+    }
+
+    /**
+     * @param $id => mcq id
+     */
+    public function playMCQ($id)
+    {
+
+    }
+
+    /**
+     * set the playable attribute of the question
+     * @param $id => question id
+     */
+    private function setQuestionPlayable($id)
+    {
+        $playable = false;
+
+        $nbAnswers = Answer::where('id_question', $id)
+                        ->count();
+
+        if($nbAnswers > 1)
+        {
+            $nbCorrect = Answer::where('id_question', $id)
+                            ->where('correct', true)
+                            ->count();
+
+            if($nbCorrect > 0)
+            {
+                // the question is playable ( it respects all the conditions to be playable )
+                $playable = true;
+            }
+
+        }
+
+        $question = Question::find($id);
+        if($question->playable != $playable)
+        {
+            $question->playable = $playable;
+            $question->save();
+        }
     }
 }

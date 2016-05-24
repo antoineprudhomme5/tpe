@@ -24,6 +24,18 @@
                         </a>
                     </div>
                 @endforeach
+                @foreach($mcq as $m)
+                    <div class="col-xs-12 col-md-4">
+                        <a href="{{ url('/games/mcq/', $m->id) }}">
+                            <div class="panel panel-scheme">
+                                <div class="panel-heading text-center"><h2>{{ $m->name }}</h2></div>
+                                <div class="panel-body">
+                                    no description
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

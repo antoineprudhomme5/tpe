@@ -56,6 +56,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('games/get_speak_about', 'SpeakAboutController@get_speak_about');
 	Route::post('games/post_speak_about', 'SpeakAboutController@post_speak_about');
 
+	//mcq
+	Route::get('games/mcq/{id}', ['uses' => 'MCQController@playMCQ']);
+
 	/*
 	|--------------------------------------------------------------------------
 	| Members

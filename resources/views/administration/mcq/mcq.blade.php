@@ -35,6 +35,7 @@
                 <th>#</th>
                 <th>Name</th>
                 <th>Answer</th>
+                <th>Playable</th>
                 <th></th>
             </tr>
             </thead>
@@ -49,6 +50,13 @@
                                 <i class="fa fa-edit"> </i>
                             </button>
                         </a>
+                    </td>
+                    <td>
+                        @if($q->playable)
+                            <i class="fa fa-check"> </i>
+                        @else
+                            <i class="fa fa-remove"> </i>
+                        @endif
                     </td>
                     <td>
                         <form action="{{ url('administration/mcq/'.$mcq->id.'/remove', $q->id) }}" method="post">

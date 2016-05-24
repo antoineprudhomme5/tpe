@@ -10,6 +10,11 @@
 
 @section('content')
 
+    <div>
+        <h2>Is playable ?</h2>
+        <p>{{ $question->playable }}</p>
+    </div>
+
     <div class="row">
         <div class="container-fluid">
             <h2>Create a new answer</h2>
