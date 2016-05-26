@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//mcq
 	Route::get('games/mcq/{id}', ['uses' => 'MCQController@playMCQ']);
+	Route::post('games/mcq/{id}', ['uses' => 'MCQController@postMCQ']);
 
 	/*
 	|--------------------------------------------------------------------------

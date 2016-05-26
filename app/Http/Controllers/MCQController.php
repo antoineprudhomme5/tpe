@@ -163,14 +163,6 @@ class MCQController extends Controller
      */
     public function removeMCQ($id)
     {
-        /*$questions = Question::where('id_mcq', $id);
-
-        foreach($questions as $q)
-        {
-            Answer::where('id_question', $q)->delete();
-            Question::destroy($q);
-        }*/
-
         MCQ::destroy($id);
 
         return redirect()->action('MCQController@index');
@@ -178,10 +170,50 @@ class MCQController extends Controller
 
     /**
      * @param $id => mcq id
+     * @return the game view
      */
     public function playMCQ($id)
     {
+        $mcq = MCQ::where("id", $id)->get();
 
+        $questions = Question::where('id_mcq', $id)->with('answers')->get();
+
+        return view('games/mcq', ['mcq' => $mcq, 'questions' => $questions]);
+    }
+
+    public function postMCQ($id, Request $request)
+    {
+        $games = Game::get();
+        $mcq = MCQ::where("playable", true)->get(); // get all playable mcq
+        $points = 0;
+
+        // question 1
+        $answer = Answer::where('id_question', $request->q0)->where('correct', true)->first();
+
+        if($answer['answer'] == $request->rep1)
+        {
+            $points++;
+        }
+
+        // question 2
+        $answer = Answer::where('id_question', $request->q1)->where('correct', true)->first();
+
+        if($answer['answer'] == $request->rep2)
+        {
+            $points++;
+        }
+
+        // question 1
+        $answer = Answer::where('id_question', $request->q2)->where('correct', true)->first();
+
+        if($answer['answer'] == $request->rep3)
+        {
+            $points++;
+        }
+
+        $message = "you win ".$points." points !";
+
+        return view('games/index', ["message" => $message, "mcq" => $mcq, "games" => $games]);
     }
 
     /**

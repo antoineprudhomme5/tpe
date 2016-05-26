@@ -10,6 +10,14 @@
             <h1>Games list</h1>
         </div>
         <p>Here, you can find all the games. By playing games, you can practise english and win points.</p>
+
+        @if(!empty($message))
+            <div class="alert alert-success" role="alert">
+                <b>Results : </b>
+                {{ $message }}
+            </div>
+        @endif
+
         <div id="games-list">
             <div class="row">
                 @foreach($games as $game)
@@ -26,7 +34,7 @@
                 @endforeach
                 @foreach($mcq as $m)
                     <div class="col-xs-12 col-md-4">
-                        <a href="{{ url('/games/mcq/', $m->id) }}">
+                        <a href="{{ url('/games/mcq', $m->id) }}">
                             <div class="panel panel-scheme">
                                 <div class="panel-heading text-center"><h2>{{ $m->name }}</h2></div>
                                 <div class="panel-body">
