@@ -30,7 +30,7 @@
                         @foreach($question->answers as $a)
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="{{ "rep".$question->id }}" value="{{ $a->answer }}"> {{ $a->answer }}
+                                    <input type="radio" name="{{ "rep".$i }}" value="{{ $a->answer }}"> {{ $a->answer }}
                                 </label>
                             </div>
                         @endforeach

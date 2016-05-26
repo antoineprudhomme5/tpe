@@ -38,7 +38,7 @@
                             <div class="panel panel-scheme">
                                 <div class="panel-heading text-center"><h2>{{ $m->name }}</h2></div>
                                 <div class="panel-body">
-                                    no description
+                                    {{ $m->description }}
                                 </div>
                             </div>
                         </a>

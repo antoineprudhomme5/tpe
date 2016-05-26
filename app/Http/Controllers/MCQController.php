@@ -183,14 +183,12 @@ class MCQController extends Controller
 
     public function postMCQ($id, Request $request)
     {
-        $games = Game::get();
-        $mcq = MCQ::where("playable", true)->get(); // get all playable mcq
         $points = 0;
 
         // question 1
         $answer = Answer::where('id_question', $request->q0)->where('correct', true)->first();
 
-        if($answer['answer'] == $request->rep1)
+        if($answer['answer'] == $request->rep0)
         {
             $points++;
         }
@@ -198,7 +196,7 @@ class MCQController extends Controller
         // question 2
         $answer = Answer::where('id_question', $request->q1)->where('correct', true)->first();
 
-        if($answer['answer'] == $request->rep2)
+        if($answer['answer'] == $request->rep1)
         {
             $points++;
         }
@@ -206,12 +204,14 @@ class MCQController extends Controller
         // question 1
         $answer = Answer::where('id_question', $request->q2)->where('correct', true)->first();
 
-        if($answer['answer'] == $request->rep3)
+        if($answer['answer'] == $request->rep2)
         {
             $points++;
         }
 
         $message = "you win ".$points." points !";
+        $games = Game::get(); // get all games
+        $mcq = MCQ::where("playable", true)->get(); // get all playable mcq
 
         return view('games/index', ["message" => $message, "mcq" => $mcq, "games" => $games]);
     }
