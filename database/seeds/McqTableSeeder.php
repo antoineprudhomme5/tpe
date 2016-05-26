@@ -13,7 +13,8 @@ class McqTableSeeder extends Seeder
     {
         DB::table('mcq')->insert(array(
             array("id" => 1, "name" => "quizz1", "playable" => true),
-            array("id" => 2, "name" => "quizz2", "playable" => true)
+            array("id" => 2, "name" => "quizz2", "playable" => true),
+            array("id" => 3, "name" => "Synonyms", "playable" => true, "description" => "Find the synonym of the given word")
         ));
     }
 }

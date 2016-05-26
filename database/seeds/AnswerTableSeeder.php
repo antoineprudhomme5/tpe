@@ -35,6 +35,18 @@ class AnswerTableSeeder extends Seeder
             array("answer" => "q6a1", "id_question" => "6", "correct" => true),
             array("answer" => "q6a2", "id_question" => "6", "correct" => false),
             array("answer" => "q6a3", "id_question" => "6", "correct" => false),
+
+            array("answer" => "now", "id_question" => "7", "correct" => true),
+            array("answer" => "short", "id_question" => "7", "correct" => false),
+            array("answer" => "actually", "id_question" => "7", "correct" => false),
+
+            array("answer" => "a lot", "id_question" => "8", "correct" => false),
+            array("answer" => "kind of", "id_question" => "8", "correct" => true),
+            array("answer" => "bad", "id_question" => "8", "correct" => false),
+
+            array("answer" => "small", "id_question" => "9", "correct" => false),
+            array("answer" => "calm", "id_question" => "9", "correct" => false),
+            array("answer" => "impatient", "id_question" => "9", "correct" => true),
         ));
     }
 }
