@@ -13,7 +13,7 @@ use App\Http\Controllers\Controller;
 class MCQController extends Controller
 {
     /**
-     * get all the MCQ from the database and return the MCQ index view
+     * get all the MCQs from the database and return the MCQs index view
      */
     public function index()
     {
@@ -22,9 +22,9 @@ class MCQController extends Controller
     }
 
     /**
-     * create a new mcq
-     * @param Request $request => data from mcq form create
-     * @return the index view
+     * create a new MCQ
+     * @param Request $request => data from MCQ form create
+     * @return redirect to the MCQs index view
      */
     public function createMCQ(Request $request)
     {
@@ -39,9 +39,9 @@ class MCQController extends Controller
     }
 
     /**
-     * show all the questions of the mcq
-     * @param $id => the mcq id
-     * @return the mcq view
+     * show all the questions of a MCQ
+     * @param $id => the MCQ id
+     * @return the MCQ view, with all the questions
      */
     public function getMCQ($id)
     {
@@ -55,9 +55,9 @@ class MCQController extends Controller
 
     /**
      * create a question
-     * @param $id => mcq id
+     * @param $id => MCQ id
      * @param Request $request => form inputs
-     * @return the mcq view
+     * @return redirect to the 's questions view
      */
     public function createQuestion($id, Request $request)
     {
@@ -74,9 +74,9 @@ class MCQController extends Controller
 
     /**
      * remove a question
-     * @param $mcq_id
+     * @param $mcq_id => MCQ id
      * @param $q_id => question id
-     * @return the mcq view
+     * @return redirect to the questions view
      */
     public function removeQuestion($mcq_id, $q_id)
     {
@@ -89,8 +89,8 @@ class MCQController extends Controller
     }
 
     /**
-     * show all the answers for the question
-     * @param $mcq_id
+     * show all the answers for a question
+     * @param $mcq_id => mcq id
      * @param $q_id => question id
      * @return the answers view
      */
@@ -169,8 +169,10 @@ class MCQController extends Controller
     }
 
     /**
+     * Play a MCQ
+     * Get all the questions of the MCQ and the data of this MCQ
      * @param $id => mcq id
-     * @return the game view
+     * @return the game view to play the MCQ
      */
     public function playMCQ($id)
     {
@@ -181,6 +183,12 @@ class MCQController extends Controller
         return view('games/mcq', ['mcq' => $mcq, 'questions' => $questions]);
     }
 
+    /**
+     * Called when a MCQ is submit (basic submission)
+     * @param $id => the MCQ id
+     * @param Request $request => the form game data
+     * @return the index games view with a message which contains the result
+     */
     public function postMCQ($id, Request $request)
     {
         $points = 0;
@@ -201,7 +209,7 @@ class MCQController extends Controller
             $points++;
         }
 
-        // question 1
+        // question 3
         $answer = Answer::where('id_question', $request->q2)->where('correct', true)->first();
 
         if($answer['answer'] == $request->rep2)
